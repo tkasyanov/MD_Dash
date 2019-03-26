@@ -1,0 +1,17 @@
+
+ <!-- action usual -->
+ <!-- table sboard search -->
+ [#if VIEW_MODE="search_sboard" || VIEW_MODE=""#]
+  [#inc sboard_search_admin.html#]
+ [#endif VIEW_MODE#]
+ <!-- / table sboard search -->
+ <!-- table sboard edit -->
+ [#if VIEW_MODE="edit_sboard"#]
+   [#inc sboard_edit.html#]
+ [#endif VIEW_MODE#]
+ <!-- / table sboard edit -->
+ <!-- table sboard view --> 
+ [#if VIEW_MODE="view_sboard"#]
+   [#inc sboard_view.html#]
+ [#endif VIEW_MODE#]
+ <!-- / table sboard view -->

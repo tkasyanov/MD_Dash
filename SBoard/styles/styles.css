@@ -1,0 +1,210 @@
+* {
+  box-sizing: border-box;
+}
+.d-flex {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+}
+.df-center {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  justify-content: center;
+  -ms-align-items: center;
+  align-items: center;
+}
+.jc-between {
+  justify-content: space-between;
+}
+
+.jc-start {
+  justify-content: flex-start;
+}
+.ai-center {
+  -ms-align-items: center;
+  align-items: center;
+}
+.f-wrap {
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  -o-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.popup-big {
+
+}
+
+.addtile-popup-container, .datetime-popup-container, .alarm-popup-container, .datetime-popup-container {
+  background: #fff;
+  color: #686868;
+}
+.alarm-popup-state, .datetime-popup-state {
+  color: #686868;
+}
+.alarm-popup--close, .datetime-popup--close {
+  color: rgba(0, 0, 0, 0.8);
+}
+.select-box {
+  width: 48%;
+  margin-top: 9px;
+
+}
+.select-title, .input-title {
+  min-width: 100px;
+}
+.select-title, .select-box label {
+  margin-right: 20px;
+}
+.select-wrap select, .select-wrap input, .add-group-input, .add-page-input {
+  margin: 6px 0;
+  width: 100%;
+  padding: 5px 10px;
+}
+.select-wrap select, .select-wrap input, .select-group, .add-group-input, .add-page-input {
+  background: #fff;
+  color: #686868;
+  border: 1px solid #686868;
+  font-size: 15px;
+  outline: 0;
+}
+.select-wrap.long {
+  width: 100%;
+}
+.select-wrap.short {
+  width: 60px;
+}
+.select-wrap.short ~ label {
+  margin-left: 10px;
+}
+.addtile-popup-input-container {
+  min-width: 48%;
+  margin-right: 0;
+  max-width: 50%;
+}
+.input-tile {
+  background: #fff;
+  color: #3a3a3a;
+  margin: 0;
+}
+.addtile-popup-input-container {
+
+  padding: 5px;
+  margin-top: 15px;
+}
+.alarm-popup-button {
+  transition: background .2s
+}
+.alarm-popup-button.-disarm, .datetime-popup-button.-disarm, .alarm-popup-button.-success, .datetime-popup-button.-success, .alarm-popup-tabs__item.active {
+  background: #38B87D;
+}
+.alarm-popup-button.-disarm:hover, .datetime-popup-button.-disarm:hover, .alarm-popup-button.-success:hover, .datetime-popup-button.-success:hover, .alarm-popup-tabs__item.active:hover {
+  background: #3EAB79;
+}
+.alarm-popup-button.-away, .datetime-popup-button.-away {
+  background: #F34642;
+}
+.alarm-popup-button.-away:hover, .datetime-popup-button.-away:hover {
+  background: #E04440;
+}
+
+.alarm-popup-button, .datetime-popup-button {
+  color: #fff;
+}
+.alarm-popup-button.-icon .mdi, .datetime-popup-button.-icon .mdi {
+  opacity: 0.85;
+}
+
+.alarm-popup-tabs__item {
+  background: #7b7a7a;
+}
+.alarm-popup-button.-icon.button-small, .datetime-popup-button.-icon.button-small {
+  line-height: 13px;
+  font-size: 13px;
+  height: 40px;
+}
+.button-small .mdi::before {
+  margin-right: 10px;
+}
+.color-picker-swatch{
+  margin-top: 5px;
+  margin-right: 10px;
+  padding: 5px 25px !important;
+}
+.color-picker-input-wrapper{
+  display: flex !important;
+}
+
+
+
+.mdi-picker {
+  /*display: inline-block;*/
+  font-size: 0;
+  box-sizing: border-box;
+  float: left;
+  width: 100%;
+}
+.mdi-picker .dropdown-toggle {
+  padding: 4px;
+  line-height: 24px;
+  height: 34px;
+}
+.mdi-picker .dropdown-menu {
+  width: 260px;
+}
+.mdi-picker .dropdown-menu .icons span.mdi {
+  display: inline-block;
+  margin: 4px 4px 0 0;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #DDD;
+  border-radius: 2px;
+  padding: 2px;
+  line-height: 24px;
+}
+.mdi-picker .dropdown-menu .icons {
+  overflow: auto;
+  max-height: 200px;
+}
+.mdi-picker .dropdown-menu .icons span.mdi:hover {
+  border-color: #444;
+}
+.mdi-picker .dropdown-menu .search {
+  position: absolute;
+  top: 7px;
+  right: 10px;
+  color: #444;
+}
+
+.ng-thumbnails-wrapper {
+  box-sizing: border-box;
+  float: left;
+  width: 100%;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0,0,0,.15);
+  -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+.ng-thumbnails-wrapper img {
+  height: 50px;
+  float: left;
+  padding: 5px 5px;
+}
+.ng-thumbnails-wrapper span{
+  display: inline-block;
+}
+.ng-thumbnails {
+  max-height: 70px;
+  line-height: 54px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
