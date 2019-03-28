@@ -1201,10 +1201,10 @@
                     <tr>
                         <td class="media-player-table--td-main-button">
                             <div class="media-player--main-button" ng-if="entity.state !== 'off'">
-              <span class="mdi mdi-pause" ng-if="supportsFeature(FEATURES.MEDIA_PLAYER.PAUSE, entity) && entity.state === 'playing'"
+              <span class="mdi mdi-pause" ng-if="entity.state === 'playing'"
                     ng-click="sendPlayer('media_pause', item, entity)"></span>
 
-                                <span class="mdi mdi-stop" ng-if="!supportsFeature(FEATURES.MEDIA_PLAYER.PAUSE, entity) && entity.state === 'playing'"
+                                <span class="mdi mdi-stop" ng-if="entity.state === 'playing'"
                                       ng-click="sendPlayer('media_stop', item, entity)"></span>
 
                                 <span class="mdi mdi-play" ng-if="entity.state === 'stopped'" ng-click="sendPlayer('media_play', item, entity)"></span>
@@ -1217,23 +1217,23 @@
                         </td>
                         <td colspan="2" class="media-player-table--td-buttons">
                             <div class="media-player--buttons">
-                                <div class="media-player--button -prev" ng-if="supportsFeature(FEATURES.MEDIA_PLAYER.PREVIOUS_TRACK, entity) && entity.state !== 'off'"
+                                <div class="media-player--button -prev" ng-if="entity.state !== 'off'"
                                      ng-click="sendPlayer('media_previous_track', item, entity)">
                                     <i class="mdi mdi-skip-previous"></i>
                                 </div>
 
-                                <div class="media-player--button -next" ng-if="supportsFeature(FEATURES.MEDIA_PLAYER.NEXT_TRACK, entity) && entity.state !== 'off'"
+                                <div class="media-player--button -next" ng-if="entity.state !== 'off'"
                                      ng-click="sendPlayer('media_next_track', item, entity)">
                                     <i class="mdi mdi-skip-next"></i>
                                 </div>
 
 
-                                <div class="media-player--button -power" ng-if="supportsFeature(FEATURES.MEDIA_PLAYER.TURN_ON, entity) && entity.state === 'off'"
+                                <div class="media-player--button -power" ng-if=" entity.state === 'off'"
                                      ng-click="sendPlayer('turn_on', item, entity)">
                                     <i class="mdi mdi-power"></i>
                                 </div>
 
-                                <div class="media-player--button -power" ng-if="supportsFeature(FEATURES.MEDIA_PLAYER.TURN_OFF, entity) && entity.state !== 'off'"
+                                <div class="media-player--button -power" ng-if=" entity.state !== 'off'"
                                      ng-click="sendPlayer('turn_off', item, entity)">
                                     <i class="mdi mdi-power"></i>
                                 </div>
@@ -1253,7 +1253,7 @@
                         </td>
                     </tr>
 
-                    <tr ng-if="shouldShowVolumeSlider(entity) && (_c = getVolumeConf(item, entity))">
+                    <tr <?/*ng-if="shouldShowVolumeSlider(entity) && (_c = getVolumeConf(item, entity))"*/?>>
                         <td colspan="3" class="media-player-table--td-volume">
                             <div class="media-player--volume">
                                 <input type="range" ng-model="_c.value" ng-change="volumeChanged(item, entity, _c)" step="{{ _c.step }}"
@@ -1278,7 +1278,7 @@
                         <td colspan="2"></td>
                         <td class="media-player-table--td-mute">
                             <div ng-if="entity.state !== 'off' && !item.hideMuteButton">
-                                <div ng-if="supportsFeature(FEATURES.MEDIA_PLAYER.VOLUME_MUTE, entity)">
+                                <div>
                                     <div class="media-player--button -mute" ng-if="entity.attributes.is_volume_muted" ng-click="mutePlayer(false, item, entity)">
                                         <i class="mdi mdi-volume-mute"></i>
                                     </div>

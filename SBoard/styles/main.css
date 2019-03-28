@@ -1744,7 +1744,7 @@ pre {
 
 .-slider-bottom .item-slider {
   top: auto;
-  bottom: 2px;
+  bottom: 25px;
 }
 
 .-progress-bottom .item-progress {
