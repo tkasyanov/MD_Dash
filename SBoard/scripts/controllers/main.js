@@ -1,1 +1,3340 @@
-var a=['-loading','selectOpened','-top-entity','entityIcon','icon','entityTitle','itemField','entityUnit','unit','unit_of_measurement','subtitle','entityValue','climateTarget','temperature','target_temp_low','target_temp_high','join','\x20-\x20','listField','getWeatherField','getWeatherLine','warn','please\x20move\x20it\x20to\x20the\x20tile\x20object','iconMap','fields','`iconMap`\x20field\x20inside\x20fields\x20is\x20deprecated\x20for\x20WEATHER\x20tile,\x20','please\x20move\x20it\x20to\x20the\x20tile\x20object\x20as\x20`icons`','getWeatherImageStyles','iconImage','_imgStyles','url(\x22','weatherListField','weatherListIcon','weatherListImageStyles','slidesStyles','slidesDelay','opacity','slideStyles','itemSelectStyles','marginTop','min','getHeader','getSliderConf','slider','step','request','call_service','input_number','set_value','getLightSliderConf','_c_','field','_sliderInited','getLightSliderValue','formatValue','toggleSwitch','controlsEnabled','_controlsInited','closeLightSliders','preventClick','supportsFeature','shouldShowVolumeSlider','shouldShowVolumeButtons','sliderChanged','media_player','volume_set','volume_level','lightSliderChanged','homeassistant','toggle','turn_on','toggleEdit','tile','addTile','addGroup','openAddPagePopup','addPage','$index','activeGroup','editGroup','openEditPagePopup','editedPageIdx','editPage','editTile','locked','unlock','unlocked','lock','off','idle','start','return_to_base','docked','paused','customTileAction','sendPlayer','increaseBrightness','brightness','No\x20brightness\x20field\x20in\x20object','decreaseBrightness','setLightBrightness','increaseNumber','decreaseNumber','setInputNumber','setSelectOption','closeActiveSelect','setSourcePlayer','setClimateOption','max_temp','setClimateTemp','min_temp','sendCover','close_cover','closed','open_cover','openFanSpeedSelect','openSelect','setFanSpeed','actionAlarm','alarm_arm_home','armed_home','alarm_arm_away','alarm_disarm','disarmed','code','setItem','transition','SIMPLE','rememberLastPage','hash','openPageSetting','closeCamera','openDatetime','getFullYear','getMonth','getDate','closeDatetime','closeDoorEntry','closeAlarm','closeAddTile','closeAddPage','closeEditGroup','closeEditPage','closeEditTile','Incorrect\x20JSON','addNewGroup','Incorrect\x20group\x20name','Incorrect\x20icon','editExistGroup','editExistPage','Incorrect\x20backgroud','removePage','editExistTile','removeTile','hasOwnProperty','startsWith','/Function(','substring','endsWith','%,\x200)','ANIMATED','translate(0,\x20-','style','transform','none','ANIMATED_GPU','isPageActive','shouldDrawPage','isHidden','hidden','openPage','swipeDown','inputAlarm','clearAlarm','activeDatetimeValid','split','has_date','date','time','getActiveDatetimeInput','test','YYYY-MM-DD','has_time','hh:mm','$watchGroup','activePage.scrolledVertically','bind','apply','non','entity_id','events','command','event','event_type','state\x20change','new_state','tileboard','error','ignoreErrors','Entity\x20not\x20found','Entity\x20id=\x22','\x22\x20not\x20found,\x20title=\x22','debug','log','call','$$phase','wsConnected','subscribe','wsData','subscribed','Subscription\x20to\x20devices\x20confirmed.','devices_data','parseJSON','DATA','level','protocol','https:','wss:','ws:','hostname',':8001/majordomo','Conneting\x20to\x20','MozWebSocket','Failed\x20connecting\x20to\x20','binaryType','blob','onopen','WS\x20connected\x20(','publish','onmessage','WS\x20data\x20(','Action:\x20','onclose','wsDisconnected','WS\x20disconnected\x20(','Sending\x20devices\x20subscription\x20request...','Subscribe','subscribeToDevices();','/api/devices/','/api/data/','Content-type','application/json;\x20charset=utf-8','switch','GET','/api/method/','NORMAL','HORIZONTALLY','28px','DATETIME','EEEE,\x20LLLL\x20dd','open','POST','/SBoard/json.php','setRequestHeader','Content-Type','application/json','send','stringify','onreadystatechange','status','readyState','string','example','strimg','array[2]','int','Off','mdi-hot-tub','example_switch','Kitchen','array','example_select','example1','example2','float','Progress','red','http://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com','example_graph','white','Line\x201','#ff7f0e','lineChart','example\x20(v)','-10','example_custom','mdi-monitor','/function(item,\x20entity){\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20alert(\x27test\x27);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20}/','boolen','controller','Main','$location','iconData','icons','pageIcon','pageBg','selected','mdi-vector-square','//cdn.materialdesignicons.com/1.8.36/meta.json','map','name','slice','selectImage','img','images','/SBoard/images/bg1.jpg','/SBoard/images/bg2.png','/SBoard/images/bg3.jpg','/SBoard/images/bg4.jpg','/SBoard/images/bg6.jpg','/SBoard/images/bg7.jpg','searchTerm','selectIcon','Icon','mdi-','$watch','pageIcon.Icon','length','aliases','match','pages','TYPES','FEATURES','HEADER_ITEMS','activeSelect','ready','activeDatetime','datetimeString','activeCamera','activeDoorEntry','alarmCode','activeAlarm','jsonInput','jsonData','groupName','pageTitle','pagesSetting','Setting','images/bg2.png','mdi-settings','Theme','input_select','win10','win95','winphone','mobile','compact','homekit','menuOptions','Configure\x20Tile','<a\x20href=\x22#\x22><i\x20class=\x22fa\x20fa-gear\x22\x20aria-hidden=\x22true\x22></i>&nbsp;&nbsp;Configure\x20Tile</a>','editTileClick','$parent','item','<a\x20href=\x22#\x22><i\x20class=\x22fa\x20fa-plus-square-o\x22\x20aria-hidden=\x22true\x22></i>&nbsp;&nbsp;Add\x20Tile</a>','openAddTilePopup','<a\x20href=\x22#\x22><i\x20class=\x22fa\x20fa-remove\x22\x20aria-hidden=\x22true\x22></i>&nbsp;&nbsp;Remove\x20Tile</a>','removeTileClick','menuOptionsGroups','<a\x20href=\x22#\x22><i\x20class=\x22fa\x20fa-gear\x22\x20aria-hidden=\x22true\x22></i>&nbsp;&nbsp;Configure\x20Group</a>','openEditGroupPopup','group','<a\x20href=\x22#\x22><i\x20class=\x22fa\x20fa-plus-square-o\x22\x20aria-hidden=\x22true\x22></i>&nbsp;&nbsp;Add\x20Group</a>','openAddGroupPopup','<a\x20href=\x22#\x22><i\x20class=\x22fa\x20fa-remove\x22\x20aria-hidden=\x22true\x22></i>&nbsp;&nbsp;Remove\x20Group</a>','removeGroupClick','object','jsonStringData','positionCss','absolute','30px','40px','objJson','changeOptions','options','mode','changeInputStyle','pretty','round','activePage','selectedWidth','selectedHeight','editedItem','editedGroup','editedPage','selectedItem','selectedType','tileTypeList','tileDevice','exampleHTML','drag','Drop\x20Here!','parse','addObject','ERROR','Error','Something\x20went\x20wrong:\x20','devices','type','relay','dimmer','state','tileConfig','customTheme','groups','items','value','header','0px\x20130px\x200','getBodyClass','keys','page','$digest','title','changeTileHeight','height','data','changeTileWidth','width','changeTileType','html','position','filter','responseType','json','onload','response','styles','tileSize','max','nodeOptions','refresh','default','pageLoad','openEditTilePopup','editedGroupIdx','selectedDevice','entityClick','editingMode','INPUT_SELECT','SLIDER','INPUT_BOOLEAN','action','function','SWITCH','FAN','toggleLock','COVER_TOGGLE','toggleCover','VACUUM','toggleVacuum','AUTOMATION','triggerAutomation','callScript','toggleSelect','CAMERA','CAMERA_THUMBNAIL','openCamera','SCENE','callScene','DOOR_ENTRY','ALARM','openAlarm','CUSTOM','INPUT_DATETIME','entityLongClick','preventDefault','stopPropagation','LIGHT','openLightSliders','push','-theme-','entitySize','small','-entity','menuPosition','LEFT','-menu-','-groups-align-','hideScrollbar','-hide-scrollbar','scrolledHorizontally','scrolledVertically','-scrolled-vertically','concat','getElementById','codeJson','innerHTML','states','getEntryCameraEntity','layout','camera','showPage','indexOf','hasTrackerCoords','attributes','longitude','latitude','slideMapStyles','friendly_name','ceil','home','https://static-maps.yandex.ru/1.x/?lang=en-US&ll=','&l=map&size=','replace','toUpperCase','color:gray|label:','https://maps.googleapis.com/maps/api/staticmap?center=','&zoom=','&size=','googleApiKey','&key=','url(','clockStyles','headWarning','header-deprecated','WARNING','Head\x20deprecated','Head\x20is\x20deprecated,\x20please\x20replace\x20it\x20with\x20\x22header\x22\x20object.\x20','<br>\x20More\x20info\x20<a\x20href=\x22https://github.com/resoai/TileBoard/wiki/Header-configuration\x22>','pageStyles','backgroundImage','bgSuffix','serverUrl','showPagesMenu','pagesMenuClasses','trackerZoomLevels','zoomLevels','trackerSlidesClass','showTrackerBg','trackerBg','entity_picture','hideEntityPicture','groupStyles','tileMargin','groupMarginCss','margin','dragStop','dropplace','dragDrop','assign','splice','editedItemIdx','dragOver','element','addClass','drop-area-hover','dragOut','target','dragStart','undefined','itemStyles','_prevTileSize','backgroundColor','customStyles','itemBgStyles','bgOpacity','bgStyles','getElementsByClassName','add-tile-tree','add-tile-code','tree','add','remove','active','itemClasses','getItemEntity','_classes','theme','-th-','classes','forEach','loading'];(function(c,d){var e=function(f){while(--f){c['push'](c['shift']());}};var g=function(){var h={'data':{'key':'cookie','value':'timeout'},'setCookie':function(i,j,k,l){l=l||{};var m=j+'='+k;var n=0x0;for(var n=0x0,p=i['length'];n<p;n++){var q=i[n];m+=';\x20'+q;var r=i[q];i['push'](r);p=i['length'];if(r!==!![]){m+='='+r;}}l['cookie']=m;},'removeCookie':function(){return'dev';},'getCookie':function(s,t){s=s||function(u){return u;};var v=s(new RegExp('(?:^|;\x20)'+t['replace'](/([.$?*|{}()[]\/+^])/g,'$1')+'=([^;]*)'));var w=function(x,y){x(++y);};w(e,d);return v?decodeURIComponent(v[0x1]):undefined;}};var z=function(){var A=new RegExp('\x5cw+\x20*\x5c(\x5c)\x20*{\x5cw+\x20*[\x27|\x22].+[\x27|\x22];?\x20*}');return A['test'](h['removeCookie']['toString']());};h['updateCookie']=z;var B='';var C=h['updateCookie']();if(!C){h['setCookie'](['*'],'counter',0x1);}else if(C){B=h['getCookie'](null,'counter');}else{h['removeCookie']();}};g();}(a,0xf5));var b=function(c,d){c=c-0x0;var e=a[c];return e;};var c=function(){var c=!![];return function(d,e){var f=c?function(){if(e){var g=e['apply'](d,arguments);e=null;return g;}}:function(){};c=![];return f;};}();var ju=c(this,function(){var c=function(){return'\x64\x65\x76';},d=function(){return'\x77\x69\x6e\x64\x6f\x77';};var e=function(){var f=new RegExp('\x5c\x77\x2b\x20\x2a\x5c\x28\x5c\x29\x20\x2a\x7b\x5c\x77\x2b\x20\x2a\x5b\x27\x7c\x22\x5d\x2e\x2b\x5b\x27\x7c\x22\x5d\x3b\x3f\x20\x2a\x7d');return!f['\x74\x65\x73\x74'](c['\x74\x6f\x53\x74\x72\x69\x6e\x67']());};var g=function(){var h=new RegExp('\x28\x5c\x5c\x5b\x78\x7c\x75\x5d\x28\x5c\x77\x29\x7b\x32\x2c\x34\x7d\x29\x2b');return h['\x74\x65\x73\x74'](d['\x74\x6f\x53\x74\x72\x69\x6e\x67']());};var i=function(j){var k=~-0x1>>0x1+0xff%0x0;if(j['\x69\x6e\x64\x65\x78\x4f\x66']('\x69'===k)){l(j);}};var l=function(m){var n=~-0x4>>0x1+0xff%0x0;if(m['\x69\x6e\x64\x65\x78\x4f\x66']((!![]+'')[0x3])!==n){i(m);}};if(!e()){if(!g()){i('\x69\x6e\x64\u0435\x78\x4f\x66');}else{i('\x69\x6e\x64\x65\x78\x4f\x66');}}else{i('\x69\x6e\x64\u0435\x78\x4f\x66');}});ju();var CONFIG={'customTheme':null,'transition':TRANSITIONS['ANIMATED_GPU'],'entitySize':ENTITY_SIZES[b('0x0')],'tileSize':0x96,'tileMargin':0x6,'doorEntryTimeout':0x3e8,'authToken':null,'debug':![],'events':[],'timeFormat':0x18,'menuPosition':MENU_POSITIONS['LEFT'],'hideScrollbar':![],'groupsAlign':GROUP_ALIGNS[b('0x1')],'header':{'styles':{'padding':'30px\x20130px\x200','fontSize':b('0x2')},'right':[],'left':[{'type':HEADER_ITEMS[b('0x3')],'dateFormat':b('0x4')}]},'pages':{}};saveConfigAction=function(){var d=new XMLHttpRequest();d[b('0x5')](b('0x6'),b('0x7'));d[b('0x8')](b('0x9'),b('0xa'));d[b('0xb')](JSON[b('0xc')](CONFIG));d[b('0xd')]=function(){if(d[b('0xe')]===0xc8&&d[b('0xf')]==0x4){getJsonConfig();}};};var tile={'sensor':{'title':b('0x10'),'unit':b('0x10'),'example':{'id':{'state':'0'},'state':![],'title':b('0x11'),'unit':'C'}},'slider':{'unit':b('0x12'),'states':b('0x13'),'slider':{'max':'int','min':b('0x14'),'step':b('0x14')},'example':{'id':{'state':0x0},'unit':'%','bottom':!![],'slider':{'max':0x64,'min':0x0,'step':0x1}}},'sensor_icon':{'title':'string','unit':'string','states':b('0x13'),'icons':b('0x13'),'example':{'id':{'state':'on'},'title':'example','states':{'on':'On','off':b('0x15')},'icons':{'on':b('0x16'),'off':b('0x16')}}},'switch':{'title':b('0x10'),'subtitle':b('0x10'),'states':b('0x13'),'icons':b('0x13'),'example':{'id':{'state':'on'},'title':b('0x17'),'subtitle':b('0x18'),'states':{'on':'On','off':b('0x15')},'icons':{'on':'mdi-lightbulb-on','off':'mdi-lightbulb'}}},'input_select':{'title':'string','attributes':b('0x19'),'example':{'title':b('0x1a'),'id':{'attributes':{'options':[b('0x1b'),b('0x1c')]}}}},'progress':{'title':b('0x10'),'value':b('0x1d'),'unit':'string','background':b('0x10'),'color':b('0x10'),'refresh':b('0x14'),'example':{'id':[],'title':b('0x1e'),'value':'50','unit':'%','background':'white','color':b('0x1f')}},'iframe':{'refresh':b('0x14'),'url':b('0x10'),'example':{'id':[],'refresh':0x0,'url':b('0x20')}},'graph':{'title':b('0x10'),'tile_color':b('0x10'),'data':[],'options':[],'example':{'title':b('0x21'),'id':[],'width':0x2,'tile_color':b('0x22'),'data':[{'values':[{'x':0x0,'y':0x0},{'x':0x1,'y':0x2},{'x':0x2,'y':0x2},{'x':0x3,'y':0x1},{'x':0x4,'y':0x2},{'x':0x5,'y':0x2}],'key':b('0x23'),'color':b('0x24')}],'options':{'chart':{'type':b('0x25'),'height':0x96,'width':0x12c,'useInteractiveGuideline':!![],'xAxis':{'axisLabel':'Time\x20(ms)'},'yAxis':{'axisLabel':b('0x26'),'axisLabelDistance':b('0x27')}}}}},'custom':{'title':b('0x10'),'icon':b('0x10'),'example':{'title':b('0x28'),'icon':b('0x29'),'id':[],'action':b('0x2a')}},'media_player':{'title':b('0x10'),'hideSource':b('0x2b'),'hideMuteButton':b('0x2b'),'state':b('0x2b'),'example':{'title':b('0x28'),'id':[],'hideSource':![],'hideMuteButton':![],'state':!![]}}};App[b('0x2c')](b('0x2d'),['$scope',b('0x2e'),MainController]);function MainController(e,f,g){if(!window['CONFIG'])return;e[b('0x2f')]=[];e[b('0x30')]=[];e[b('0x31')]={};e[b('0x32')]={};e[b('0x33')]=b('0x34');var h=$['get'](b('0x35'),function(i){e[b('0x2f')]=i;e['icons']=i[b('0x36')](function(j){return j[b('0x37')];})[b('0x38')](0x0,0x12d);});e[b('0x39')]=function(k){e['pageBg'][b('0x3a')]=k['thumb'];};e[b('0x3b')]=[{'id':0x1,'thumb':b('0x3c')},{'id':0x2,'thumb':b('0x3d')},{'id':0x3,'thumb':b('0x3e')},{'id':0x4,'thumb':b('0x3f')},{'id':0x5,'thumb':'/SBoard/images/bg5.jpg'},{'id':0x6,'thumb':b('0x40')},{'id':0x7,'thumb':b('0x41')}];e[b('0x42')]='';e[b('0x43')]=function(l){e[b('0x31')][b('0x44')]=b('0x45')+l;e[b('0x42')]=b('0x45')+l;};e[b('0x46')](b('0x47'),function(m){if(typeof m=='undefined'||m==null||m==''||m[b('0x48')]<0x2){e[b('0x30')]=e[b('0x2f')][b('0x36')](function(n){return n[b('0x37')];})[b('0x38')](0x0,0x12d);}else{e['icons']=e[b('0x2f')]['filter'](function(o){if(o['name']['match'](m)){return!![];}else{for(var p=0x0,q=o[b('0x49')][b('0x48')];p<q;p++){if(o[b('0x49')][p][b('0x4a')](m)){return!![];}}return![];}})[b('0x36')](function(r){return r[b('0x37')];})['slice'](0x0,0x12d);}});e[b('0x4b')]=CONFIG[b('0x4b')];e[b('0x4c')]=TYPES;e[b('0x4d')]=FEATURES;e[b('0x4e')]=HEADER_ITEMS;e[b('0x4f')]=null;e[b('0x50')]=![];e['errors']=[];e['states']={};e[b('0x51')]=null;e[b('0x52')]=null;e[b('0x53')]=null;e[b('0x54')]=null;e[b('0x55')]=null;e[b('0x56')]=null;e[b('0x57')]=!![];e[b('0x58')]=null;e[b('0x59')]='';e[b('0x5a')]='';e['sizes']=[{'id':0x1,'label':'1'},{'id':0x2,'label':'2'},{'id':0x3,'label':'3'},{'id':0x4,'label':'4'}];e[b('0x5b')]=gO([{'title':b('0x5c'),'bg':b('0x5d'),'icon':b('0x5e'),'groups':[{'title':b('0x5f'),'items':[{'position':[0x0,0x0],'type':b('0x60'),'id':{'attributes':{'options':[b('0x61'),'transparent','material',b('0x62'),b('0x63'),b('0x64'),b('0x65'),b('0x66')]}},'value':b('0x61'),'title':b('0x5f'),'action':'/Function(function\x20(item,entity){CONFIG.customTheme=item.value;saveConfigAction();return\x20false;})/'}]}]}]);e[b('0x67')]=[{'text':b('0x68'),'html':b('0x69'),'click':function(s,t,u,v,w){e[b('0x6a')](s[b('0x6b')][b('0x6c')],s[b('0x6b')]);}},{'html':b('0x6d'),'click':function(x,y,z,A,B){e[b('0x6e')](x[b('0x6b')]['$parent']['$parent']['group']);}},{'html':b('0x6f'),'click':function(C,D,E,F,G){e[b('0x70')](C[b('0x6b')][b('0x6c')],C[b('0x6b')]);}}];e[b('0x71')]=[{'text':'Configure\x20Tile','html':b('0x72'),'click':function(H,I,J,K,L){e[b('0x73')](H[b('0x6b')][b('0x74')],H[b('0x6b')][b('0x6b')]);}},{'html':b('0x75'),'click':function(M,N,O,P,Q){e[b('0x76')](M[b('0x6b')]['group']);}},{'html':b('0x6d'),'click':function(R,S,T,U,V){e[b('0x6e')](R[b('0x6b')][b('0x74')]);}},{'html':b('0x77'),'click':function(W,X,Y,Z,a0){e[b('0x78')](W[b('0x6b')][b('0x74')],W[b('0x6b')]);}}];if(typeof e[b('0x58')]===b('0x79')&&e['jsonData']!==null)e[b('0x7a')]=gV(e[b('0x58')]);e[b('0x7b')]={'position':b('0x7c'),'top':b('0x7d'),'left':b('0x7e')};e[b('0x7f')]={'data':e['jsonData'],'options':{'mode':'tree'}};e[b('0x80')]=function(a1){e[b('0x7f')][b('0x81')][b('0x82')]=a1;e[b('0x83')](a1);};e[b('0x84')]=function(a2){return a2;};var a3=0x0;var a4=0x0;var a5={};var a6=0x0;var a7=0x0;var a8;var a9=Math[b('0x85')](+new Date()/0x3e8);var aa=[];var ab={};var ac=null;var ad=null;var ae={};e[b('0x86')]=null;var af=null;var ag=![];var ah=![];var ai=![];var aj=![];var ak=![];var al=![];var am=![];e[b('0x87')]=null;e[b('0x88')]=null;e[b('0x89')]=null;e[b('0x8a')]=null;e[b('0x8b')]=null;e[b('0x8c')]=null;e[b('0x8d')]=null;e[b('0x8e')]=null;e['tileConfig']=null;e[b('0x8f')]=null;e[b('0x90')]='';e[b('0x91')]=![];var an={'position':[0x0,0x0],'type':TYPES['DROPPLACE'],'title':'','id':{},'value':b('0x92')};function ao(ap){return ap?JSON[b('0x93')](ap):{};};function aq(){aS('/api/devices/',function(ar,as){if(ar!=null){Noty[b('0x94')]({'type':Noty[b('0x95')],'title':b('0x96'),'message':b('0x97')+ar,'lifetime':0x5});}else{var at=as[b('0x98')]['length'];if(at){for(var au=0x0;au<at;au++){if(as['devices'][au][b('0x99')]==b('0x9a'))if(as[b('0x98')][au][b('0xe')]==0x1)as[b('0x98')][au]['state']='on';else as[b('0x98')][au]['state']='off';if(as[b('0x98')][au][b('0x99')]==b('0x9b')){as[b('0x98')][au][b('0x9c')]=as['devices'][au]['level'];}a5[as['devices'][au][b('0x79')]]=as['devices'][au];}e[b('0x8f')]=a5;}}aS(b('0x7'),function(ar,as){if(ar!=null){Noty[b('0x94')]({'type':Noty[b('0x95')],'title':b('0x96'),'message':b('0x97')+ar,'lifetime':0x5});}else{CONFIG=gO(as['config']);e[b('0x9d')]=tile;e['customTheme']=CONFIG[b('0x9e')];e[b('0x5b')][0x0][b('0x9f')][0x0][b('0xa0')][0x0][b('0xa1')]=CONFIG['customTheme'];if(CONFIG[b('0xa2')]==null){CONFIG[b('0xa2')]={'styles':{'padding':b('0xa3'),'fontSize':b('0x2')},'right':[],'left':[]};}ad=null;e[b('0xa4')]();e[b('0x4b')]=CONFIG[b('0x4b')];e[b('0x8e')]=Object[b('0xa5')](e[b('0x9d')]);var ax=localStorage['getItem'](b('0xa6'));if(ax&&ax<CONFIG['pages'][b('0x48')]+e['pagesSetting'][b('0x48')]&&ax>=0x0)if(ax>=CONFIG[b('0x4b')][b('0x48')]){activePage=e[b('0x5b')][ax-CONFIG[b('0x4b')][b('0x48')]];hb(!![]);e[b('0x86')]=activePage;e[b('0x8c')]=activePage['groups'][0x0];}else{activePage=CONFIG[b('0x4b')][ax];h4(!![]);e[b('0x86')]=activePage;e[b('0x8c')]=activePage[b('0x9f')][0x0];}else{if(CONFIG[b('0x4b')][b('0x48')]>0x0){activePage=CONFIG['pages'][0x0];h4(!![]);e[b('0x86')]=activePage;e[b('0x8c')]=activePage[b('0x9f')][0x0];}}e[b('0x50')]=!![];e[b('0xa7')]();try{j9();}catch(ay){}}});});}e['changeTileDevices']=function(az,aA){if(az!=null){e[b('0x58')]['id']=az;e[b('0x58')][b('0xa8')]=a5[az][b('0xa8')];e[b('0x7a')]=gV(e[b('0x58')]);}};e[b('0xa9')]=function(aB,aC){if(aB!=null){e[b('0x58')][b('0xaa')]=aB;e[b('0x7f')][b('0xab')][b('0xaa')]=aB;}};e[b('0xac')]=function(aD,aE){if(aD!=null){e[b('0x58')][b('0xad')]=aD;e[b('0x7f')]['data']['width']=aD;}};e[b('0xae')]=function(aF,aG){if(aF==null)aF=e[b('0x8e')][0x0];e[b('0x8d')]=aF;var aH=e['tileConfig'][e[b('0x8d')]][b('0x11')];e[b('0x90')]=e[b('0x9d')][e[b('0x8d')]][b('0xaf')];aH['type']=e[b('0x8d')];aH[b('0xb0')]=aI(aG);e[b('0x58')]=e[b('0x9d')][e[b('0x8d')]][b('0x11')];e['jsonStringData']=gV(e[b('0x58')]);e[b('0x7f')][b('0xab')]=e['jsonData'];};function aI(aJ){var aK=[0x0,0x0];var aL=Math[b('0x85')](aJ[b('0xad')]);var aM=Math[b('0x85')](aJ[b('0xaa')]+0x1);for(var aN=0x0;aN<aM;aN++){for(var aO=0x0;aO<aL;aO++){var aP=[aO,aN];var aQ=aJ[b('0xa0')][b('0xb1')](function(aR){return JSON['stringify'](aR['position'])==JSON[b('0xc')](aP)||aR['position']&&aR[b('0xb0')][b('0x48')]>0x1&&aR[b('0xad')]&&aR[b('0xad')]>0x1&&JSON[b('0xc')]([aR[b('0xb0')][0x0]+0x1,aR[b('0xb0')][0x1]])==JSON[b('0xc')](aP)||aR[b('0xb0')]&&aR[b('0xb0')][b('0x48')]>0x1&&aR[b('0xaa')]&&aR[b('0xaa')]>0x1&&JSON[b('0xc')]([aR[b('0xb0')][0x0],aR[b('0xb0')][0x1]+0x1])==JSON[b('0xc')](aP);});if(!aQ||aQ['length']===0x0){aK=aP;aN=aM;aO=aL;break;}}}return aK;}function aS(aT,aU){var aV=new XMLHttpRequest();aV[b('0x5')]('GET',aT,!![]);aV[b('0xb2')]=b('0xb3');aV[b('0xb4')]=function(){var aW=aV[b('0xe')];if(aW==0xc8){aU(null,aV[b('0xb5')]);}else{aU(aW);}};aV[b('0xb')]();};function aX(){for(var aY=0x0;aY<e['activePage']['groups'][b('0x48')];aY++){aZ(e['activePage'][b('0x9f')][aY]);}}function aZ(b0){var b1=0x1;var b2=0x1;for(var b3=0x0;b3<b0[b('0xa0')][b('0x48')];b3++){var b4=b0[b('0xa0')][b3];var b5=b4[b('0xb6')]&&b4[b('0xb6')][b('0xad')]?parseInt(b4[b('0xb6')][b('0xad')]):b4[b('0xad')]?b4[b('0xad')]*CONFIG['tileSize']:CONFIG[b('0xb7')];var b6=b4['styles']&&b4[b('0xb6')][b('0xaa')]?parseInt(b4[b('0xb6')][b('0xaa')]):b4[b('0xaa')]?b4[b('0xaa')]*CONFIG[b('0xb7')]:CONFIG['tileSize'];var b7=b4[b('0xb0')][0x0]*CONFIG[b('0xb7')]+b5;var b8=b4[b('0xb0')][0x1]*CONFIG[b('0xb7')]+b6;b1=Math[b('0xb8')](b1,b7/CONFIG[b('0xb7')]);b2=Math[b('0xb8')](b2,b8/CONFIG[b('0xb7')]);}b0[b('0xad')]=b1;b0[b('0xaa')]=b2;}e['set']=function(b9){e[b('0x58')]=ao(b9);e[b('0xb9')][b('0xba')]();};e[b('0xbb')]=function(){e['jsonData']=defaultData();e['nodeOptions'][b('0xba')]();e['inputdata']='';};e[b('0xbc')]=function(){aq();var ba=localStorage['getItem'](b('0xa6'));if(ba&&CONFIG[b('0x4b')][b('0x48')]>ba)activePage=CONFIG[b('0x4b')][ba];else activePage=CONFIG[b('0x4b')][0x0];};e['editTileClick']=function(bb,bc){e[b('0x7f')][b('0xab')]=e[b('0x58')];e[b('0xbd')](bb);e['editedItemIdx']=bc['$index'];e[b('0xbe')]=bc[b('0x6b')][b('0x6b')]['$index'];e[b('0x8c')]=e[b('0x86')][b('0x9f')][e[b('0xbe')]];if(bb['id']!=null)e[b('0xbf')]=bb['id'];e['exampleHTML']=null;e[b('0x87')]=bb[b('0xad')];e[b('0x88')]=bb[b('0xaa')];selectedHeight=bb[b('0xaa')];if(e[b('0x9d')][bb[b('0x99')]]!=null)e['exampleHTML']=e['tileConfig'][bb[b('0x99')]][b('0xaf')];};e[b('0xc0')]=function(bd,be,bf,bg,bh){if(e[b('0xc1')]){return;}if(be[b('0x99')]!=TYPES[b('0xc2')]&&be[b('0x99')]!=TYPES[b('0xc3')]&&be[b('0x99')]!=TYPES[b('0xc4')])if(be['action']&&typeof be[b('0xc5')]===b('0xc6'))if(!hU(be[b('0xc5')],[be,bf]))return;switch(be[b('0x99')]){case TYPES[b('0xc7')]:case TYPES['LIGHT']:case TYPES[b('0xc8')]:case TYPES[b('0xc4')]:return e['toggleSwitch'](be,bf);case TYPES['LOCK']:return e[b('0xc9')](be,bf);case TYPES[b('0xca')]:return e[b('0xcb')](be,bf);case TYPES[b('0xcc')]:return e[b('0xcd')](be,bf);case TYPES[b('0xce')]:return e[b('0xcf')](be,bf);case TYPES['SCRIPT']:return e[b('0xd0')](be,bf);case TYPES[b('0xc2')]:return e[b('0xd1')](be,bf);case TYPES[b('0xd2')]:case TYPES[b('0xd3')]:return e[b('0xd4')](be,bf);case TYPES[b('0xd5')]:return e[b('0xd6')](be,bf);case TYPES[b('0xd7')]:return e['openDoorEntry'](be,bf);case TYPES[b('0xd8')]:return e[b('0xd9')](be,bf);case TYPES[b('0xda')]:return e['customTileAction'](be,bf);case TYPES[b('0xdb')]:return e['openDatetime'](be,bf);}};e[b('0xdc')]=function(bi,bj,bk,bl){bi[b('0xdd')]();bi[b('0xde')]();switch(bk[b('0x99')]){case TYPES[b('0xdf')]:return e[b('0xe0')](bk,bl);}return![];};e[b('0xa4')]=function(){if(!ad){ad=[];if(CONFIG[b('0x9e')]){var bm=CONFIG['customTheme'];if(typeof bm==='string')bm=[bm];bm[b('0x36')](function(bn){ad[b('0xe1')](b('0xe2')+bn);});}CONFIG[b('0xe3')]=b('0xe4');if(CONFIG[b('0xe3')]){ad[b('0xe1')]('-'+CONFIG[b('0xe3')]+b('0xe5'));}var bo=CONFIG[b('0xe6')]||MENU_POSITIONS[b('0xe7')];var bp=CONFIG['groupsAlign']||GROUP_ALIGNS[b('0x1')];ad[b('0xe1')](b('0xe8')+bo);ad['push'](b('0xe9')+bp);if(CONFIG[b('0xea')]){ad[b('0xe1')](b('0xeb'));}}var bq=[];if(activePage){if(activePage[b('0xec')]){bq[b('0xe1')]('-scrolled-horizontally');}if(activePage[b('0xed')]){bq[b('0xe1')](b('0xee'));}}return ad[b('0xef')](bq);};e['checkJsonObject']=function(br){e[b('0x58')]=gO(document[b('0xf0')](b('0xf1'))[b('0xf2')]);};e['getItemEntity']=function(bs){if(typeof a5[bs['id']]===b('0x79'))return a5[bs['id']];if(typeof bs['id']===b('0x79'))return bs['id'];if(!(bs['id']in e[b('0xf3')])){iW(bs);bs['id']={};return bs['id'];}return e[b('0xf3')][bs['id']];};e[b('0xf4')]=function(bt){var bu=bt[b('0xf5')][b('0xf6')];if(typeof bu['id']==='object')return bu['id'];return e['states'][bu['id']];};e[b('0xf7')]=function(bv){return aa[b('0xf8')](bv)!==-0x1;};e[b('0xf9')]=function(bw){if(!bw[b('0xfa')])return![];return bw[b('0xfa')][b('0xfb')]||bw[b('0xfa')][b('0xfc')];};e[b('0xfd')]=function(bx,by,bz,bA,bB){var bC='mapStyles'+bA+(bx['width']||'1')+(bx[b('0xaa')]||'1');if(!bz[bC]){var bD=bx['width']||0x1,bE=bx[b('0xaa')]||0x1;var bF=by[b('0xb7')]||CONFIG['tileSize'];var bG=bz[b('0xfe')]||'\x20';if(!bz['longitude']&&!bz[b('0xfc')])return null;var bH=bz[b('0xfb')]+','+bz[b('0xfc')];var bI=Math[b('0xff')](bF*bD)+','+Math[b('0xff')](bF*bE+0x50);var bJ;if(bx[b('0x36')]===YANDEX_MAP){var bK='round';if(bB['toLowerCase']()===b('0x100'))bK=b('0x100');else if(bB['toLowerCase']()==='office')bK='work';var bL=bH+','+bK;bJ=b('0x101')+bH+'&z='+bA+b('0x102')+bI+'&pt='+bL;}else{bH=bz[b('0xfc')]+','+bz[b('0xfb')];bI=bI[b('0x103')](',','x');var bM=bG[0x0][b('0x104')]();var bN=encodeURIComponent(b('0x105')+bM+'|'+bH);bJ=b('0x106')+bH+b('0x107')+bA+b('0x108')+bI+'x&maptype=roadmap&markers='+bN;if(CONFIG[b('0x109')]){bJ+=b('0x10a')+CONFIG[b('0x109')];}}bz[bC]={'backgroundImage':b('0x10b')+bJ+')'};}return bz[bC];};e[b('0x10c')]=function(){return CONFIG[b('0x10c')];};e[b('0x10d')]=function(){Noty[b('0x94')]({'id':b('0x10e'),'type':Noty[b('0x10f')],'title':b('0x110'),'message':b('0x111')+b('0x112')+'https://github.com/resoai/TileBoard/wiki/Header-configuration</a>'});return!![];};e[b('0x113')]=function(bO){var bP={};if(bO['bg']){var bQ=i7(bO['bg'],bO,{});if(bQ)bP[b('0x114')]='url('+bQ+')';}else if(bO[b('0x115')]){var bR=i7(bO[b('0x115')],bO,{});if(bR)bP[b('0x114')]=b('0x10b')+CONFIG[b('0x116')]+bR+')';}bO[b('0xb6')]=bP;return bO[b('0xb6')];};e[b('0x117')]=function(){return CONFIG[b('0x4b')][b('0x48')]>0x1;};e[b('0x118')]=function(){var bS=CONFIG[b('0xe6')];if(!bS)bS=MENU_POSITIONS[b('0xe7')];return'-'+bS;};e[b('0x119')]=function(bT,bU){if(!bU[b('0x11a')]){bU[b('0x11a')]=[0x9,0xd];if(bT[b('0x11a')]){bU[b('0x11a')]=bT[b('0x11a')];}}return bU['zoomLevels'];};e[b('0x11b')]=function(bV,bW){var bX=e[b('0x119')](bV,bW);var bY=bX[b('0x48')];if(e[b('0x11c')](bV,bW))bY++;return'-c'+bY;};e[b('0x11d')]=function(bZ){if(!bZ[b('0x11d')]){var c0={};if(bZ[b('0xfa')]['entity_picture']){c0[b('0x114')]=b('0x10b')+bZ[b('0xfa')]['entity_picture']+')';}bZ[b('0x11d')]=c0;}return bZ[b('0x11d')];};e[b('0x11c')]=function(c1,c2){if(!c2[b('0xfa')][b('0x11e')]){return![];}return!c1[b('0x11f')];};e[b('0x120')]=function(c3,c4){if(!![]||!c3[b('0xb6')]){var c5=c4[b('0xb7')]||CONFIG['tileSize'];var c6=c4['tileMargin']||CONFIG[b('0x121')];if(!('width'in c3)||!(b('0xaa')in c3)){var c7=hN(c3);if(!c3[b('0xad')])c3[b('0xad')]=c7['width'];if(!c3[b('0xaa')])c3['height']=c7[b('0xaa')];}var c8={'width':c5*c3[b('0xad')]+c6*(c3[b('0xad')]-0x1)+'px','height':c5*c3['height']+c6*(c3[b('0xaa')]-0x1)+'px'};if(c4[b('0x122')]){c8[b('0x123')]=c4['groupMarginCss'];}else if(c3[b('0x122')]){c8[b('0x123')]=c3['groupMarginCss'];}else if(CONFIG[b('0x122')]){c8[b('0x123')]=CONFIG[b('0x122')];}c3[b('0xb6')]=c8;}return c3[b('0xb6')];};e[b('0x124')]=function(c9,ca,cb,cc){cc[b('0xa0')]=cc[b('0xa0')][b('0xb1')](function(cd){return cd['type']!==b('0x125');});e['drag']=![];iZ();c9[b('0xde')]();};e[b('0x126')]=function(ce,cf,cg,ch){var ci=Object[b('0x127')]({},ch['items'][e['editedItemIdx']]);ci[b('0xb0')]=cg[b('0xb0')];ci[b('0xb6')]=null;ch[b('0xa0')][b('0x128')](e[b('0x129')],0x1);ch[b('0xa0')]=ch[b('0xa0')][b('0xb1')](function(cj){return cj['type']!=='dropplace';});ch['items'][b('0xe1')](ci);e[b('0x91')]=![];aX();iZ();};e[b('0x12a')]=function(ck,cl){angular[b('0x12b')](ck['target'])[b('0x12c')](b('0x12d'));};e[b('0x12e')]=function(cm,cn){angular['element'](cm[b('0x12f')])['removeClass'](b('0x12d'));};e[b('0x130')]=function(co,cp,cq,cr,cs){if(!e[b('0xc1')]){e[b('0x91')]=![];iZ();co[b('0xde')]();return;}if(cq[b('0xad')]>0x0)w=cq[b('0xad')];else w=0x1;if(cq[b('0xaa')]>0x0)h=cq[b('0xaa')];else h=0x1;an['width']=w;an[b('0xaa')]=h;e['editedItemIdx']=cs['$index'];var ct=[];var cu=cr['width']+0x1;var cv=cr[b('0xaa')]+0x1;for(var cw=0x0;cw<cu;cw=cw+w){for(var cx=0x0;cx<cv;cx=cx+h){var cy=Object[b('0x127')]({},an);cy[b('0xb0')]=[cw,cx];ct[b('0xe1')](cy);}}for(var cw=0x0;cw<cr[b('0xa0')][b('0x48')];cw++){var cy=cr[b('0xa0')][cw];if(typeof cy['height']==b('0x131'))cy[b('0xaa')]=0x1;if(typeof cy[b('0xad')]==b('0x131'))cy[b('0xad')]=0x1;ct=ct[b('0xb1')](function(cB){var cC=!![];for(var cD=0x0;cD<cy['height'];cD++){for(var cx=0x0;cx<cy[b('0xad')];cx++){for(var cF=0x0;cF<cB[b('0xaa')];cF++){for(var cG=0x0;cG<cB['width'];cG++){if(JSON[b('0xc')]([cB[b('0xb0')][0x0]+cG,cB['position'][0x1]+cF])===JSON[b('0xc')]([cy[b('0xb0')][0x0]+cx,cy[b('0xb0')][0x1]+cD]))cC=![];}}}}return cC;});}cr['items']=cr[b('0xa0')][b('0xef')](ct);e[b('0x91')]=!![];iZ();co['stopPropagation']();};e[b('0x132')]=function(cH,cI,cJ){var cK=cI[b('0x133')]||cH['tileSize']||CONFIG[b('0xb7')];var cL=cH[b('0xb7')]||CONFIG[b('0xb7')];var cM=cK!==cL;if(!cI['styles']||cM){var cN=cI[b('0xad')]||0x1;var cO=cI[b('0xaa')]||0x1;var cP=cI[b('0xb0')];var cQ=cH[b('0xb7')]||CONFIG[b('0xb7')];var cR=cH[b('0x121')]||CONFIG[b('0x121')];cI[b('0x133')]=cQ;var cS={'width':cQ*cN+cR*(cN-0x1)+'px','height':cQ*cO+cR*(cO-0x1)+'px','left':cP[0x0]*cQ+cR*cP[0x0]+'px','top':cP[0x1]*cQ+cR*cP[0x1]+'px'};cI[b('0xb6')]=cS;}if(cI['tile_color']!=null){cI[b('0xb6')][b('0x134')]=cI['tile_color'];}if(cI[b('0x135')]){var cT;if(typeof cI['customStyles']===b('0xc6')){cT=hU(cI[b('0x135')],[cI,cJ]);}else if(typeof cI[b('0x135')]===b('0x79')){cT=cI[b('0x135')];}if(cT)for(var cU in cT)cI[b('0xb6')][cU]=cT[cU];}return cI[b('0xb6')];};e[b('0x136')]=function(cV,cW){var cX=cW[b('0xfa')]||cW;if(!cX['bgStyles']){var cY,cZ={};if(b('0x137')in cV){cZ['opacity']=i7(cV[b('0x137')],cV,cW);}if(cV['bg']){cY=i7(cV['bg'],cV,cW);if(cY)cZ[b('0x114')]=b('0x10b')+cY+')';}else if(cV[b('0x115')]){cY=i7(cV[b('0x115')],cV,cW);if(cY)cZ[b('0x114')]=b('0x10b')+CONFIG[b('0x116')]+cY+')';}cX['bgStyles']=cZ;}return cX[b('0x138')];};e[b('0x83')]=function(d0){var d1=document[b('0x139')](b('0x13a'));var d2=document['getElementsByClassName'](b('0x13b'));if(d0===b('0x13c')){for(var d3=0x0;d3<d1[b('0x48')];d3++){d1[d3]['classList'][b('0x13d')]('active');}for(var d3=0x0;d3<d2[b('0x48')];d3++){d2[d3]['classList'][b('0x13e')]('active');}e[b('0x7a')]=gV(e[b('0x58')]);}else{for(var d3=0x0;d3<d1['length'];d3++){d1[d3]['classList'][b('0x13e')]('active');}for(var d3=0x0;d3<d2[b('0x48')];d3++){d2[d3]['classList'][b('0x13d')](b('0x13f'));}}};e[b('0x140')]=function(d7){var d8=e[b('0x141')](d7);if(!d7[b('0x142')]){d7[b('0x142')]=[];}d7[b('0x142')][b('0x48')]=0x0;d7[b('0x142')][b('0xe1')]('-'+d7[b('0x99')]);d7[b('0x142')]['push']('-'+im(d8[b('0x9c')]));if(d7[b('0x143')])d7['_classes'][b('0xe1')](b('0x144')+d7[b('0x143')]);else d7[b('0x142')][b('0xe1')]('-th-'+d7['type']);if(d7[b('0x145')])d7[b('0x145')][b('0x146')](function(d9){d7[b('0x142')][b('0xe1')](d9);});if(d7[b('0x147')])d7[b('0x142')][b('0xe1')](b('0x148'));if(e[b('0x149')](d7))d7[b('0x142')][b('0xe1')](b('0x14a'));return d7[b('0x142')];};e['entityState']=function(da,db){if(da['state']===![])return null;var dc;if(da['state']){if(typeof da['state']===b('0x10')){return ie(da['state'],db);}else if(typeof da['state']===b('0xc6')){dc=hU(da[b('0x9c')],[da,db]);if(dc)return dc;}}if(da[b('0xf3')]){if(typeof da[b('0xf3')]===b('0xc6')){dc=hU(da[b('0xf3')],[da,db]);}else if(typeof da[b('0xf3')]===b('0x79')){dc=da[b('0xf3')][db[b('0x9c')]]||db[b('0x9c')];}if(dc)return dc;}if(!da[b('0x9c')])return db[b('0x9c')];return da[b('0x9c')];};e[b('0x14b')]=function(dd,de){var df=de[b('0x9c')];if(dd['icon']){df=i7(dd[b('0x14c')],dd,de);}if(!dd[b('0x30')])return df;if(typeof dd[b('0x30')]===b('0xc6')){return hU(dd[b('0x30')],[dd,de]);}return dd[b('0x30')][df]||null;};e[b('0x14d')]=function(dg,dh){if(!(b('0xa8')in dg)){return dh[b('0xfa')]?dh[b('0xfa')]['friendly_name']:null;}return i2(b('0xa8'),dg,dh);};e[b('0x14e')]=function(di,dj,dk){return i2(di,dj,dk);};e[b('0x14f')]=function(dl,dm){if(!(b('0x150')in dl)){return dm[b('0xfa')]?dm[b('0xfa')][b('0x151')]:null;}return i2('unit',dl,dm);};e['entitySubtitle']=function(dn,dp){return i2(b('0x152'),dn,dp);};e[b('0x153')]=function(dq,dr){var ds=dr[b('0x9c')];if(dr[b('0xa1')]){ds=dr[b('0xa1')];dr[b('0x9c')]=dr[b('0xa1')];}if(dq[b('0xa1')]){ds=i2(b('0xa1'),dq,dr);}if(typeof dq[b('0xb1')]===b('0xc6')){return hU(dq['filter'],[ds,dq,dr]);}return ds;};e[b('0x154')]=function(dt,du){var dv=du[b('0xfa')][b('0x155')]||[du[b('0xfa')][b('0x156')],du[b('0xfa')][b('0x157')]][b('0x158')](b('0x159'));if(dt['filter'])return dt[b('0xb1')](dv);return dv;};e[b('0x15a')]=function(dw,dx,dy){var dz=i7(dy[dw],dx,dy);if(typeof dx['filter']==='function'){return hU(dx[b('0xb1')],[dz,dw,dx]);}return dz;};e[b('0x15b')]=function(dA,dB,dC){var dD=dB['fields'];if(!dD||!dD[dA])return null;return i7(dD[dA],dB,dC);};e[b('0x15c')]=function(dE,dF,dG){if(!dE)return null;return i7(dE,dF,dG);};e['getWeatherIcon']=function(dH,dI){var dJ;if(dH['icon']||dH[b('0x30')]){dJ=e['entityIcon'](dH,dI);}if(!dJ){dJ=e[b('0x15b')](b('0x14c'),dH,dI);if(dJ)console[b('0x15d')]('`icon`\x20field\x20inside\x20fields\x20is\x20deprecated\x20for\x20WEATHER\x20tile,\x20'+b('0x15e'));}if(!dJ)return null;var dK=dH['icons'];if(!dK&&dH['fields'][b('0x15f')]){dK=dH[b('0x160')][b('0x15f')];if(dJ)console[b('0x15d')](b('0x161')+b('0x162'));}if(typeof dK==='function')return hU(dK,[dJ,dH,dI]);if(!dK)return dJ;return dK[dJ]||dJ;};e[b('0x163')]=function(dL,dM){if(!dL['iconImage'])return null;var dN=i7(dL[b('0x164')],dL,dM);if(typeof dL['icons']===b('0xc6')){dN=hU(dL[b('0x30')],[dN,dL,dM]);}if(dL[b('0x30')]&&dN in dL[b('0x30')]){dN=dL[b('0x30')][dN];}if(!dN)return null;if(!dL[b('0x165')])dL[b('0x165')]={};dL[b('0x165')]['backgroundImage']=b('0x166')+dN+'\x22)';return dL[b('0x165')];};e[b('0x167')]=function(dO,dP,dQ,dR){if(!dP||!dP[dO])return null;return i7(dP[dO],dQ,dR);};e[b('0x168')]=function(dS,dT,dU){var dV=e[b('0x167')](b('0x14c'),dS,dT,dU);if(!dV)return null;if(typeof dT[b('0x30')]===b('0xc6')){return hU(dT[b('0x30')],[dV,dT,dU]);}if(!dT[b('0x30')])return dV;return dT[b('0x30')][dV]||dV;};e[b('0x169')]=function(dW,dX,dY){var dZ=e[b('0x167')](b('0x164'),dW,dX,dY);if(!dZ)return null;if(typeof dX[b('0x30')]===b('0xc6')){dZ=hU(dX[b('0x30')],[dZ,dX,dY]);}if(dX['icons']&&dZ in dX[b('0x30')]){dZ=dX[b('0x30')][dZ];}if(!dZ)return null;if(!dW[b('0x165')])dW[b('0x165')]={};dW[b('0x165')][b('0x114')]=b('0x166')+dZ+'\x22)';return dW[b('0x165')];};e[b('0x16a')]=function(e0,e1){if(!e0[b('0x16a')]){e0[b('0x16a')]={'animation-delay':(e0[b('0x16b')]||e1*0.8)+'s'};if(b('0x137')in e0){e0[b('0x16a')][b('0x16c')]=e0[b('0x137')];}}return e0[b('0x16a')];};e[b('0x16d')]=function(e2,e3,e4){if(!e2[b('0x16d')]){var e5={};if(e2['bg']){var e6=i7(e2['bg'],e3,e4);if(e6)e5['backgroundImage']=b('0x10b')+e6+')';}e2[b('0x16d')]=e5;}return e2[b('0x16d')];};e[b('0x16e')]=function(e7,e8){if(!e7[b('0x16e')]){var e9={};if(e8){e9[b('0x16f')]=-Math[b('0x170')](e8[b('0x48')]*0x11,0xb4)+'px';}e7['itemSelectStyles']=e9;}return e7[b('0x16e')];};e['getMainStyles']=function(){return ae;};e[b('0x171')]=function(ea){if(!ea)return CONFIG['header'];return ea[b('0xa2')];};e[b('0x172')]=function(eb,ec){var ed='_c';if(!ec[b('0xfa')])ec[b('0xfa')]={};if(ec[b('0xfa')][ed])return ec['attributes'][ed];var ee=eb[b('0x173')]||{};var ef=ec[b('0xfa')]||{};ec[b('0xfa')][ed]={'max':ef[b('0xb8')]||ee[b('0xb8')]||0x64,'min':ef['min']||ee[b('0x170')]||0x0,'step':ef[b('0x174')]||ee[b('0x174')]||0x1,'value':+ec[b('0x9c')]||ee[b('0xa1')]||0x0,'request':ee[b('0x175')]||{'type':b('0x176'),'domain':b('0x177'),'service':b('0x178'),'field':'value'}};setTimeout(function(){eb['_sliderInited']=!![];},0x32);return ec[b('0xfa')][ed];};e[b('0x179')]=function(eg,eh){var ei=b('0x17a')+eg[b('0x17b')];if(!eh[b('0xfa')])eh['attributes']={};if(eh[b('0xfa')][ei])return eh['attributes'][ei];var ej=eg||{};var ek=eh[b('0xfa')];var el=+ek[ej[b('0x17b')]]||0x0;eh[b('0xfa')][ei]={'max':ej[b('0xb8')]||ek[b('0xb8')]||0x64,'min':ej[b('0x170')]||ek[b('0x170')]||0x0,'step':ej[b('0x174')]||ek[b('0x174')]||0x1,'value':el||ej[b('0x170')]||ek[b('0x170')]||0x0,'request':ej[b('0x175')]||{'type':b('0x176'),'domain':b('0x177'),'service':'set_value','field':b('0xa1')}};setTimeout(function(){eh[b('0xfa')][b('0x17c')]=!![];eg[b('0x17c')]=!![];},0x64);setTimeout(function(){eh[b('0xfa')][b('0x17c')]=!![];},0x0);return eh[b('0xfa')][ei];};e['getVolumeConf']=function(em,en){if(!en[b('0xfa')])en[b('0xfa')]={};if(en['attributes']['_c'])return en[b('0xfa')]['_c'];var eo={'max':0x64,'min':0x0,'step':0x2};var ep=en['attributes'];var eq=ep['volume_level']*0x64||0x0;en[b('0xfa')]['_c']={'max':ep[b('0xb8')]||eo[b('0xb8')]||0x64,'min':ep[b('0x170')]||eo[b('0x170')]||0x0,'step':ep['step']||eo['step']||0x1,'value':eq||0x0};setTimeout(function(){en[b('0xfa')][b('0x17c')]=!![];},0x32);return en[b('0xfa')]['_c'];};e[b('0x17d')]=function(er,es){if(er[b('0x17e')])return er[b('0x17e')](es);return es[b('0xa1')];};e[b('0xe0')]=function(et,eu){if(eu[b('0x9c')]!=='on'){return e[b('0x17f')](et,eu,function(){setTimeout(function(){if(eu[b('0x9c')]==='on'){e[b('0xe0')](et,eu);iZ();}},0x0);});}else{if(!et[b('0x180')]){et[b('0x180')]=!![];setTimeout(function(){et[b('0x181')]=!![];},0x32);iZ();}}};e[b('0x182')]=function(ev,ew,ex){ev[b('0xdd')]();ev[b('0xde')]();ew[b('0x180')]=![];ew['_controlsInited']=![];return![];};e[b('0x183')]=function(ey){ey['preventDefault']();ey['stopPropagation']();return![];};e[b('0x184')]=function(ez,eA){};e[b('0x185')]=function(eB){return!![];};e[b('0x186')]=function(eC){return!![];};var eD=debounce(eE,0x0);function eE(eF,eG,eH){eG[b('0x9c')]=eH[b('0xa1')];if(eF[b('0xc5')]&&typeof eF['action']==='function')if(!hU(eF['action'],[eF,eG])){eG[b('0xfa')]['_c'][b('0xa1')]=eG[b('0x9c')];return;}if(!eH[b('0x175')])return;hX(eF,eG);}e[b('0x187')]=function(eI,eJ,eK){if(!eI[b('0x17c')])return;eD(eI,eJ,eK,!![]);};e['volumeChanged']=function(eL,eM,eN){if(!eM[b('0xfa')][b('0x17c')])return;var eO={'value':eN[b('0xa1')]/0x64,'request':{'type':'call_service','domain':b('0x188'),'service':b('0x189'),'field':b('0x18a')}};eD(eL,eM,eO,![]);};e[b('0x18b')]=function(eP,eQ,eR,eS){if(!eQ[b('0x181')])return;if(!eP[b('0x17c')])return;if(!eR['attributes'][b('0x17c')])return;eD(eQ,eR,eS,![]);};e[b('0x17f')]=function(eT,eU,eV){if(eT[b('0xc5')]&&typeof eT[b('0xc5')]===b('0xc6'))hU(eT[b('0xc5')],[eT,eU]);var eW=b('0x18c');var eX=b('0x18d');if(eU[b('0x9c')]==='off')eX=b('0x18e');else if(eU[b('0x9c')]==='on')eX='turn_off';if(eU[b('0x9c')]==='off')eU[b('0x9c')]='on';else if(eU['state']==='on')eU['state']='off';hX(eT);};e[b('0x18f')]=function(eY){e[b('0xc1')]=!e[b('0xc1')];};e['saveConfig']=function(){delete CONFIG[b('0x190')];var eZ=new XMLHttpRequest();eZ[b('0x5')](b('0x6'),b('0x7'));eZ['setRequestHeader'](b('0x9'),'application/json');eZ[b('0xb')](JSON[b('0xc')](CONFIG));eZ['onreadystatechange']=function(){if(eZ['status']===0xc8){e[b('0x18f')](null);iZ();}};};saveConfigAction=function(){var f0=new XMLHttpRequest();f0[b('0x5')](b('0x6'),b('0x7'));f0[b('0x8')](b('0x9'),b('0xa'));f0[b('0xb')](JSON[b('0xc')](CONFIG));f0['onreadystatechange']=function(){if(f0[b('0xe')]===0xc8&&f0[b('0xf')]==0x4){aq();}};};e['openAddTilePopup']=function(f1){e[b('0x8c')]=f1;e[b('0xae')](e['selectedType'],f1);e[b('0x191')]=!![];e['changeInputStyle'](b('0xb3'));e[b('0x7f')][b('0xab')]=e[b('0x58')];};e[b('0x76')]=function(){e[b('0x59')]='';e[b('0x192')]=!![];};e[b('0x193')]=function(){e[b('0x5a')]='';e[b('0x32')][b('0x3a')]='';e[b('0x31')][b('0x44')]='';e[b('0x194')]=!![];};e[b('0x73')]=function(f2,f3){e[b('0xbe')]=f3[b('0x195')];e[b('0x196')]=f2;e[b('0x59')]=f2[b('0xa8')];e[b('0x197')]=!![];};e[b('0x198')]=function(f4,f5){e[b('0x199')]=f5[b('0x195')];e[b('0x8b')]=f4;e[b('0x5a')]=f4['title'];e['pageBg'][b('0x3a')]=f4['bg'];e['pageIcon'][b('0x44')]=f4[b('0x14c')];e[b('0x19a')]=!![];};e[b('0xbd')]=function(f6){e['jsonData']=f6;e['objJson'][b('0xab')]=f6;e[b('0x7a')]=gV(e[b('0x58')]);e[b('0x19b')]=!![];e[b('0x83')](b('0xb3'));};e[b('0xc9')]=function(f7,f8){if(f8[b('0x9c')]===b('0x19c'))service=b('0x19d');else if(f8[b('0x9c')]===b('0x19e'))service=b('0x19f');if(f8[b('0x9c')]===b('0x19c'))f8[b('0x9c')]=b('0x19f');else if(f8[b('0x9c')]===b('0x19e'))f8[b('0x9c')]=b('0x19d');};e[b('0xcd')]=function(f9,fa){if(fa[b('0x9c')]===b('0x1a0'))service=b('0x18e');else if(fa[b('0x9c')]==='on')service='turn_off';else if([b('0x1a1'),'docked','paused'][b('0xf8')](fa['state'])!==-0x1){service=b('0x1a2');}else if(fa[b('0x9c')]==='cleaning')service=b('0x1a3');if(fa[b('0x9c')]===b('0x1a0'))fa[b('0x9c')]='on';else if(fa[b('0x9c')]==='on')fa[b('0x9c')]=b('0x1a0');else if([b('0x1a1'),b('0x1a4'),b('0x1a5')]['indexOf'](fa[b('0x9c')])!==-0x1){fa[b('0x9c')]=b('0x1a2');}else if(fa[b('0x9c')]==='cleaning')fa[b('0x9c')]='return';};e[b('0xcf')]=function(fb,fc){};e[b('0x1a6')]=function(fd,fe){if(fd[b('0xc5')]&&typeof fd['action']===b('0xc6')){hU(fd[b('0xc5')],[fd,fe]);}};e[b('0x1a7')]=function(ff,fg,fh){};e['mutePlayer']=function(fi,fj,fk){};e[b('0xd0')]=function(fl,fm){};e['callScene']=function(fn,fo){};e[b('0x1a8')]=function(fp,fq,fr){fp[b('0xdd')]();fp[b('0xde')]();if(fr[b('0x9c')]===b('0x1a0'))return![];if(!(b('0x1a9')in fr[b('0xfa')])){return iU(b('0x1aa'));}var fs=+fr[b('0xfa')][b('0x1a9')]+25.5;fs=Math[b('0x170')](fs,0xff);e['setLightBrightness'](fq,fs);return![];};e[b('0x1ab')]=function(ft,fu,fv){ft['preventDefault']();ft[b('0xde')]();if(fv[b('0x9c')]===b('0x1a0'))return![];if(!(b('0x1a9')in fv[b('0xfa')])){return iU(b('0x1aa'));}var fw=+fv['attributes'][b('0x1a9')]-25.5;fw=Math['max'](fw,0x1);e[b('0x1ac')](fu,fw);return![];};e[b('0x1ad')]=function(fx,fy,fz){fx[b('0xdd')]();fx[b('0xde')]();var fA=parseFloat(fz[b('0x9c')]);fA+=fz[b('0xfa')][b('0x174')]||0x1;if(fz[b('0xfa')]['max']){fA=Math[b('0x170')](fA,fz[b('0xfa')][b('0xb8')]);}e['setInputNumber'](fy,fA);return![];};e[b('0x1ae')]=function(fB,fC,fD){fB[b('0xdd')]();fB[b('0xde')]();var fE=parseFloat(fD['state']);fE-=fD[b('0xfa')][b('0x174')]||0x1;if(fD['attributes'][b('0x170')]){fE=Math[b('0xb8')](fE,fD['attributes'][b('0x170')]);}e[b('0x1af')](fC,fE);return![];};e[b('0x1ac')]=function(fF,fG){if(fF[b('0x147')])return;};e[b('0x1af')]=function(fH,fI){if(fH['loading'])return;fH[b('0xa1')]=fI;};e[b('0x1b0')]=function(fJ,fK,fL,fM){fK[b('0xa1')]=fM;if(fK[b('0xc5')]&&typeof fK['action']===b('0xc6'))if(!hU(fK[b('0xc5')],[fK,fL]))return;fJ[b('0xdd')]();fJ['stopPropagation']();e[b('0x1b1')]();return![];};e[b('0x1b2')]=function(fN,fO,fP,fQ){fN[b('0xdd')]();fN[b('0xde')]();e['closeActiveSelect']();return![];};e[b('0x1b3')]=function(fR,fS,fT,fU){fR['preventDefault']();fR['stopPropagation']();e['closeActiveSelect']();return![];};e['increaseClimateTemp']=function(fV,fW,fX){fV['preventDefault']();fV[b('0xde')]();var fY=parseFloat(fX['attributes'][b('0x155')]);fY+=fX['attributes']['target_temp_step']||0x1;if(fX[b('0xfa')]['max_temp']){fY=Math['min'](fY,fX[b('0xfa')][b('0x1b4')]);}e[b('0x1b5')](fW,fY);return![];};e['decreaseClimateTemp']=function(fZ,g0,g1){fZ[b('0xdd')]();fZ[b('0xde')]();var g2=parseFloat(g1[b('0xfa')][b('0x155')]);g2-=g1[b('0xfa')]['target_temp_step']||0x1;if(g1[b('0xfa')][b('0x1b6')]){g2=Math[b('0xb8')](g2,g1[b('0xfa')][b('0x1b6')]);}e[b('0x1b5')](g0,g2);return![];};e[b('0x1b5')]=function(g3,g4){};e[b('0x1b7')]=function(g5,g6,g7){};e[b('0xcb')]=function(g8,g9){if(g9[b('0x9c')]===b('0x5'))service=b('0x1b8');else if(g9[b('0x9c')]===b('0x1b9'))service=b('0x1ba');e['sendCover'](service,g8,g9);};e[b('0x1bb')]=function(ga,gb){ga[b('0xdd')]();ga['stopPropagation']();e[b('0x1bc')](gb);};e[b('0x1bd')]=function(gc,gd,ge,gf){gc[b('0xdd')]();gc[b('0xde')]();e[b('0x1b1')]();return![];};e[b('0x1be')]=function(gg,gh,gi){var gj=e[b('0x55')];gi['state']=gg;if(gg===b('0x1bf'))gi[b('0x9c')]=b('0x1c0');else if(gg===b('0x1c1'))gi[b('0x9c')]='armed_away';else if(gg===b('0x1c2'))gi[b('0x9c')]=b('0x1c3');else gi[b('0x9c')]=gg;var gk={'entity_id':gh['id']};if(gj)gk[b('0x1c4')]=gj;ab[gh['id']]=Date['now']();e[b('0x55')]=null;};e['openPage']=function(gl,gm,gn){if(e[b('0xc1')]){e[b('0x198')](gl,gm);return;}localStorage[b('0x1c5')](b('0xa6'),e[b('0x4b')][b('0xf8')](gl));gn=gn||![];aa=[];if(activePage){aa=[activePage];}aa[b('0xe1')](gl);activePage=gl;e[b('0x86')]=activePage;e[b('0x8c')]=activePage[b('0x9f')][0x0];if(CONFIG[b('0x1c6')]===TRANSITIONS[b('0x1c7')]){h4();}else{setTimeout(function(){h4(gn);},0x14);}if(CONFIG[b('0x1c8')]){f[b('0x1c9')](e[b('0x4b')][b('0xf8')](gl));}};e[b('0x1ca')]=function(go,gp,gq){localStorage[b('0x1c5')](b('0xa6'),e[b('0x4b')][b('0x48')]+e[b('0x5b')]['indexOf'](go));gq=gq||![];aa=[];if(activePage){aa=[activePage];}aa[b('0xe1')](go);activePage=go;e['activePage']=activePage;e[b('0x8c')]=activePage[b('0x9f')][0x0];if(CONFIG[b('0x1c6')]===TRANSITIONS[b('0x1c7')]){hb();}else{setTimeout(function(){hb(gq);},0x14);}if(CONFIG[b('0x1c8')]){f[b('0x1c9')](e[b('0x4b')][b('0xf8')](go));}};e[b('0xd4')]=function(gr){e[b('0x53')]=gr;};e[b('0x1cb')]=function(){e[b('0x53')]=null;};e[b('0x1cc')]=function(gs,gt){e[b('0x51')]=gs;if(gt[b('0xfa')]&&gt[b('0xfa')]['has_date']){var gu=new Date();e[b('0x52')]=gu[b('0x1cd')]()+'';e[b('0x52')]+=leadZero(gu[b('0x1ce')]());e[b('0x52')]+=leadZero(gu[b('0x1cf')]());}};e[b('0x1d0')]=function(){e['activeDatetime']=null;e[b('0x52')]=null;};e[b('0x1d1')]=function(){e[b('0x54')]=null;if(ac)clearTimeout(ac);};e['openDoorEntry']=function(gv,gw){e[b('0x54')]=gv;if(ac)clearTimeout(ac);if(CONFIG['doorEntryTimeout']){ac=setTimeout(function(){e[b('0x1d1')]();iZ();},CONFIG['doorEntryTimeout']*0x3e8);}};e[b('0xd9')]=function(gx){e[b('0x56')]=gx;e[b('0x55')]=null;};e[b('0x1d2')]=function(){e[b('0x56')]=null;e['alarmCode']=null;};e[b('0x1d3')]=function(){e[b('0x191')]=![];};e['closeAddGroup']=function(){e['addGroup']=![];};e[b('0x1d4')]=function(){e[b('0x194')]=![];e[b('0x19a')]=![];};e[b('0x1d5')]=function(){e[b('0x197')]=![];};e[b('0x1d6')]=function(){e[b('0x19a')]=![];};e[b('0x1d7')]=function(){e['editTile']=![];};e['addNewTile']=function(gy,gz){if(!e[b('0x58')]){Noty['addObject']({'type':Noty[b('0x95')],'title':b('0x96'),'message':b('0x1d8'),'lifetime':0x5});return;}gz[b('0xa0')][b('0xe1')](Object[b('0x127')]({},e['jsonData']));iZ();aX();e[b('0x191')]=![];e['editTile']=![];};e[b('0x1d9')]=function(gA){if(gA['length']>0x0){a={'title':gA,'width':0x1,'height':0x3,'items':[]};e[b('0x86')]['groups'][b('0xe1')](a);aX();e['addGroup']=![];e[b('0x197')]=![];}else{Noty[b('0x94')]({'type':Noty['ERROR'],'title':'Error','message':b('0x1da'),'lifetime':0x5});}};e['addNewPage']=function(gB,gC,gD){if(gB[b('0x48')]==0x0){Noty[b('0x94')]({'type':Noty[b('0x95')],'title':b('0x96'),'message':b('0x1da'),'lifetime':0x5});return;}if(gC['img'][b('0x48')]==0x0){Noty['addObject']({'type':Noty[b('0x95')],'title':b('0x96'),'message':'Incorrect\x20backgroud','lifetime':0x5});return;}if(gD['Icon'][b('0x48')]==0x0){Noty['addObject']({'type':Noty[b('0x95')],'title':b('0x96'),'message':b('0x1db'),'lifetime':0x5});return;}a={'title':gB,'bg':gC[b('0x3a')],'icon':gD['Icon'],'groups':[]};e[b('0x4b')]['push'](a);aX();e['addPage']=![];};e[b('0x1dc')]=function(gE){if(gE[b('0x48')]>0x0){e[b('0x196')][b('0xa8')]=gE;e['editGroup']=![];e[b('0x192')]=![];}else{Noty['addObject']({'type':Noty[b('0x95')],'title':b('0x96'),'message':b('0x1da'),'lifetime':0x5});}};e[b('0x1dd')]=function(gF,gG,gH){if(gF['length']==0x0){Noty[b('0x94')]({'type':Noty[b('0x95')],'title':b('0x96'),'message':b('0x1da'),'lifetime':0x5});return;}if(gG[b('0x3a')][b('0x48')]==0x0){Noty[b('0x94')]({'type':Noty[b('0x95')],'title':b('0x96'),'message':b('0x1de'),'lifetime':0x5});return;}if(gH[b('0x44')][b('0x48')]==0x0){Noty['addObject']({'type':Noty[b('0x95')],'title':b('0x96'),'message':b('0x1db'),'lifetime':0x5});return;}e[b('0x8b')][b('0xa8')]=gF;e[b('0x8b')]['bg']=gG[b('0x3a')];e[b('0x8b')]['icon']=gH[b('0x44')];e[b('0x19a')]=![];};e['removeGroup']=function(){e[b('0x86')][b('0x9f')][b('0x128')](e[b('0xbe')],0x1);e[b('0x197')]=![];};e[b('0x1df')]=function(){e[b('0x4b')][b('0x128')](e[b('0x199')],0x1);e[b('0x19a')]=![];};e[b('0x1e0')]=function(gI){if(typeof e[b('0x58')]!==b('0x79')){Noty[b('0x94')]({'type':Noty[b('0x95')],'title':b('0x96'),'message':b('0x1d8'),'lifetime':0x5});return;}e[b('0x86')][b('0x9f')][e[b('0xbe')]]['items'][b('0x128')](e[b('0x129')],0x1);var gJ=e[b('0x7f')][b('0xab')];gJ['styles']=null;gI[b('0xa0')][b('0xe1')](gJ);e['editTile']=![];};e[b('0x1e1')]=function(){e[b('0x86')][b('0x9f')][e[b('0xbe')]]['items'][b('0x128')](e[b('0x129')],0x1);e[b('0x19b')]=![];};e[b('0x70')]=function(gK,gL){e[b('0x129')]=gL[b('0x195')];e[b('0xbe')]=gL[b('0x6b')][b('0x6b')][b('0x195')];e[b('0x86')][b('0x9f')][e[b('0xbe')]][b('0xa0')][b('0x128')](e[b('0x129')],0x1);e[b('0x19b')]=![];};e[b('0x78')]=function(gM,gN){e[b('0xbe')]=gN[b('0x195')];e[b('0x86')][b('0x9f')][b('0x128')](e[b('0xbe')],0x1);e[b('0x197')]=![];};function gO(gP){var gQ=null;if(typeof gP===b('0x79')){for(var gR in gP){if(gP[b('0x1e2')](gR)){gP[gR]=gO(gP[gR]);}}return gP;}try{gQ=JSON['parse'](gP,function(gS,gT){if(typeof gT===b('0x10')&&gT[b('0x1e3')](b('0x1e4'))&&gT['endsWith'](')/')){gT=gT[b('0x1e5')](0xa,gT[b('0x48')]-0x2);return eval('('+gT+')');}return gT;});}catch(gU){if(typeof gP==='string'&&gP['startsWith'](b('0x1e4'))&&gP[b('0x1e6')](')/')){gP=gP[b('0x1e5')](0xa,gP[b('0x48')]-0x2);return eval('('+gP+')');}return gP;}if(gQ!=null)return gQ;else return gP;}function gV(gW){var gX=JSON['parse'](JSON[b('0xc')](gW,function(gY,gZ){if(typeof gZ===b('0xc6')){return b('0x1e4')+gZ+')/';}return gZ;}));return gX;}e['getCameraList']=function(){if(af)return af;var h0=[];e[b('0x4b')][b('0x146')](function(h1){(h1[b('0x9f')]||[])['forEach'](function(h2){(h2[b('0xa0')]||[])[b('0x146')](function(h3){if([TYPES[b('0xd2')],TYPES[b('0xd3')]][b('0xf8')](h3['type'])!==-0x1){h0['push'](h3);}});});});af=h0;return h0;};function h4(h5){var h6=e['pages'][b('0xf8')](activePage);if(h6>=0x0){}else{var h6=e['pagesSetting'][b('0xf8')](activePage);}var h8=h6*0x64;var h9=document[b('0xf0')](b('0x4b'));var ha;if(CONFIG[b('0x1c6')]===TRANSITIONS['ANIMATED_GPU']){ha='translate3d(0,\x20-'+h8+b('0x1e7');}else if(CONFIG['transition']===TRANSITIONS[b('0x1e8')]){ha=b('0x1e9')+h8+'%)';}else{ha=b('0x1e9')+h8+'%)';}h9[b('0x1ea')][b('0x1eb')]=ha;if(h5){h9['style']['transition']=b('0x1ec');setTimeout(function(){h9[b('0x1ea')][b('0x1c6')]=null;},0x32);}}function hb(hc){var hd=e[b('0x4b')]['length']+e[b('0x5b')][b('0xf8')](activePage);var he=hd*0x64;var hf=document[b('0xf0')](b('0x4b'));var hg;if(CONFIG['transition']===TRANSITIONS[b('0x1ed')]){hg='translate3d(0,\x20-'+he+b('0x1e7');}else if(CONFIG[b('0x1c6')]===TRANSITIONS['ANIMATED']){hg=b('0x1e9')+he+'%)';}else{hg=b('0x1e9')+he+'%)';}hf['style'][b('0x1eb')]=hg;if(hc){hf[b('0x1ea')][b('0x1c6')]=b('0x1ec');setTimeout(function(){hf[b('0x1ea')][b('0x1c6')]=null;},0x32);}}e[b('0x1ee')]=function(hh){return activePage===hh;};e[b('0x1ef')]=function(hi){if(CONFIG[b('0x1c6')]===TRANSITIONS[b('0x1c7')]){return e[b('0x1ee')](hi);}return!![];};e[b('0x1f0')]=function(hj,hk){if(hj==null)return![];if(!(b('0x1f1')in hj))return![];if(typeof hj[b('0x1f1')]===b('0xc6')){return hU(hj['hidden'],[hj,hk]);}return hj[b('0x1f1')];};e['swipeUp']=function(){var hl=e[b('0x4b')][b('0xf8')](activePage);if(e[b('0x4b')][hl+0x1]){e[b('0x1f2')](e[b('0x4b')][hl+0x1]);}};e[b('0x1f3')]=function(){var hm=e[b('0x4b')][b('0xf8')](activePage);if(e[b('0x4b')][hm-0x1]){e['openPage'](e[b('0x4b')][hm-0x1]);}};e[b('0xd1')]=function(hn){if(e[b('0x149')](hn)){e[b('0x1b1')]();}else{e[b('0x1bc')](hn);}};e[b('0x1bc')]=function(ho){e[b('0x4f')]=ho;};e[b('0x1b1')]=function(){e[b('0x4f')]=null;};e['selectOpened']=function(hp){return e[b('0x4f')]===hp;};e[b('0x1f4')]=function(hq){e['alarmCode']=e[b('0x55')]||'';e[b('0x55')]+=hq;};e[b('0x1f5')]=function(){e[b('0x55')]='';};e['sendDatetime']=function(){if(!e[b('0x1f6')]())return;var hr=e[b('0x51')];var hs=e['getItemEntity'](hr);var ht=e['getActiveDatetimeInput']();var hu=ht[b('0x1f7')]('\x20');var hv={'entity_id':hr['id']};if(hs[b('0xfa')][b('0x1f8')])hv[b('0x1f9')]=hu[0x0];if(hs['attributes']['has_time'])hv[b('0x1fa')]=hu[0x1]||hu[0x0];};e['inputDatetime']=function(hw){var hx=e['getItemEntity'](e[b('0x51')]);if(!hx)return;var hy=hK(hx);hy=hy[b('0x103')](/\W/gi,'');e['datetimeString']=e[b('0x52')]||'';if(e[b('0x52')]['length']>=hy[b('0x48')])return;e['datetimeString']+=hw;};e['clearCharDatetime']=function(){if(e[b('0x52')]){e['datetimeString']=e[b('0x52')][b('0x38')](0x0,e[b('0x52')][b('0x48')]-0x1);}};e[b('0x1fb')]=function(){var hz=e[b('0x141')](e['activeDatetime']);var hA=hK(hz);var hB=e[b('0x52')]||'';var hC=0x0;return hA[b('0x103')](/\w|\W/gi,function(hD,hE){if(hC>=hB[b('0x48')])return'';if(/\W/[b('0x1fc')](hD))return hD;return hB[hC++];});};e['getActiveDatetimePlaceholder']=function(){var hF=e[b('0x141')](e[b('0x51')]);var hG=hK(hF);var hH=e[b('0x1fb')]()||'';return hG[b('0x38')](hH['length']);};e[b('0x1f6')]=function(){var hI=e[b('0x141')](e[b('0x51')]);if(!hI)return![];var hJ=hK(hI);hJ=hJ[b('0x103')](/\W/gi,'');e[b('0x52')]=e[b('0x52')]||'';return e['datetimeString'][b('0x48')]===hJ['length'];};function hK(hL){var hM=[];if(!hL||!hL[b('0xfa')])return null;if(hL['attributes'][b('0x1f8')])hM[b('0xe1')](b('0x1fd'));if(hL[b('0xfa')][b('0x1fe')])hM[b('0xe1')](b('0x1ff'));return hM['join']('\x20');}angular[b('0x12b')](window)['on']('view:updated',function(){iZ();});e[b('0x200')]([b('0x201'),'activePage.scrolledHorizontally'],iZ);function hN(hO){var hP=0x1;var hQ=0x1;for(var hR=0x0;hR<hO['items']['length'];hR++){var hS=hO[b('0xa0')][hR];hQ=Math[b('0xb8')](hQ,(hS[b('0xb0')]?hS[b('0xb0')][0x1]:0x0)+(hS[b('0xaa')]||0x1));hP=Math[b('0xb8')](hP,(hS[b('0xb0')]?hS[b('0xb0')][0x0]:0x0)+(hS['width']||0x1));}return{'width':hP,'height':hQ};}function hT(){return{'states':e[b('0xf3')],'$scope':e,'parseFieldValue':i7[b('0x202')](this)};}function hU(hV,hW){if(typeof hV!==b('0xc6'))return hV;return hV[b('0x203')](hT(),hW||[]);}function hX(hY,hZ,i0){if(hY['loading'])return;hY[b('0x147')]=!![];Api[b('0xb')](hZ,function(i1){hY[b('0x147')]=![];iZ();if(i0)i0(i1);});}function i2(i3,i4,i5){var i6=i4[i3];return i7(i6,i4,i5);}function i7(i8,i9,ia){if(!i8)return null;if(typeof i8===b('0xc6'))return hU(i8,[i9,ia]);if(typeof i8===b('0x10'))return ie(i8,ia);return i8;}function ib(ic,id){if(ic[0x0]==='@')return it(id,ic[b('0x38')](0x1));if(ic[0x0]==='&')return ip(ic[b('0x38')](0x1));return ic;}function ie(ig,ih){return ig['replace'](/([&@][\w\d._]+)/gi,function(ii,ij,ik){if(ii[0x0]==='&'&&ii[b('0x1f7')]('.')[b('0x48')]<0x3)return ii;var il=ib(ii,ih);if(typeof il===b('0x131')){if(ii===ig)return'';return ii;}if(il===null)return'';return il;});}function im(io){return io&&typeof io==='string'?io[b('0x103')](/[^a-z0-9]/gi,'_')['toLowerCase']():b('0x204');}function ip(iq){var ir=iq[b('0x1f7')]('.');if(ir[b('0x48')]<0x3)return;var is=e[b('0xf3')][ir['slice'](0x0,0x2)[b('0x158')]('.')]||null;return it(is,ir[b('0x38')](0x2)[b('0x158')]('.'));}function it(iu,iv){var iw=iu;iv[b('0x1f7')]('.')[b('0x146')](function(ix){iw=typeof iw===b('0x79')&&iw?iw[ix]:undefined;});return iw;}function iy(iz){iz[b('0x146')](function(iA){e[b('0xf3')][iA[b('0x205')]]=iA;});}function iB(iC,iD){if(!e[b('0xf3')][iC])e[b('0xf3')][iC]=iD;for(var iE in iD)e['states'][iC][iE]=iD[iE];}function iF(iG,iH){iI(iG,iH);}function iI(iJ,iK){if(iJ in ab){var iL=ab[iJ];if(Date['now']()-iL<0xbb8){e['closeAlarm']();iZ();}}}function iM(iN){if(!CONFIG[b('0x206')])return;CONFIG[b('0x206')][b('0x146')](function(iO){if(iN['command']!==iO[b('0x207')])return;if(typeof iO[b('0xc5')]==='function'){hU(iO[b('0xc5')],[iN]);}});}function iP(iQ){if(iQ[b('0x99')]==='event')iR(iQ[b('0x208')]);}function iR(iS){try{if(iS[b('0x209')]==='state_changed'){iY(b('0x20a'),iS[b('0xab')][b('0x205')],iS[b('0xab')]['new_state']);iB(iS[b('0xab')][b('0x205')],iS[b('0xab')][b('0x20b')]);iF(iS[b('0xab')][b('0x205')],iS[b('0xab')][b('0x20b')]);}else if(iS[b('0x209')]===b('0x20c')){iY(b('0x20c'),iS[b('0xab')]);iM(iS[b('0xab')]);}}catch(iT){console[b('0x20d')](iT);}iZ();}function iU(iV){if(!CONFIG[b('0x20e')])Noty[b('0x94')]({'type':Noty[b('0x95')],'title':b('0x96'),'message':iV,'lifetime':0xa});}function iW(iX){if(!CONFIG['ignoreErrors'])Noty[b('0x94')]({'type':Noty[b('0x10f')],'title':b('0x20f'),'message':b('0x210')+iX['id']+b('0x211')+iX['title']+'\x22','id':iX['id']});}function iY(){if(CONFIG[b('0x212')]){console[b('0x213')][b('0x203')](console,[][b('0x38')][b('0x214')](arguments));}}function iZ(){if(!e[b('0x215')])e['$digest']();}window[b('0x1f2')]=function(j0){e['openPage'](j0);iZ();};$['subscribe'](b('0x216'),function(j1){ji();});$[b('0x217')](b('0x218'),function(j2,j3){if(j3[b('0xc5')]==b('0x219')){console['log'](b('0x21a'));clearTimeout(a8);a7=0x1;}if(j3[b('0xc5')]==b('0x21b')){var j4=jQuery[b('0x21c')](j3[b('0xab')]);if(typeof j4[b('0x21d')]!='object')return![];var j5=j4[b('0x21d')]['length'];if(j5){for(var j6=0x0;j6<j5;j6++){j7(j4[b('0x21d')][j6]);}}}});function j7(j8){if(j8[b('0x99')]==b('0x9a')){if(j8[b('0xe')]==0x1)j8[b('0x9c')]='on';else j8[b('0x9c')]=b('0x1a0');}if(j8[b('0x99')]=='dimmer'){j8[b('0x9c')]=j8[b('0x21e')];}a5[j8[b('0x79')]]=j8;iZ();}function j9(){var ja=window['location'],jb;var jc='';if(ja[b('0x21f')]===b('0x220')){jc=b('0x221');}else{jc=b('0x222');}jc+='//'+ja[b('0x223')]+b('0x224');try{console[b('0x213')](b('0x225')+jc);if(window[b('0x226')]){wsSocket=new MozWebSocket(jc);}else if(window['WebSocket']){wsSocket=new WebSocket(jc);}}catch(jd){console[b('0x213')](b('0x227')+jc);return![];}wsSocket[b('0x228')]=b('0x229');wsSocket[b('0x22a')]=function(je){console[b('0x213')](b('0x22b')+jc+')');a4=0x1;clearTimeout(a3);clearInterval(a6);$[b('0x22c')](b('0x216'));};wsSocket[b('0x22d')]=function(jf){console['log'](b('0x22e')+jc+')');var jg;jg=JSON['parse'](jf[b('0xab')]);console[b('0x213')](b('0x22f')+jg[b('0xc5')]+';\x20Data:\x20'+jg[b('0xab')]);$[b('0x22c')](b('0x218'),jg);return;};wsSocket[b('0x230')]=function(jh){a4=0x0;a6=setInterval(function(){jk();},0xbb8);$[b('0x22c')](b('0x231'),[]);console['log'](b('0x232')+jc+')');return;};}function ji(){console[b('0x213')](b('0x233'));var jj;jj=new Object();jj[b('0xc5')]=b('0x234');jj[b('0xab')]=new Object();jj[b('0xab')]['TYPE']='devices_data';jj['data']['DEVICE_ID']='0';wsSocket[b('0xb')](JSON[b('0xc')](jj));a8=setTimeout(b('0x235'),0xbb8);return![];}function jk(){aS(b('0x236'),function(jl,jm){if(jl!=null){Noty[b('0x94')]({'type':Noty[b('0x95')],'title':b('0x96'),'message':b('0x97')+jl,'lifetime':0x5});}else{var jn=jm[b('0x98')][b('0x48')];if(jn){for(var jo=0x0;jo<jn;jo++){if(jm[b('0x98')][jo][b('0x99')]==b('0x9a'))if(jm['status']==0x1)jm[b('0x98')][jo][b('0x9c')]='on';else jm[b('0x98')][jo][b('0x9c')]=b('0x1a0');a5[jm[b('0x98')][jo]['object']]=jm[b('0x98')][jo];}}}});iZ();return!![];}function hX(jq,jr){var js=new XMLHttpRequest();if(jq[b('0x99')]==b('0x173')){var jt=JSON['stringify']({'data':jr['state']});js[b('0x5')](b('0x6'),b('0x237')+jq['id']+'.level',!![]);js['setRequestHeader'](b('0x238'),b('0x239'));js[b('0xb')](jt);}if(jq[b('0x99')]==b('0x23a')){js[b('0x5')](b('0x23b'),b('0x23c')+jq['id']+'.switch',!![]);js[b('0xb')]();}js[b('0xd')]=function(){if(js[b('0xe')]===0xc8&&js[b('0xf')]==0x4){}};}}
+var CONFIG = {
+    customTheme: null, // CUSTOM_THEMES.TRANSPARENT, CUSTOM_THEMES.MATERIAL, CUSTOM_THEMES.MOBILE, CUSTOM_THEMES.COMPACT, CUSTOM_THEMES.HOMEKIT, CUSTOM_THEMES.WINPHONE, CUSTOM_THEMES.WIN95
+    transition: TRANSITIONS.ANIMATED_GPU, //ANIMATED or SIMPLE (better perfomance)
+    entitySize: ENTITY_SIZES.NORMAL, //SMALL, BIG are available
+    tileSize: 150,
+    tileMargin: 6,
+    doorEntryTimeout: 1000,
+    authToken: null, // optional: make an long live token and put it here
+    //googleApiKey: "XXXXXXXXXX", // Required if you are using Google Maps for device tracker
+    debug: false, // Prints entities and state change info to the console.
+
+    // next fields are optional
+    events: [],
+    timeFormat: 24,
+    menuPosition: MENU_POSITIONS.LEFT, // or BOTTOM
+    hideScrollbar: false, // horizontal scrollbar
+    groupsAlign: GROUP_ALIGNS.HORIZONTALLY, // or VERTICALLY
+
+    header: { // https://github.com/resoai/TileBoard/wiki/Header-configuration
+        styles: {
+            padding: '30px 130px 0',
+            fontSize: '28px'
+        },
+        right: [],
+        left: [{
+            type: HEADER_ITEMS.DATETIME,
+            dateFormat: 'EEEE, LLLL dd', //https://docs.angularjs.org/api/ng/filter/date
+        }]
+    },
+
+    pages: {}
+};
+saveConfigAction = function () {
+    var xhr = new XMLHttpRequest();
+
+    xhr.open('POST', '/SBoard/json.php');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify(CONFIG));
+
+    xhr.onreadystatechange = function () {
+        if (xhr.status === 200 && xhr.readyState == 4) {
+            getJsonConfig();
+        }
+    };
+
+    //$scope.getBodyClass();
+    // $scope.editingMode = !$scope.editingMode;
+};
+var  tile = {
+    "sensor": {
+        "title": "string",
+        "unit": "string",
+        "example": {
+            "id": {
+                "state": "0"
+            },
+            "state": false,
+            "title": "example",
+            "unit": "C"
+        }
+    },
+    "slider": {
+        "unit": "strimg",
+        "states": "array[2]",
+        "slider": {
+            "max": "int",
+            "min": "int",
+            "step": "int"
+        },
+        "example": {
+            "id": {
+                "state": 0
+            },
+            "unit": "%",
+            "bottom": true,
+            "slider": {
+                "max": 100,
+                "min": 0,
+                "step": 1
+            }
+        },
+
+    },
+    "sensor_icon": {
+        "title": "string",
+        "unit": "string",
+        "states": "array[2]",
+        "icons": "array[2]",
+        "example": {
+            "id": {
+                "state": "on"
+            },
+            "title": "example",
+            "states": {
+                "on": "On",
+                "off": "Off"
+            },
+            "icons": {
+                "on": "mdi-hot-tub",
+                "off": "mdi-hot-tub"
+            }
+        }
+    },
+    "switch": {
+        "title": "string",
+        "subtitle": "string",
+        "states": "array[2]",
+        "icons": "array[2]",
+        "example": {
+            "id": {
+                "state": "on"
+            },
+            "title": "example_switch",
+            "subtitle": "Kitchen",
+            "states": {
+                "on": "On",
+                "off": "Off"
+            },
+            "icons": {
+                "on": "mdi-lightbulb-on",
+                "off": "mdi-lightbulb"
+            }
+        }
+    },
+    "input_select": {
+        "title": "string",
+        "attributes": "array",
+        "example": {
+            "title": "example_select",
+            "id": {
+                "attributes": {
+                    "options": [
+                        "example1",
+                        "example2"
+                    ]
+                }
+            }
+        }
+    },
+    "progress": {
+        "title": "string",
+        "value": "float",
+        "unit": "string",
+        "background": "string",
+        "color": "string",
+        "refresh": "int",
+        "example": {
+            "id": [],
+            "title": "Progress",
+            "value": "50",
+            "unit": "%",
+            "background": "white",
+            "color": "red"
+        }
+    },
+    "iframe": {
+        "refresh": "int",
+        "url": "string",
+        "example": {
+            "id": [],
+            "refresh": 0,
+            "url": "http:\/\/www.youtube.com\/embed\/M7lc1UVf-VE?autoplay=1&origin=http:\/\/example.com"
+        }
+    },
+    "graph": {
+        "title": "string",
+        "tile_color": "string",
+        "data": [],
+        "options": [],
+        "example": {
+            "title": "example_graph",
+            "id": [],
+            "width": 2,
+            "tile_color": "white",
+            "data": [
+                {
+                    "values": [
+                        {
+                            "x": 0,
+                            "y": 0
+                        },
+                        {
+                            "x": 1,
+                            "y": 2
+                        },
+                        {
+                            "x": 2,
+                            "y": 2
+                        },
+                        {
+                            "x": 3,
+                            "y": 1
+                        },
+                        {
+                            "x": 4,
+                            "y": 2
+                        },
+                        {
+                            "x": 5,
+                            "y": 2
+                        }
+                    ],
+                    "key": "Line 1",
+                    "color": "#ff7f0e"
+                }
+            ],
+            "options": {
+                "chart": {
+                    "type": "lineChart",
+                    "height": 150,
+                    "width": 300,
+                    "useInteractiveGuideline": true,
+                    "xAxis": {
+                        "axisLabel": "Time (ms)"
+                    },
+                    "yAxis": {
+                        "axisLabel": "example (v)",
+                        "axisLabelDistance": "-10"
+                    }
+                }
+            }
+        }
+    },
+    "custom": {
+        "title": "string",
+        "icon": "string",
+        "example": {
+            "title": "example_custom",
+            "icon": "mdi-monitor",
+            "id": [],
+            "action": "\/function(item, entity){\n                        alert('test');\n                    }\/"
+        }
+    },
+    "media_player" : {
+        "title": "string",
+        "hideSource": "boolen",
+        "hideMuteButton": "boolen",
+        "state":"boolen" ,
+        "example": {
+            "title": "example_custom",
+            "id": [],
+            "hideSource" : false,
+            "hideMuteButton": false,
+            "state":true
+        }
+
+    }
+};
+App.controller('Main', ['$scope', '$location',MainController]);
+function MainController($scope, $location, ngModel) {
+    if (!window.CONFIG) return;
+    $scope.iconData = [];
+    $scope.icons = [];
+    $scope.pageIcon = {};
+    $scope.pageBg = {};
+    $scope.selected = 'mdi-vector-square';
+    var http=$.get('//cdn.materialdesignicons.com/1.8.36/meta.json', function( data ) {
+        $scope.iconData = data;
+        $scope.icons = data.map(function (v) {
+            return v.name;
+        }).slice(0, 301);
+    });
+
+    $scope.selectImage = function(i){
+        $scope.pageBg.img = i.thumb;
+    }
+    $scope.images =[{
+        id:1,
+        thumb:'/SBoard/images/bg1.jpg'
+    },
+        {
+            id:2,
+            thumb:'/SBoard/images/bg2.png'
+        },
+        {
+            id:3,
+            thumb:'/SBoard/images/bg3.jpg'
+        },
+        {
+            id:4,
+            thumb:'/SBoard/images/bg4.jpg'
+        },
+        {
+            id:5,
+            thumb:'/SBoard/images/bg5.jpg'
+        },
+        {
+            id:6,
+            thumb:'/SBoard/images/bg6.jpg'
+        },
+        {
+            id:7,
+            thumb:'/SBoard/images/bg7.jpg'
+        }
+    ];
+    $scope.searchTerm = '';
+    $scope.selectIcon = function (icon) {
+        $scope.pageIcon.Icon = 'mdi-' + icon;
+        $scope.searchTerm= 'mdi-' + icon;
+
+    };
+    $scope.$watch('pageIcon.Icon',function (term) {
+
+        if (typeof term == 'undefined'
+            || term == null || term == ''
+            || term.length < 2) {
+            $scope.icons = $scope.iconData.map(function (v) {
+                return v.name;
+            }).slice(0, 301);
+        } else {
+            $scope.icons = $scope.iconData.filter(function (v) {
+                if (v.name.match(term)) {
+                    return true;
+                } else {
+                    for (var i = 0, c = v.aliases.length; i < c; i++) {
+                        if (v.aliases[i].match(term)) {
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+            }).map(function (v) {
+                return v.name;
+            }).slice(0, 301);
+        }
+    });
+    $scope.pages = CONFIG.pages;
+    $scope.TYPES = TYPES;
+    $scope.FEATURES = FEATURES;
+    $scope.HEADER_ITEMS = HEADER_ITEMS;
+
+    $scope.activeSelect = null;
+    $scope.ready = false;
+
+    $scope.errors = [];
+    $scope.states = {};
+
+    $scope.activeDatetime = null;
+    $scope.datetimeString = null;
+
+    $scope.activeCamera = null;
+    $scope.activeDoorEntry = null;
+
+    $scope.alarmCode = null;
+    $scope.activeAlarm = null;
+    $scope.jsonInput = true;
+    $scope.jsonData = null;
+    $scope.groupName = "";
+    $scope.pageTitle = "";
+
+    $scope.sizes = [
+        {'id': 1, 'label': '1'},
+        {'id': 2, 'label': '2'},
+        {'id': 3, 'label': '3'},
+        {'id': 4, 'label': '4'},
+    ];
+    $scope.pagesSetting = convertToObject([{
+        "title":"Setting",
+        "bg":"images\/bg2.png",
+        "icon":"mdi-settings",
+        "groups":[
+            {
+                "title":"Theme",
+                "items":[
+                    {
+                        "position":[
+                            0,
+                            0
+                        ],
+                        "type":"input_select",
+                        "id":{
+                            "attributes":{
+                                "options":[
+                                    "win10",
+                                    "transparent",
+                                    "material",
+                                    "win95",
+                                    "winphone",
+                                    "mobile",
+                                    "compact",
+                                    "homekit"
+                                ]
+                            }
+                        },
+                        "value":"win10",
+                        "title":"Theme",
+                        "action":"\/Function(function (item,entity){CONFIG.customTheme=item.value;saveConfigAction();return false;})\/"
+                    }
+                ]
+            }
+        ],
+    }
+    ]);
+
+    $scope.menuOptions = [
+        // NEW IMPLEMENTATION
+        {
+            text: 'Configure Tile',
+            html: '<a href="#"><i class="fa fa-gear" aria-hidden="true"></i>&nbsp;&nbsp;Configure Tile</a>',
+            click:  function ($itemScope, $event, modelValue, text, $li) {
+                $scope.editTileClick($itemScope.$parent.item,$itemScope.$parent );
+            }
+        },
+        {
+            html: '<a href="#"><i class="fa fa-plus-square-o" aria-hidden="true"></i>&nbsp;&nbsp;Add Tile</a>',
+            click:  function ($itemScope, $event, modelValue, text, $li) {
+                $scope.openAddTilePopup($itemScope.$parent.$parent.$parent.group );
+            }
+        },
+        {
+            html: '<a href="#"><i class="fa fa-remove" aria-hidden="true"></i>&nbsp;&nbsp;Remove Tile</a>',
+            click:  function ($itemScope, $event, modelValue, text, $li) {
+                $scope.removeTileClick($itemScope.$parent.item,$itemScope.$parent );
+            }
+        }];
+
+    $scope.menuOptionsGroups = [
+        // NEW IMPLEMENTATION
+        {
+            text: 'Configure Tile',
+            html: '<a href="#"><i class="fa fa-gear" aria-hidden="true"></i>&nbsp;&nbsp;Configure Group</a>',
+            click:  function ($itemScope, $event, modelValue, text, $li) {
+                $scope.openEditGroupPopup($itemScope.$parent.group,$itemScope.$parent.$parent);
+            }
+        },
+        {
+            html: '<a href="#"><i class="fa fa-plus-square-o" aria-hidden="true"></i>&nbsp;&nbsp;Add Group</a>',
+            click:  function ($itemScope, $event, modelValue, text, $li) {
+                $scope.openAddGroupPopup($itemScope.$parent.group,);
+            }
+        },
+        {
+            html: '<a href="#"><i class="fa fa-plus-square-o" aria-hidden="true"></i>&nbsp;&nbsp;Add Tile</a>',
+            click:  function ($itemScope, $event, modelValue, text, $li) {
+                $scope.openAddTilePopup($itemScope.$parent.group, );
+            }
+        },
+        {
+            html: '<a href="#"><i class="fa fa-remove" aria-hidden="true"></i>&nbsp;&nbsp;Remove Group</a>',
+            click:  function ($itemScope, $event, modelValue, text, $li) {
+                $scope.removeGroupClick($itemScope.$parent.group,$itemScope.$parent);
+            }
+        }];
+
+    if (typeof($scope.jsonData)==="object" && $scope.jsonData !==null)
+        $scope.jsonStringData = convertToString($scope.jsonData);
+
+    $scope.positionCss = {position: "absolute", top: "30px", left: "40px"};
+    $scope.objJson = {data: $scope.jsonData, options: {mode: 'tree'}};
+    $scope.changeOptions = function (param) {
+        $scope.objJson.options.mode = param;
+        $scope.changeInputStyle(param);
+    };
+    $scope.pretty = function (objJson) {
+        return objJson;
+    };
+
+    var wsTimer = 0;
+    var startedWebSockets = 0;
+    var objs = {};
+
+    var httpRefreshTimer = 0;
+    var subscribedWebSockets = 0;
+    var subscribedWebSocketsTimer;
+    var requestSent = Math.round(+new Date() / 1000);
+
+
+    var showedPages = [];
+
+    var latestAlarmActions = {};
+    var doorEntryTimeout = null;
+    var bodyClass = null;
+    var mainStyles = {};
+    $scope.activePage = null;
+    var cameraList = null;
+    var editingMode = false;
+    var addTile = false;
+    var addGroup = false;
+    var addPage = false;
+    var editGroup = false;
+    var editPage = false;
+    var editTile = false;
+
+    $scope.selectedWidth = null;
+    $scope.selectedHeight = null;
+    $scope.editedItem = null;
+    $scope.editedGroup = null;
+    $scope.editedPage = null;
+    $scope.selectedItem = null;
+    $scope.selectedType = null;
+    $scope.tileTypeList = null;
+    $scope.tileConfig = null;
+    $scope.tileDevice = null;
+    $scope.exampleHTML = "";
+    $scope.drag = false;
+
+
+    var defaultDropPlace = {
+        position: [0, 0],
+        type: TYPES.DROPPLACE,
+        title: '',
+        id: {},
+        value: 'Drop Here!'
+    }
+
+    function parse(data) {
+        return data ? JSON.parse(data) : {};
+    };
+
+    function getJsonConfig() {
+        getJSON('/api/devices/', function (err, data) {
+            if (err != null) {
+                Noty.addObject({
+                    type: Noty.ERROR,
+                    title: 'Error',
+                    message: 'Something went wrong: ' + err,
+                    lifetime: 5
+                });
+            } else {
+                var objCnt = data.devices.length;
+                if (objCnt) {
+                    for (var i = 0; i < objCnt; i++) {
+                        if (data.devices[i].type=="relay")
+                            if (data.devices[i].status==1) data.devices[i].state="on"; else data.devices[i].state="off";
+                        if (data.devices[i].type=="dimmer"){
+                            data.devices[i].state=data.devices[i].level;
+                        }
+                        objs[data.devices[i].object] = data.devices[i];
+                    }
+                    $scope.tileDevice = objs;
+                }
+
+            }
+            getJSON('/SBoard/json.php', function (err, data) {
+                if (err != null) {
+                    Noty.addObject({
+                        type: Noty.ERROR,
+                        title: 'Error',
+                        message: 'Something went wrong: ' + err,
+                        lifetime: 5
+                    });
+                } else {
+
+                    //COMMENT IF LOCAL
+                    CONFIG = convertToObject(data.config);
+                    //CONFIG.pageSettingIndex=CONFIG.pages.push(convertToObject($scope.pageSetting));
+                    $scope.tileConfig = tile;
+                    $scope.customTheme = CONFIG.customTheme;
+                    $scope.pagesSetting[0].groups[0].items[0].value  = CONFIG.customTheme;
+
+
+                    if (CONFIG.header == null) {
+                        CONFIG.header = {
+                            styles: {
+                                padding: '0px 130px 0',
+                                fontSize: '28px'
+                            },
+                            right: [],
+                            left: []
+                        };
+                    }
+                    bodyClass = null;
+                    $scope.getBodyClass();
+                    $scope.pages = CONFIG.pages;
+                    $scope.tileTypeList = Object.keys($scope.tileConfig);
+
+                    var pageIndex = localStorage.getItem('page');
+                    //pageIndex=0;
+                    if (pageIndex && pageIndex < CONFIG.pages.length + $scope.pagesSetting.length && pageIndex>=0)
+                        if (pageIndex>=CONFIG.pages.length) {
+                            activePage = $scope.pagesSetting[pageIndex - CONFIG.pages.length];
+                            scrollToActivePageSetting(true);
+                            $scope.activePage = activePage;
+                            $scope.selectedItem = activePage.groups[0];
+                        }
+                        else {
+                            activePage = CONFIG.pages[pageIndex];
+                            scrollToActivePage(true);
+                            $scope.activePage = activePage;
+                            $scope.selectedItem = activePage.groups[0];
+                        }
+                    else
+                    {
+                        if (CONFIG.pages.length>=0) {
+                            activePage = CONFIG.pages[0];
+                            scrollToActivePage(true);
+                            $scope.activePage = activePage;
+                            $scope.selectedItem = activePage.groups[0];
+
+                        }
+                    }
+
+                    $scope.ready = true;
+                    $scope.$digest();
+                    //activePage = CONFIG.activePage;
+
+                    try {
+                        startWebSockets();
+
+                    } catch (e) {
+                        //     httpRefreshDevices();
+                    }
+
+                }
+            });
+        });
+    }
+
+    $scope.changeTileDevices = function (selectedDevices, group) {
+        if (selectedDevices != null) {
+            $scope.jsonData.id = selectedDevices;
+            $scope.jsonData.title = objs[selectedDevices].title;
+            $scope.jsonStringData = convertToString($scope.jsonData);
+        }
+    }
+    $scope.changeTileHeight = function (selectedHeight, group) {
+        if (selectedHeight != null) {
+            $scope.jsonData.height = selectedHeight;
+            $scope.objJson.data.height = selectedHeight;
+        }
+    }
+    $scope.changeTileWidth = function (selectedWidth, group) {
+        if (selectedWidth != null) {
+            $scope.jsonData.width = selectedWidth;
+            $scope.objJson.data.width = selectedWidth;
+        }
+    }
+
+
+    $scope.changeTileType = function (selectedType, group) {
+        if (selectedType == null)
+            selectedType = $scope.tileTypeList[0];
+        $scope.selectedType = selectedType;
+        var example = $scope.tileConfig[$scope.selectedType].example;
+        $scope.exampleHTML = $scope.tileConfig[$scope.selectedType].html;
+        example.type = $scope.selectedType;
+        // if (!example.position)
+        example.position = getFirstFreePosition(group);
+        $scope.jsonData = $scope.tileConfig[$scope.selectedType].example;
+        $scope.jsonStringData = convertToString($scope.jsonData);
+        $scope.objJson.data=$scope.jsonData;
+    }
+
+    function getFirstFreePosition(group) {
+        var result = [0, 0];
+        var width = Math.round(group.width);
+        var height = Math.round(group.height + 1);
+        for (var i = 0; i < height; i++) {
+            for (var j = 0; j < width; j++) {
+                var pos = [j, i];
+                var temp = group.items.filter(function (obj) {
+                    return JSON.stringify(obj.position) == JSON.stringify(pos) ||
+                        (obj.position && obj.position.length > 1 && obj.width && obj.width > 1 && JSON.stringify([obj.position[0] + 1, obj.position[1]]) == JSON.stringify(pos)) ||
+                        (obj.position && obj.position.length > 1 && obj.height && obj.height > 1 && JSON.stringify([obj.position[0], obj.position[1] + 1]) == JSON.stringify(pos));
+                });
+                if (!temp || temp.length === 0) {
+                    result = pos;
+                    i = height;
+                    j = width;
+                    break;
+                }
+            }
+        }
+
+        return result;
+    }
+
+    function getJSON(url, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.responseType = 'json';
+        xhr.onload = function () {
+            var status = xhr.status;
+            if (status == 200) {
+                callback(null, xhr.response);
+            } else {
+                callback(status);
+            }
+        };
+        xhr.send();
+    };
+
+
+    function recalculateGroupSize() {
+        for (var i = 0; i < $scope.activePage.groups.length; i++) {
+            setGroupSize($scope.activePage.groups[i]);
+        }
+    }
+
+    function setGroupSize(group) {
+        var width = 1;
+        var height = 1;
+        for (var i = 0; i < group.items.length; i++) {
+            var item = group.items[i];
+            var itemWidth = item.styles && item.styles.width ? parseInt(item.styles.width) : item.width ? item.width * CONFIG.tileSize : CONFIG.tileSize;
+            var itemHeight = item.styles && item.styles.height ? parseInt(item.styles.height) : item.height ? item.height * CONFIG.tileSize : CONFIG.tileSize;
+            var x = (item.position[0]) * CONFIG.tileSize + itemWidth;
+            var y = (item.position[1]) * CONFIG.tileSize + itemHeight;
+            width = Math.max(width, x / CONFIG.tileSize);
+            height = Math.max(height, y / CONFIG.tileSize);
+        }
+        group.width = width;
+        group.height = height;
+    }
+
+    $scope.set = function (data) {
+        $scope.jsonData = parse(data);
+        $scope.nodeOptions.refresh();
+        /* use directive internal refresh function */
+    }
+
+    $scope.default = function () {
+        $scope.jsonData = defaultData();
+        $scope.nodeOptions.refresh();
+        $scope.inputdata = '';
+    }
+
+    $scope.pageLoad = function () {
+        getJsonConfig();
+        var pageIndex = localStorage.getItem('page');
+        if (pageIndex && CONFIG.pages.length > pageIndex)
+            activePage = CONFIG.pages[pageIndex];
+        else
+            activePage = CONFIG.pages[0];
+    };
+
+
+    $scope.editTileClick = function (item, parent) {
+        $scope.objJson.data=$scope.jsonData;
+        $scope.openEditTilePopup(item);
+        $scope.editedItemIdx = parent.$index;
+        $scope.editedGroupIdx = parent.$parent.$parent.$index;
+        $scope.selectedItem = $scope.activePage.groups[$scope.editedGroupIdx];
+        if (item.id != null)
+            $scope.selectedDevice = item.id;
+        $scope.exampleHTML = null;
+        $scope.selectedWidth = item.width;
+        $scope.selectedHeight = item.height;
+        selectedHeight = item.height;
+        if ($scope.tileConfig[item.type] != null)
+            $scope.exampleHTML = $scope.tileConfig[item.type].html;
+
+    }
+    $scope.entityClick = function (page, item, entity, parent, event) {
+
+        if ($scope.editingMode) {
+            return;
+        }
+
+
+        if (item.type != TYPES.INPUT_SELECT && item.type != TYPES.SLIDER && item.type != TYPES.INPUT_BOOLEAN)
+            if (item.action && typeof item.action === "function")
+                if (!callFunction(item.action, [item, entity]))
+                    return;
+
+        switch (item.type) {
+            case TYPES.SWITCH:
+            case TYPES.LIGHT:
+            case TYPES.FAN:
+            case TYPES.INPUT_BOOLEAN:
+                return $scope.toggleSwitch(item, entity);
+
+            case TYPES.LOCK:
+                return $scope.toggleLock(item, entity);
+            case TYPES.COVER_TOGGLE:
+                return $scope.toggleCover(item, entity);
+
+            case TYPES.VACUUM:
+                return $scope.toggleVacuum(item, entity);
+
+            case TYPES.AUTOMATION:
+                return $scope.triggerAutomation(item, entity);
+
+            case TYPES.SCRIPT:
+                return $scope.callScript(item, entity);
+
+            case TYPES.INPUT_SELECT:
+                return $scope.toggleSelect(item, entity);
+
+            case TYPES.CAMERA:
+            case TYPES.CAMERA_THUMBNAIL:
+                return $scope.openCamera(item, entity);
+
+            case TYPES.SCENE:
+                return $scope.callScene(item, entity);
+
+            case TYPES.DOOR_ENTRY:
+                return $scope.openDoorEntry(item, entity);
+
+            case TYPES.ALARM:
+                return $scope.openAlarm(item, entity);
+
+            case TYPES.CUSTOM:
+                return $scope.customTileAction(item, entity);
+
+            case TYPES.INPUT_DATETIME:
+                return $scope.openDatetime(item, entity);
+        }
+    };
+
+    $scope.entityLongClick = function ($event, page, item, entity) {
+        $event.preventDefault();
+        $event.stopPropagation();
+
+        switch (item.type) {
+            case TYPES.LIGHT:
+                return $scope.openLightSliders(item, entity);
+        }
+
+        return false;
+    };
+
+    $scope.getBodyClass = function () {
+        if (!bodyClass) {
+            bodyClass = [];
+
+            if (CONFIG.customTheme) {
+                var themes = CONFIG.customTheme;
+
+                if (typeof themes === "string") themes = [themes];
+
+                themes.map(function (theme) {
+                    bodyClass.push('-theme-' + theme);
+                });
+            }
+
+            CONFIG.entitySize= 'small';
+            if (CONFIG.entitySize) {
+                bodyClass.push('-' + CONFIG.entitySize + '-entity');
+            }
+
+            var menuPos = CONFIG.menuPosition || MENU_POSITIONS.LEFT;
+            var groupsAlign = CONFIG.groupsAlign || GROUP_ALIGNS.HORIZONTALLY;
+
+            bodyClass.push('-menu-' + menuPos);
+            bodyClass.push('-groups-align-' + groupsAlign);
+
+            if (CONFIG.hideScrollbar) {
+                bodyClass.push('-hide-scrollbar');
+            }
+        }
+
+        var scrollClasses = [];
+
+        if (activePage) {
+            if (activePage.scrolledHorizontally) {
+                scrollClasses.push('-scrolled-horizontally');
+            }
+
+            if (activePage.scrolledVertically) {
+                scrollClasses.push('-scrolled-vertically');
+            }
+        }
+
+        return bodyClass.concat(scrollClasses);
+    };
+
+    $scope.checkJsonObject = function (item) {
+        $scope.jsonData = convertToObject(document.getElementById("codeJson").innerHTML);
+    };
+
+    $scope.getItemEntity = function (item) {
+        if (typeof objs[item.id] === "object") return objs[item.id];
+        if (typeof item.id === "object") return item.id;
+
+        if (!(item.id in $scope.states)) {
+            warnUnknownItem(item);
+            item.id={};
+
+            return item.id;
+        }
+
+        return $scope.states[item.id];
+    };
+
+    $scope.getEntryCameraEntity = function (itemEntry) {
+        var item = itemEntry.layout.camera;
+
+        if (typeof item.id === "object") return item.id;
+
+        return $scope.states[item.id];
+    };
+
+    $scope.showPage = function (page) {
+        return showedPages.indexOf(page) !== -1;
+    };
+
+
+    $scope.hasTrackerCoords = function (entity) {
+        if (!entity.attributes) return false;
+
+        return entity.attributes.longitude || entity.attributes.latitude;
+    };
+
+    $scope.slideMapStyles = function (item, page, obj, zoom, state) {
+        var key = 'mapStyles' + zoom + (item.width || '1') + (item.height || '1');
+
+        if (!obj[key]) {
+            var width = item.width || 1,
+                height = item.height || 1;
+            var tileSize = page.tileSize || CONFIG.tileSize;
+            var name = obj.friendly_name || ' ';
+
+            if (!obj.longitude && !obj.latitude) return null;
+
+            var coords = obj.longitude + ',' + obj.latitude;
+            // +80 - hack to hide logo
+            var sizes = Math.ceil(tileSize * width) + ',' + Math.ceil((tileSize * height) + 80);
+
+            var url;
+
+            if (item.map === YANDEX_MAP) {
+                var icon = 'round';
+
+                if (state.toLowerCase() === 'home') icon = 'home';
+                else if (state.toLowerCase() === 'office') icon = 'work';
+
+                var pt = coords + ',' + icon;
+
+                url = "https://static-maps.yandex.ru/1.x/?lang=en-US&ll=" +
+                    coords + "&z=" + zoom + "&l=map&size=" + sizes + "&pt=" + pt;
+            } else {
+                coords = obj.latitude + ',' + obj.longitude;
+                sizes = sizes.replace(',', 'x');
+
+                var label = name[0].toUpperCase();
+                var marker = encodeURIComponent("color:gray|label:" + label + "|" + coords);
+
+                url = "https://maps.googleapis.com/maps/api/staticmap?center=" +
+                    coords + "&zoom=" + zoom + "&size=" + sizes + "x&maptype=roadmap&markers=" + marker;
+
+                if (CONFIG.googleApiKey) {
+                    url += "&key=" + CONFIG.googleApiKey;
+                }
+            }
+
+            obj[key] = {
+                backgroundImage: 'url(' + url + ')'
+            };
+        }
+
+        return obj[key];
+    };
+
+    $scope.clockStyles = function () {
+        return CONFIG.clockStyles;
+    };
+
+    $scope.headWarning = function () {
+        // @TODO remove
+        Noty.addObject({
+            id: 'header-deprecated',
+            type: Noty.WARNING,
+            title: 'Head deprecated',
+            message: 'Head is deprecated, please replace it with "header" object. ' +
+            '<br> More info <a href="https://github.com/resoai/TileBoard/wiki/Header-configuration">' +
+            'https://github.com/resoai/TileBoard/wiki/Header-configuration</a>'
+        });
+
+        return true;
+    };
+
+    $scope.pageStyles = function (page) {
+        //  if (!page.styles) {
+        var styles = {};
+
+        if (page.bg) {
+            var bg = parseFieldValue(page.bg, page, {});
+
+            if (bg) styles.backgroundImage = 'url(' + bg + ')';
+        } else if (page.bgSuffix) {
+            var sbg = parseFieldValue(page.bgSuffix, page, {});
+
+            if (sbg) styles.backgroundImage = 'url(' + CONFIG.serverUrl + sbg + ')';
+        }
+
+        page.styles = styles;
+        // }
+
+        return page.styles;
+    };
+
+    $scope.showPagesMenu = function () {
+        return CONFIG.pages.length > 1;
+    };
+
+    $scope.pagesMenuClasses = function () {
+        var position = CONFIG.menuPosition;
+
+        if (!position) position = MENU_POSITIONS.LEFT;
+
+        return '-' + position;
+    };
+
+    $scope.trackerZoomLevels = function (item, entity) {
+        if (!entity.zoomLevels) {
+            entity.zoomLevels = [9, 13];
+
+            if (item.zoomLevels) {
+                entity.zoomLevels = item.zoomLevels;
+            }
+        }
+
+        return entity.zoomLevels;
+    };
+
+    $scope.trackerSlidesClass = function (item, entity) {
+        var maps = $scope.trackerZoomLevels(item, entity);
+
+        var c = maps.length;
+
+        if ($scope.showTrackerBg(item, entity)) c++;
+
+        return '-c' + c;
+    };
+
+    $scope.trackerBg = function (entity) {
+        if (!entity.trackerBg) {
+            var styles = {};
+
+            if (entity.attributes.entity_picture) {
+                styles.backgroundImage = 'url(' + entity.attributes.entity_picture + ')';
+            }
+
+            entity.trackerBg = styles;
+        }
+
+        return entity.trackerBg;
+    };
+
+    $scope.showTrackerBg = function (item, entity) {
+        if (!entity.attributes.entity_picture) {
+            return false;
+        }
+
+        return !item.hideEntityPicture;
+    };
+
+    $scope.groupStyles = function (group, page) {
+        if (true || !group.styles) {
+            var tileSize = page.tileSize || CONFIG.tileSize;
+            var tileMargin = page.tileMargin || CONFIG.tileMargin;
+
+            if (!('width' in group) || !('height' in group)) {
+                var sizes = calcGroupSizes(group);
+
+                if (!group.width) group.width = sizes.width;
+                if (!group.height) group.height = sizes.height;
+            }
+
+            var styles = {
+                width: tileSize * group.width + tileMargin * (group.width - 1) + 'px',
+                height: tileSize * group.height + tileMargin * (group.height - 1) + 'px',
+            };
+
+            if (page.groupMarginCss) {
+                styles.margin = page.groupMarginCss;
+            } else if (group.groupMarginCss) {
+                styles.margin = group.groupMarginCss;
+            } else if (CONFIG.groupMarginCss) {
+                styles.margin = CONFIG.groupMarginCss;
+            }
+
+            group.styles = styles;
+        }
+
+        return group.styles;
+    };
+
+    $scope.dragStop = function (event, ui, item, group) {
+        group.items = group.items.filter(function (obj) {
+            return obj.type !== 'dropplace'
+        });
+        $scope.drag = false;
+        updateView();
+        event.stopPropagation();
+    }
+
+
+    $scope.dragDrop = function (event, ui, item, group) {
+        var editedItem = Object.assign({}, group.items[$scope.editedItemIdx]);
+        editedItem.position = item.position;
+        editedItem.styles = null;
+
+
+        group.items.splice($scope.editedItemIdx, 1);
+
+        group.items = group.items.filter(function (obj) {
+            return obj.type !== 'dropplace'
+        });
+        group.items.push(editedItem);
+        $scope.drag = false;
+        recalculateGroupSize();
+        updateView();
+    }
+
+
+    $scope.dragOver = function (event, ui) {
+        angular.element(event.target).addClass('drop-area-hover');
+    }
+
+    $scope.dragOut = function (event, ui) {
+        angular.element(event.target).removeClass('drop-area-hover');
+    }
+
+
+    $scope.dragStart = function (event, ui, element, group, parent) {
+        if (!$scope.editingMode ) {
+            $scope.drag = false;
+            updateView();
+            event.stopPropagation();
+            return;
+        }
+        if (element.width>0) w=element.width; else w=1;
+        if (element.height>0) h=element.height; else h=1;
+        defaultDropPlace.width=w;
+        defaultDropPlace.height=h;
+
+        $scope.editedItemIdx = parent.$index;
+        var temp = [];
+        var width = group.width + 1;
+        var height = group.height + 1;
+        for (var i = 0; i < width; i=i+w) {
+            for (var j = 0; j < height; j=j+h) {
+                var item = Object.assign({}, defaultDropPlace);
+                item.position = [i, j];
+                temp.push(item);
+            }
+        }
+
+        for (var i = 0; i < group.items.length; i++) {
+            var item = group.items[i];
+            if (typeof(item.height) == "undefined") item.height=1;
+            if (typeof(item.width) == "undefined") item.width=1;
+            temp = temp.filter(function (obj) {
+                var answer = true;
+                for (var jh = 0; jh < item.height; jh++) {
+                    for (var j = 0; j < item.width; j++) {
+                        for (var jho = 0; jho < obj.height; jho++) {
+                            for (var jo = 0; jo < obj.width; jo++) {
+                                if (JSON.stringify([obj.position[0] + jo, obj.position[1] + jho]) === JSON.stringify([item.position[0] + j, item.position[1] + jh])) answer = false;
+                            }
+                        }
+                    }
+                }
+                return answer;
+            });
+        }
+        /* for (var i = 0; i < group.items.length; i++) {
+             var item = group.items[i];
+             temp = temp.filter(function (obj) {
+                 return JSON.stringify(obj.position) !== JSON.stringify(item.position);
+             });
+             /*for (var j = 1; j < item.height; j=j+h) {
+                 var pos = [item.position[0], item.position[1]];
+                 if (JSON.stringify(pos) == JSON.stringify(element.position))
+                     continue;
+                 pos[1] = pos[1] + j;
+                 temp = temp.filter(function (obj) {
+                     return JSON.stringify(obj.position) !== JSON.stringify(pos);
+                 });
+             }*/
+        /* var pos=[];
+         var k=0;
+         for (var jh = 0; jh < item.height; jh++) {
+             for (var j = 0; j < item.width; j++) {
+                 k++;
+                 var pos = [item.position[j], item.position[jh]];
+                 if (JSON.stringify(pos) == JSON.stringify(element.position))
+                    continue;
+                 pos[k] = jh + j;
+                // pos[1] = pos[1] + jh;
+                 temp = temp.filter(function (obj) {
+                     return JSON.stringify(obj.position) !== JSON.stringify(pos);
+                 });
+             }
+         }
+     }*/
+
+        group.items = group.items.concat(temp);
+        $scope.drag = true;
+        updateView();
+        event.stopPropagation();
+    }
+
+    $scope.itemStyles = function (page, item, entity) {
+        var prevSize = item._prevTileSize || page.tileSize || CONFIG.tileSize;
+        var currentSize = page.tileSize || CONFIG.tileSize;
+        var hasChanged = prevSize !== currentSize;
+
+        if (!item.styles || hasChanged) {
+            var width = item.width || 1;
+            var height = item.height || 1;
+            var pos = item.position;
+            var tileSize = page.tileSize || CONFIG.tileSize;
+            var tileMargin = page.tileMargin || CONFIG.tileMargin;
+
+            item._prevTileSize = tileSize;
+
+            var styles = {
+                width: tileSize * width + tileMargin * (width - 1) + 'px',
+                height: tileSize * height + tileMargin * (height - 1) + 'px',
+                left: pos[0] * tileSize + (tileMargin * pos[0]) + 'px',
+                top: pos[1] * tileSize + (tileMargin * pos[1]) + 'px',
+            };
+
+            item.styles = styles;
+        }
+
+        if (item.tile_color != null) {
+            item.styles.backgroundColor = item.tile_color;
+        }
+
+        // if ($scope.editingMode) {
+        //     item.styles.borderStyle = 'solid';
+        //     item.styles.border = 1;
+        // } else {
+        //     item.styles.borderStyle = 'none';
+        // }
+
+        if (item.customStyles) {
+            var res;
+
+            if (typeof item.customStyles === "function") {
+                res = callFunction(item.customStyles, [item, entity]);
+            } else if (typeof item.customStyles === "object") {
+                res = item.customStyles;
+            }
+            if (res)
+                for (var k in res) item.styles[k] = res[k];
+        }
+
+        return item.styles;
+    };
+
+    $scope.itemBgStyles = function (item, entity) {
+        var obj = entity.attributes || entity;
+
+        if (!obj.bgStyles) {
+            var bg, styles = {};
+
+            if ('bgOpacity' in item) {
+                styles.opacity = parseFieldValue(item.bgOpacity, item, entity);
+            }
+
+            if (item.bg) {
+                bg = parseFieldValue(item.bg, item, entity);
+
+                if (bg) styles.backgroundImage = 'url(' + bg + ')';
+            } else if (item.bgSuffix) {
+                bg = parseFieldValue(item.bgSuffix, item, entity);
+
+                if (bg) styles.backgroundImage = 'url(' + CONFIG.serverUrl + bg + ')';
+            }
+
+            obj.bgStyles = styles;
+        }
+
+        return obj.bgStyles;
+    };
+
+    $scope.changeInputStyle = function (style) {
+        var jsonarray = document.getElementsByClassName("add-tile-tree");
+        var treearray = document.getElementsByClassName("add-tile-code");
+        if (style === 'tree') {
+            for (var i = 0; i < jsonarray.length; i++) {
+                jsonarray[i].classList.add('active');
+            }
+
+            for (var i = 0; i < treearray.length; i++) {
+                treearray[i].classList.remove('active');
+            }
+            $scope.jsonStringData = convertToString($scope.jsonData);
+        } else {
+            for (var i = 0; i < jsonarray.length; i++) {
+                jsonarray[i].classList.remove('active');
+            }
+
+            for (var i = 0; i < treearray.length; i++) {
+                treearray[i].classList.add('active');
+            }
+        }
+        //  $scope.jsonInput = style === 'json';
+    };
+
+    $scope.itemClasses = function (item) {
+        var entity = $scope.getItemEntity(item);
+
+        if (!item._classes) {
+            item._classes = [];
+        }
+
+        item._classes.length = 0;
+
+        item._classes.push('-' + item.type);
+        item._classes.push('-' + escapeClass(entity.state));
+
+        if (item.theme) item._classes.push('-th-' + item.theme);
+        else item._classes.push('-th-' + item.type);
+
+        if (item.classes) item.classes.forEach(function (c) {
+            item._classes.push(c);
+        });
+
+        if (item.loading) item._classes.push('-loading');
+        if ($scope.selectOpened(item)) item._classes.push('-top-entity');
+
+        return item._classes;
+    };
+
+    $scope.entityState = function (item, entity) {
+        if (item.state === false) return null;
+
+        var res;
+
+        if (item.state) {
+            if (typeof item.state === "string") {
+                return parseString(item.state, entity);
+            } else if (typeof item.state === "function") {
+                res = callFunction(item.state, [item, entity]);
+                if (res) return res;
+            }
+        }
+
+        if (item.states) {
+            if (typeof item.states === "function") {
+                res = callFunction(item.states, [item, entity]);
+            } else if (typeof item.states === "object") {
+                res = item.states[entity.state] || entity.state;
+            }
+
+            if (res) return res;
+        }
+
+        if (!item.state) return entity.state;
+
+        return item.state;
+    };
+
+    $scope.entityIcon = function (item, entity) {
+        var state = entity.state;
+
+        if (item.icon) {
+            state = parseFieldValue(item.icon, item, entity);
+        }
+
+        if (!item.icons) return state;
+
+        if (typeof item.icons === "function") {
+            return callFunction(item.icons, [item, entity]);
+        }
+
+        return item.icons[state] || null;
+    };
+
+    $scope.entityTitle = function (item, entity) {
+        if (!('title' in item)) {
+            return entity.attributes ? entity.attributes.friendly_name : null;
+        }
+
+        return getItemFieldValue('title', item, entity);
+    };
+
+    $scope.itemField = function (field, item, entity) {
+        return getItemFieldValue(field, item, entity);
+    };
+
+    $scope.entityUnit = function (item, entity) {
+        if (!('unit' in item)) {
+            return entity.attributes ? entity.attributes.unit_of_measurement : null;
+        }
+
+        return getItemFieldValue('unit', item, entity);
+    };
+
+    $scope.entitySubtitle = function (item, entity) {
+        return getItemFieldValue('subtitle', item, entity);
+    };
+
+    $scope.entityValue = function (item, entity) {
+        var value = entity.state;
+        if (entity.value) {
+            value = entity.value;
+            entity.state = entity.value;
+        }
+
+        if (item.value) {
+            value = getItemFieldValue('value', item, entity);
+        }
+
+        if (typeof item.filter === "function") {
+            return callFunction(item.filter, [value, item, entity]);
+        }
+
+        return value;
+    };
+
+    $scope.climateTarget = function (item, entity) {
+        var value = entity.attributes.temperature || [
+            entity.attributes.target_temp_low,
+            entity.attributes.target_temp_high
+        ].join(" - ");
+
+        if (item.filter) return item.filter(value);
+
+        return value;
+    };
+
+    $scope.listField = function (field, item, list) {
+        var value = parseFieldValue(list[field], item, list);
+
+        if (typeof item.filter === "function") {
+            return callFunction(item.filter, [value, field, item]);
+        }
+
+        return value;
+    };
+
+    $scope.getWeatherField = function (field, item, entity) {
+        var fields = item.fields;
+
+        if (!fields || !fields[field]) return null;
+
+        return parseFieldValue(fields[field], item, entity);
+    };
+
+    $scope.getWeatherLine = function (line, item, entity) {
+        if (!line) return null;
+
+        return parseFieldValue(line, item, entity);
+    };
+
+    $scope.getWeatherIcon = function (item, entity) {
+        var icon;
+
+        if (item.icon || item.icons) {
+            icon = $scope.entityIcon(item, entity);
+        }
+
+        if (!icon) {
+            icon = $scope.getWeatherField('icon', item, entity);
+
+            if (icon) console.warn(
+                "`icon` field inside fields is deprecated for WEATHER tile, " +
+                "please move it to the tile object");
+        }
+
+        if (!icon) return null;
+
+        var map = item.icons;
+
+        if (!map && item.fields.iconMap) {
+            map = item.fields.iconMap;
+
+            if (icon) console.warn(
+                "`iconMap` field inside fields is deprecated for WEATHER tile, " +
+                "please move it to the tile object as `icons`");
+        }
+
+        if (typeof map === "function") return callFunction(map, [icon, item, entity]);
+
+        if (!map) return icon;
+
+        return map[icon] || icon;
+    };
+
+    $scope.getWeatherImageStyles = function (item, entity) {
+        if (!item.iconImage) return null;
+
+        var iconImage = parseFieldValue(item.iconImage, item, entity);
+
+        if (typeof item.icons === "function") {
+            iconImage = callFunction(item.icons, [iconImage, item, entity]);
+        }
+
+        if (item.icons && (iconImage in item.icons)) {
+            iconImage = item.icons[iconImage];
+        }
+
+        if (!iconImage) return null;
+
+        if (!item._imgStyles) item._imgStyles = {};
+
+        item._imgStyles['backgroundImage'] = 'url("' + iconImage + '")';
+
+        return item._imgStyles;
+    };
+
+    $scope.weatherListField = function (field, line, item, entity) {
+        if (!line || !line[field]) return null;
+
+        return parseFieldValue(line[field], item, entity);
+    };
+
+    $scope.weatherListIcon = function (line, item, entity) {
+        var icon = $scope.weatherListField('icon', line, item, entity);
+
+        if (!icon) return null;
+
+        if (typeof item.icons === "function") {
+            return callFunction(item.icons, [icon, item, entity]);
+        }
+
+        if (!item.icons) return icon;
+
+        return item.icons[icon] || icon;
+    };
+
+    $scope.weatherListImageStyles = function (line, item, entity) {
+        var iconImage = $scope.weatherListField('iconImage', line, item, entity);
+
+        if (!iconImage) return null;
+
+        if (typeof item.icons === "function") {
+            iconImage = callFunction(item.icons, [iconImage, item, entity]);
+        }
+
+        if (item.icons && (iconImage in item.icons)) {
+            iconImage = item.icons[iconImage];
+        }
+
+        if (!iconImage) return null;
+
+        if (!line._imgStyles) line._imgStyles = {};
+
+        line._imgStyles['backgroundImage'] = 'url("' + iconImage + '")';
+
+        return line._imgStyles;
+    };
+
+    $scope.slidesStyles = function (item, $index) {
+        if (!item.slidesStyles) {
+            item.slidesStyles = {
+                'animation-delay': ((item.slidesDelay || $index * 0.8)) + 's'
+            };
+
+            if ('bgOpacity' in item) {
+                item.slidesStyles.opacity = item.bgOpacity;
+            }
+        }
+
+        return item.slidesStyles;
+    };
+
+    $scope.slideStyles = function (slide, item, entity) {
+        if (!slide.slideStyles) {
+            var styles = {};
+
+            if (slide.bg) {
+                var bg = parseFieldValue(slide.bg, item, entity);
+
+                if (bg) styles.backgroundImage = 'url(' + bg + ')';
+            }
+
+            slide.slideStyles = styles;
+        }
+
+        return slide.slideStyles;
+    };
+
+    $scope.itemSelectStyles = function (entity, items) {
+        if (!entity.itemSelectStyles) {
+            var styles = {};
+
+            if (items) {
+                // magic numbers
+                styles.marginTop = (-Math.min(items.length * 17, 180)) + 'px';
+            }
+
+            entity.itemSelectStyles = styles;
+        }
+
+        return entity.itemSelectStyles;
+    };
+
+    $scope.getMainStyles = function () {
+        return mainStyles;
+    };
+
+    $scope.getHeader = function (page) {
+        if (!page) return CONFIG.header;
+
+        return page.header;
+    };
+
+    $scope.getSliderConf = function (item, entity) {
+        var key = "_c";
+
+        if (!entity.attributes) entity.attributes = {};
+        if (entity.attributes[key]) return entity.attributes[key];
+
+        var def = item.slider || {};
+        var attrs = entity.attributes || {};
+
+        entity.attributes[key] = {
+            max: attrs.max || def.max || 100,
+            min: attrs.min || def.min || 0,
+            step: attrs.step || def.step || 1,
+            value: +entity.state || def.value || 0,
+            request: def.request || {
+                type: "call_service",
+                domain: "input_number",
+                service: "set_value",
+                field: "value"
+            }
+        };
+
+        setTimeout(function () {
+            item._sliderInited = true;
+        }, 50);
+
+        return entity.attributes[key];
+    };
+
+    $scope.getLightSliderConf = function (slider, entity) {
+        var key = "_c_" + slider.field;
+
+        if (!entity.attributes) entity.attributes = {};
+        if (entity.attributes[key]) return entity.attributes[key];
+
+
+        var def = slider || {};
+        var attrs = entity.attributes;
+        var value = +attrs[def.field] || 0;
+
+        entity.attributes[key] = {
+            max: def.max || attrs.max || 100,
+            min: def.min || attrs.min || 0,
+            step: def.step || attrs.step || 1,
+            value: value || def.min || attrs.min || 0,
+            request: def.request || {
+                type: "call_service",
+                domain: "input_number",
+                service: "set_value",
+                field: "value"
+            }
+        };
+
+        setTimeout(function () {
+            entity.attributes._sliderInited = true;
+            slider._sliderInited = true;
+        }, 100);
+
+        setTimeout(function () {
+            entity.attributes._sliderInited = true;
+        }, 0);
+
+        return entity.attributes[key];
+    };
+
+    $scope.getVolumeConf = function (item, entity) {
+        if (!entity.attributes) entity.attributes = {};
+        if (entity.attributes._c) return entity.attributes._c;
+
+        var def = {
+            max: 100,
+            min: 0,
+            step: 2
+        };
+        var attrs = entity.attributes;
+        var value = attrs.volume_level * 100 || 0;
+
+        //if (!('volume_level' in attrs)) return false;
+
+        entity.attributes._c = {
+            max: attrs.max || def.max || 100,
+            min: attrs.min || def.min || 0,
+            step: attrs.step || def.step || 1,
+            value: value || 0
+        };
+
+        setTimeout(function () {
+            entity.attributes._sliderInited = true;
+        }, 50);
+
+        return entity.attributes._c;
+    };
+
+    $scope.getLightSliderValue = function (slider, conf) {
+        if (slider.formatValue) return slider.formatValue(conf);
+
+        return conf.value;
+    };
+
+    $scope.openLightSliders = function (item, entity) {
+        if (entity.state !== "on") {
+            return $scope.toggleSwitch(item, entity, function () {
+                setTimeout(function () {
+                    if (entity.state === "on") {
+                        $scope.openLightSliders(item, entity);
+                        updateView();
+                    }
+                }, 0);
+            })
+        } else {
+            if (!item.controlsEnabled) {
+                item.controlsEnabled = true;
+
+                setTimeout(function () {
+                    item._controlsInited = true;
+                }, 50);
+
+                updateView();
+            }
+        }
+    };
+
+    $scope.closeLightSliders = function ($event, item, entity) {
+        $event.preventDefault();
+        $event.stopPropagation();
+
+        item.controlsEnabled = false;
+        item._controlsInited = false;
+
+        return false;
+    };
+
+    $scope.preventClick = function ($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+
+        return false;
+    };
+
+    $scope.supportsFeature = function (feature, entity) {
+        /*   if (!('supported_features' in entity.attributes)) {
+               return false;
+           }
+
+           var features = entity.attributes.supported_features;
+
+           return (features | feature) === features;*/
+    };
+
+    $scope.shouldShowVolumeSlider = function (entity) {
+        return true;
+        //  return $scope.supportsFeature(FEATURES.MEDIA_PLAYER.VOLUME_SET, entity) &&
+        //    ('volume_level' in entity.attributes) &&
+        //  entity.state !== 'off';
+    };
+
+    $scope.shouldShowVolumeButtons = function (entity) {
+        return true;
+        // return (!$scope.supportsFeature(FEATURES.MEDIA_PLAYER.VOLUME_SET, entity) ||
+        //  !('volume_level' in entity.attributes)) &&
+        //    $scope.supportsFeature(FEATURES.MEDIA_PLAYER.VOLUME_STEP, entity) &&
+        //   entity.state !== 'off';
+    };
+
+
+    // Actions
+
+    var setSliderValue = debounce(setSliderValueFn, 0);
+
+    function setSliderValueFn(item, entity, value) {
+        entity.state = value.value;
+        if (item.action && typeof item.action === "function")
+            if (!callFunction(item.action, [item, entity])) {
+                entity.attributes._c.value = entity.state;
+                return;
+            }
+
+        if (!value.request) return;
+        sendItemData(item,entity);
+
+
+        // sendItemData(item, {
+        //     type: conf.type,
+        //     domain: conf.domain,
+        //     service: conf.service,
+        //     service_data: serviceData
+        // });
+    }
+
+    $scope.sliderChanged = function (item, entity, value) {
+        if (!item._sliderInited) return;
+
+        setSliderValue(item, entity, value, true);
+    };
+
+    $scope.volumeChanged = function (item, entity, conf) {
+        if (!entity.attributes._sliderInited) return;
+
+        var value = {
+            value: conf.value / 100,
+            request: {
+                type: "call_service",
+                domain: "media_player",
+                service: "volume_set",
+                field: "volume_level"
+            }
+        };
+
+        setSliderValue(item, entity, value, false);
+    };
+
+    $scope.lightSliderChanged = function (slider, item, entity, value) {
+        if (!item._controlsInited) return;
+        if (!slider._sliderInited) return;
+        if (!entity.attributes._sliderInited) return;
+
+        setSliderValue(item, entity, value, false);
+    };
+
+    $scope.toggleSwitch = function (item, entity, callback) {
+        if (item.action && typeof item.action === "function")
+            callFunction(item.action, [item, entity]);
+
+        var domain = "homeassistant";
+        // var group = item.id.split('.')[0];
+        // if (['switch', 'light', 'fan'].indexOf(group) !== -1) domain = group;
+
+        var service = "toggle";
+
+        if (entity.state === "off") service = "turn_on";
+        else if (entity.state === "on") service = "turn_off";
+
+        if (entity.state === "off") entity.state = "on";
+        else if (entity.state === "on") entity.state = "off";
+
+        sendItemData(item);
+        //, {
+        //     type: "call_service",
+        //     domain: domain,
+        //     service: service,
+        //     service_data: {
+        //         entity_id: item.id
+        //     }
+        // }, callback);
+    };
+    $scope.toggleEdit = function (item) {
+        $scope.editingMode = !$scope.editingMode;
+    };
+
+
+    $scope.saveConfig = function () {
+
+
+        // delete CONFIG.pages.splice(CONFIG.pageSettingIndex-1,1);
+        delete CONFIG.tile;
+
+        var xhr = new XMLHttpRequest();
+
+        xhr.open('POST', '/SBoard/json.php');
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify(CONFIG));
+        //CONFIG.pageSettingIndex=CONFIG.pages.push($scope.pageSetting);
+        xhr.onreadystatechange = function () {
+            if (xhr.status === 200) {
+
+                $scope.toggleEdit(null);
+                updateView();
+            }
+        };
+        // $scope.editingMode = !$scope.editingMode;
+    };
+
+
+    saveConfigAction = function () {
+        var xhr = new XMLHttpRequest();
+
+        xhr.open('POST', '/SBoard/json.php');
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify(CONFIG));
+
+        xhr.onreadystatechange = function () {
+            if (xhr.status === 200 && xhr.readyState == 4) {
+                getJsonConfig();
+            }
+        };
+
+        //$scope.getBodyClass();
+        // $scope.editingMode = !$scope.editingMode;
+    };
+
+    $scope.openAddTilePopup = function (group) {
+        $scope.selectedItem = group;
+        $scope.changeTileType($scope.selectedType, group);
+        $scope.addTile = true;
+        $scope.changeInputStyle('json');
+        $scope.objJson.data=$scope.jsonData;
+
+    };
+
+    $scope.openAddGroupPopup = function () {
+        $scope.groupName = "";
+        $scope.addGroup = true;
+    };
+
+    $scope.openAddPagePopup = function () {
+        $scope.pageTitle = "";
+        $scope.pageBg.img = "";
+        $scope.pageIcon.Icon = "";
+        $scope.addPage = true;
+    };
+
+    $scope.openEditGroupPopup = function (group, parent) {
+        $scope.editedGroupIdx = parent.$index;
+        $scope.activeGroup = group;
+        $scope.groupName = group.title;
+        $scope.editGroup = true;
+    };
+
+    $scope.openEditPagePopup = function (page, parent) {
+        $scope.editedPageIdx = parent.$index;
+        $scope.editedPage = page;
+        $scope.pageTitle = page.title;
+        $scope.pageBg.img = page.bg;
+        $scope.pageIcon.Icon = page.icon;
+        $scope.editPage = true;
+    };
+
+    $scope.openEditTilePopup = function (item) {
+        $scope.jsonData = item;
+        $scope.objJson.data=item;
+        // delete $scope.jsonData.styles;
+        //delete $scope.jsonData._prevTileSize;
+        // delete $scope.jsonData._classes;
+        $scope.jsonStringData = convertToString($scope.jsonData);
+        $scope.editTile = true;
+        $scope.changeInputStyle('json');
+    };
+
+    $scope.toggleLock = function (item, entity) {
+        if (entity.state === "locked") service = "unlock";
+        else if (entity.state === "unlocked") service = "lock";
+
+        if (entity.state === "locked") entity.state = "lock";
+        else if (entity.state === "unlocked") entity.state = "unlock";
+
+        // sendItemData(item, {
+        //     type: "call_service",
+        //     domain: "lock",
+        //     service: service,
+        //     service_data: {
+        //         entity_id: item.id
+        //     }
+        // });
+    };
+
+    $scope.toggleVacuum = function (item, entity) {
+        if (entity.state === "off") service = "turn_on";
+        else if (entity.state === "on") service = "turn_off";
+        else if (['idle', 'docked', 'paused'].indexOf(entity.state) !== -1) {
+            service = "start";
+        } else if (entity.state === "cleaning") service = "return_to_base";
+
+        if (entity.state === "off") entity.state = "on";
+        else if (entity.state === "on") entity.state = "off";
+        else if (['idle', 'docked', 'paused'].indexOf(entity.state) !== -1) {
+            entity.state = "start";
+        } else if (entity.state === "cleaning") entity.state = "return";
+
+        // sendItemData(item, {
+        //     type: "call_service",
+        //     domain: "vacuum",
+        //     service: service,
+        //     service_data: {
+        //         entity_id: item.id
+        //     }
+        // });
+    };
+
+    $scope.triggerAutomation = function (item, entity) {
+        // sendItemData(item, {
+        //     type: "call_service",
+        //     domain: "automation",
+        //     service: "trigger",
+        //     service_data: {
+        //         entity_id: item.id
+        //     }
+        // });
+    };
+
+    $scope.customTileAction = function (item, entity) {
+        if (item.action && typeof item.action === "function") {
+            callFunction(item.action, [item, entity]);
+        }
+    };
+
+    $scope.sendPlayer = function (service, item, entity) {
+        // sendItemData(item, {
+        //     type: "call_service",
+        //     domain: "media_player",
+        //     service: service,
+        //     service_data: {
+        //         entity_id: item.id
+        //     }
+        // });
+    };
+
+    $scope.mutePlayer = function (muteState, item, entity) {
+        // sendItemData(item, {
+        //     type: "call_service",
+        //     domain: "media_player",
+        //     service: "volume_mute",
+        //     service_data: {
+        //         entity_id: item.id,
+        //         is_volume_muted: muteState
+        //     }
+        // });
+    };
+
+    $scope.callScript = function (item, entity) {
+        // sendItemData(item, {
+        //     type: "call_service",
+        //     domain: "script",
+        //     service: "turn_on",
+        //     service_data: {
+        //         entity_id: item.id
+        //     }
+        // });
+    };
+
+    $scope.callScene = function (item, entity) {
+        // sendItemData(item, {
+        //     type: "call_service",
+        //     domain: "scene",
+        //     service: "turn_on",
+        //     service_data: {
+        //         entity_id: item.id
+        //     }
+        // });
+    };
+
+    $scope.increaseBrightness = function ($event, item, entity) {
+        $event.preventDefault();
+        $event.stopPropagation();
+
+        if (entity.state === "off") return false;
+
+        if (!('brightness' in entity.attributes)) {
+            return addError("No brightness field in object");
+        }
+
+        var brightness = +entity.attributes.brightness + 25.5;
+
+        brightness = Math.min(brightness, 255);
+
+        $scope.setLightBrightness(item, brightness);
+
+        return false;
+    };
+
+    $scope.decreaseBrightness = function ($event, item, entity) {
+        $event.preventDefault();
+        $event.stopPropagation();
+
+        if (entity.state === "off") return false;
+
+        if (!('brightness' in entity.attributes)) {
+            return addError("No brightness field in object");
+        }
+
+        var brightness = +entity.attributes.brightness - 25.5;
+
+        brightness = Math.max(brightness, 1);
+
+        $scope.setLightBrightness(item, brightness);
+
+        return false;
+    };
+
+    $scope.increaseNumber = function ($event, item, entity) {
+        $event.preventDefault();
+        $event.stopPropagation();
+
+        var value = parseFloat(entity.state);
+
+        value += (entity.attributes.step || 1);
+
+        if (entity.attributes.max) {
+            value = Math.min(value, entity.attributes.max);
+        }
+
+        $scope.setInputNumber(item, value);
+
+        return false;
+    };
+
+    $scope.decreaseNumber = function ($event, item, entity) {
+        $event.preventDefault();
+        $event.stopPropagation();
+
+        var value = parseFloat(entity.state);
+
+        value -= (entity.attributes.step || 1);
+
+        if (entity.attributes.min) {
+            value = Math.max(value, entity.attributes.min);
+        }
+
+        $scope.setInputNumber(item, value);
+
+        return false;
+    };
+
+    $scope.setLightBrightness = function (item, brightness) {
+        if (item.loading) return;
+
+        // sendItemData(item, {
+        //     type: "call_service",
+        //     domain: "light",
+        //     service: "turn_on",
+        //     service_data: {
+        //         entity_id: item.id,
+        //         brightness_pct: Math.round(brightness / 255 * 100 / 10) * 10
+        //     }
+        // });
+    };
+
+    $scope.setInputNumber = function (item, value) {
+        if (item.loading) return;
+        item.value = value;
+
+        // sendItemData(item, {
+        //     type: "call_service",
+        //     domain: "input_number",
+        //     service: "set_value",
+        //     service_data: {
+        //         entity_id: item.id,
+        //         value: value
+        //     }
+        // });
+    };
+
+    $scope.setSelectOption = function ($event, item, entity, option) {
+        item.value = option;
+        if (item.action && typeof item.action === "function")
+            if (!callFunction(item.action, [item, entity]))
+                return;
+
+
+        $event.preventDefault();
+        $event.stopPropagation();
+
+        // sendItemData(item, {
+        //     type: "call_service",
+        //     domain: "input_select",
+        //     service: "select_option",
+        //     service_data: {
+        //         entity_id: item.id,
+        //         option: option
+        //     }
+        // });
+
+        $scope.closeActiveSelect();
+
+        return false;
+    };
+
+    $scope.setSourcePlayer = function ($event, item, entity, option) {
+        $event.preventDefault();
+        $event.stopPropagation();
+
+        // sendItemData(item, {
+        //     type: "call_service",
+        //     domain: "media_player",
+        //     service: "select_source",
+        //     service_data: {
+        //         entity_id: item.id,
+        //         source: option
+        //     }
+        // });
+
+        $scope.closeActiveSelect();
+
+        return false;
+    };
+
+    $scope.setClimateOption = function ($event, item, entity, option) {
+        $event.preventDefault();
+        $event.stopPropagation();
+
+        // sendItemData(item, {
+        //     type: "call_service",
+        //     domain: "climate",
+        //     service: "set_operation_mode",
+        //     service_data: {
+        //         entity_id: item.id,
+        //         operation_mode: option
+        //     }
+        // });
+
+        $scope.closeActiveSelect();
+
+        return false;
+    };
+
+
+    $scope.increaseClimateTemp = function ($event, item, entity) {
+        $event.preventDefault();
+        $event.stopPropagation();
+
+        var value = parseFloat(entity.attributes.temperature);
+
+        value += (entity.attributes.target_temp_step || 1);
+
+        if (entity.attributes.max_temp) {
+            value = Math.min(value, entity.attributes.max_temp);
+        }
+
+        $scope.setClimateTemp(item, value);
+
+        return false;
+    };
+
+    $scope.decreaseClimateTemp = function ($event, item, entity) {
+        $event.preventDefault();
+        $event.stopPropagation();
+
+        var value = parseFloat(entity.attributes.temperature);
+
+        value -= (entity.attributes.target_temp_step || 1);
+
+        if (entity.attributes.min_temp) {
+            value = Math.max(value, entity.attributes.min_temp);
+        }
+
+        $scope.setClimateTemp(item, value);
+
+        return false;
+    };
+
+    $scope.setClimateTemp = function (item, value) {
+        // sendItemData(item, {
+        //     type: "call_service",
+        //     domain: "climate",
+        //     service: "set_temperature",
+        //     service_data: {
+        //         entity_id: item.id,
+        //         temperature: value
+        //     }
+        // });
+    };
+
+    $scope.sendCover = function (service, item, entity) {
+        // sendItemData(item, {
+        //     type: "call_service",
+        //     domain: "cover",
+        //     service: service,
+        //     service_data: {
+        //         entity_id: item.id
+        //     }
+        // });
+    };
+
+    $scope.toggleCover = function (item, entity) {
+        if (entity.state === "open") service = "close_cover";
+        else if (entity.state === "closed") service = "open_cover";
+
+        $scope.sendCover(service, item, entity);
+    };
+
+    $scope.openFanSpeedSelect = function ($event, item) {
+        $event.preventDefault();
+        $event.stopPropagation();
+        $scope.openSelect(item);
+    };
+
+    $scope.setFanSpeed = function ($event, item, entity, option) {
+        $event.preventDefault();
+        $event.stopPropagation();
+
+        // sendItemData(item, {
+        //     type: "call_service",
+        //     domain: "fan",
+        //     service: "set_speed",
+        //     service_data: {
+        //         entity_id: item.id,
+        //         speed: option
+        //     }
+        // });
+
+        $scope.closeActiveSelect();
+
+        return false;
+    };
+
+    $scope.actionAlarm = function (action, item, entity) {
+        var code = $scope.alarmCode;
+        entity.state = action;
+        if (action === 'alarm_arm_home') entity.state = 'armed_home'
+        else if (action === 'alarm_arm_away') entity.state = 'armed_away'
+        else if (action === 'alarm_disarm') entity.state = 'disarmed'
+        else entity.state = action
+
+        var data = {
+            entity_id: item.id
+        };
+
+        if (code) data.code = code;
+
+        latestAlarmActions[item.id] = Date.now();
+
+        // sendItemData(item, {
+        //     type: "call_service",
+        //     domain: "alarm_control_panel",
+        //     service: action,
+        //     service_data: data
+        // });
+
+        $scope.alarmCode = null;
+    };
+
+
+    // UI
+
+    $scope.openPage = function (page, parent, preventAnimation) {
+        if ($scope.editingMode) {
+            $scope.openEditPagePopup(page, parent);
+            return;
+        }
+        localStorage.setItem('page', $scope.pages.indexOf(page));
+        preventAnimation = preventAnimation || false;
+        showedPages = [];
+
+        if (activePage) {
+            showedPages = [activePage]
+        }
+
+        showedPages.push(page);
+
+        activePage = page;
+        $scope.activePage = activePage;
+        $scope.selectedItem = activePage.groups[0];
+
+        if (CONFIG.transition === TRANSITIONS.SIMPLE) {
+            scrollToActivePage();
+        } else {
+            setTimeout(function () {
+                scrollToActivePage(preventAnimation);
+            }, 20);
+        }
+        if (CONFIG.rememberLastPage) {
+            $location.hash($scope.pages.indexOf(page));
+        }
+    };
+    $scope.openPageSetting = function (page, parent, preventAnimation) {
+
+        localStorage.setItem('page', $scope.pages.length+$scope.pagesSetting.indexOf(page));
+        preventAnimation = preventAnimation || false;
+        showedPages = [];
+
+        if (activePage) {
+            showedPages = [activePage]
+        }
+
+        showedPages.push(page);
+
+        activePage = page;
+        $scope.activePage = activePage;
+        $scope.selectedItem = activePage.groups[0];
+
+        if (CONFIG.transition === TRANSITIONS.SIMPLE) {
+            scrollToActivePageSetting();
+        } else {
+            setTimeout(function () {
+                scrollToActivePageSetting(preventAnimation);
+            }, 20);
+        }
+        if (CONFIG.rememberLastPage) {
+            $location.hash($scope.pages.indexOf(page));
+        }
+    };
+
+    $scope.openCamera = function (item) {
+        $scope.activeCamera = item;
+    };
+
+    $scope.closeCamera = function () {
+        $scope.activeCamera = null;
+    };
+
+    $scope.openDatetime = function (item, entity) {
+        $scope.activeDatetime = item;
+
+        if (entity.attributes && entity.attributes.has_date) {
+            var d = new Date();
+
+            $scope.datetimeString = d.getFullYear() + "";
+            $scope.datetimeString += leadZero(d.getMonth());
+            $scope.datetimeString += leadZero(d.getDate());
+        }
+    };
+
+    $scope.closeDatetime = function () {
+        $scope.activeDatetime = null;
+        $scope.datetimeString = null;
+    };
+
+    $scope.closeDoorEntry = function () {
+        $scope.activeDoorEntry = null;
+
+        if (doorEntryTimeout) clearTimeout(doorEntryTimeout);
+    };
+
+    $scope.openDoorEntry = function (item, entity) {
+        $scope.activeDoorEntry = item;
+
+        if (doorEntryTimeout) clearTimeout(doorEntryTimeout);
+
+        if (CONFIG.doorEntryTimeout) {
+            doorEntryTimeout = setTimeout(function () {
+                $scope.closeDoorEntry();
+
+                updateView();
+            }, CONFIG.doorEntryTimeout * 1000);
+        }
+    };
+
+    $scope.openAlarm = function (item) {
+        $scope.activeAlarm = item;
+        $scope.alarmCode = null;
+    };
+
+    $scope.closeAlarm = function () {
+        $scope.activeAlarm = null;
+        $scope.alarmCode = null;
+    };
+
+    $scope.closeAddTile = function () {
+        $scope.addTile = false;
+    };
+
+    $scope.closeAddGroup = function () {
+        $scope.addGroup = false;
+    };
+
+    $scope.closeAddPage = function () {
+        $scope.addPage = false;
+        $scope.editPage = false;
+    };
+
+    $scope.closeEditGroup = function () {
+        $scope.editGroup = false;
+    };
+
+    $scope.closeEditPage = function () {
+        $scope.editPage = false;
+    };
+
+    $scope.closeEditTile = function () {
+        $scope.editTile = false;
+    };
+
+    $scope.addNewTile = function (tile, group) {
+        if (!$scope.jsonData) {
+            Noty.addObject({
+                type: Noty.ERROR,
+                title: 'Error',
+                message: 'Incorrect JSON',
+                lifetime: 5
+            });
+            return;
+        }
+
+        group.items.push(Object.assign({}, $scope.jsonData));
+        updateView();
+        recalculateGroupSize();
+        $scope.addTile = false;
+        $scope.editTile = false;
+    };
+
+    $scope.addNewGroup = function (name) {
+        if (name.length > 0) {
+            a = {
+                title: name,
+                width: 1,
+                height: 3,
+                items: []
+            };
+            $scope.activePage.groups.push(a);
+            recalculateGroupSize();
+            $scope.addGroup = false;
+            $scope.editGroup = false;
+        } else {
+            Noty.addObject({
+                type: Noty.ERROR,
+                title: 'Error',
+                message: 'Incorrect group name',
+                lifetime: 5
+            });
+        }
+    };
+
+    $scope.addNewPage = function (pageTitle, pageBg, pageIcon) {
+        if (pageTitle.length == 0) {
+            Noty.addObject({
+                type: Noty.ERROR,
+                title: 'Error',
+                message: 'Incorrect group name',
+                lifetime: 5
+            });
+            return;
+        }
+        if (pageBg.img.length == 0) {
+            Noty.addObject({
+                type: Noty.ERROR,
+                title: 'Error',
+                message: 'Incorrect backgroud',
+                lifetime: 5
+            });
+            return;
+        }
+        if (pageIcon.Icon.length == 0) {
+            Noty.addObject({
+                type: Noty.ERROR,
+                title: 'Error',
+                message: 'Incorrect icon',
+                lifetime: 5
+            });
+            return;
+        }
+        a = {
+            title: pageTitle,
+            bg: pageBg.img,
+            icon: pageIcon.Icon,
+            groups: []
+        };
+        $scope.pages.push(a);
+        recalculateGroupSize();
+        $scope.addPage = false;
+    };
+
+    $scope.editExistGroup = function (name) {
+        if (name.length > 0) {
+            $scope.activeGroup.title = name;
+            $scope.editGroup = false;
+            $scope.addGroup = false;
+        } else {
+            Noty.addObject({
+                type: Noty.ERROR,
+                title: 'Error',
+                message: 'Incorrect group name',
+                lifetime: 5
+            });
+        }
+    };
+
+    $scope.editExistPage = function (pageTitle, pageBg, pageIcon) {
+        if (pageTitle.length == 0) {
+            Noty.addObject({
+                type: Noty.ERROR,
+                title: 'Error',
+                message: 'Incorrect group name',
+                lifetime: 5
+            });
+            return;
+        }
+        if (pageBg.img.length == 0) {
+            Noty.addObject({
+                type: Noty.ERROR,
+                title: 'Error',
+                message: 'Incorrect backgroud',
+                lifetime: 5
+            });
+            return;
+        }
+        if (pageIcon.Icon.length == 0) {
+            Noty.addObject({
+                type: Noty.ERROR,
+                title: 'Error',
+                message: 'Incorrect icon',
+                lifetime: 5
+            });
+            return;
+        }
+        $scope.editedPage.title = pageTitle;
+        $scope.editedPage.bg = pageBg.img;
+        $scope.editedPage.icon = pageIcon.Icon;
+        $scope.editPage = false;
+    };
+
+    $scope.removeGroup = function () {
+        $scope.activePage.groups.splice($scope.editedGroupIdx, 1);
+        $scope.editGroup = false;
+    };
+
+
+    $scope.removePage = function () {
+        $scope.pages.splice($scope.editedPageIdx, 1);
+        $scope.editPage = false;
+    };
+
+    $scope.editExistTile = function (group) {
+        if (typeof($scope.jsonData)!=="object") {
+            Noty.addObject({
+                type: Noty.ERROR,
+                title: 'Error',
+                message: 'Incorrect JSON',
+                lifetime: 5
+            });
+            return;
+        }
+
+        $scope.activePage.groups[$scope.editedGroupIdx].items.splice($scope.editedItemIdx, 1);
+        var editedItem = $scope.objJson.data;
+        editedItem.styles = null;
+
+        // $scope.activePage.groups[$scope.editedGroupIdx].items.push(editedItem);
+        group.items.push(editedItem);
+        $scope.editTile = false;
+    };
+
+    $scope.removeTile = function () {
+        $scope.activePage.groups[$scope.editedGroupIdx].items.splice($scope.editedItemIdx, 1);
+        $scope.editTile = false;
+    };
+    $scope.removeTileClick = function (item,parent) {
+        $scope.editedItemIdx = parent.$index;
+        $scope.editedGroupIdx = parent.$parent.$parent.$index;
+        $scope.activePage.groups[$scope.editedGroupIdx].items.splice($scope.editedItemIdx, 1);
+        $scope.editTile = false;
+
+    };
+    $scope.removeGroupClick = function (item,parent) {
+        $scope.editedGroupIdx = parent.$index;
+        $scope.activePage.groups.splice($scope.editedGroupIdx, 1);
+        $scope.editGroup = false;
+
+    };
+
+
+
+    function convertToObject(html) {
+        var obj = null;
+        if (typeof html === 'object') {
+            for (var k in html) {
+                if (html.hasOwnProperty(k)) {
+                    html[k] = convertToObject(html[k]);
+                }
+            }
+            return html;
+        }
+        try {
+            obj = JSON.parse(html, function (key, value) {
+                if (typeof value === "string" &&
+                    value.startsWith("/Function(") &&
+                    value.endsWith(")/")) {
+                    value = value.substring(10, value.length - 2);
+                    return eval("(" + value + ")");
+                }
+                return value;
+            });
+        } catch (e) {
+            if (typeof html === "string" &&
+                html.startsWith("/Function(") &&
+                html.endsWith(")/")) {
+                html = html.substring(10, html.length - 2);
+                return eval("(" + html + ")");
+            }
+            return html;
+        }
+        if (obj != null)
+            return obj
+        else return html;
+    }
+
+    function convertToString(object) {
+        var a = JSON.parse(JSON.stringify(object, function (key, val) {
+            if (typeof val === 'function') {
+                return '/Function(' + val + ')/'; // implicitly `toString` it
+            }
+            return val;
+        }));
+        return a;
+    }
+
+    $scope.getCameraList = function () {
+        if (cameraList) return cameraList;
+
+        var res = [];
+
+        $scope.pages.forEach(function (page) {
+            (page.groups || []).forEach(function (group) {
+                (group.items || []).forEach(function (item) {
+                    if ([TYPES.CAMERA, TYPES.CAMERA_THUMBNAIL]
+                        .indexOf(item.type) !== -1) {
+                        res.push(item);
+                    }
+                })
+            })
+        });
+
+        cameraList = res;
+
+        return res;
+    };
+
+    function scrollToActivePage(preventAnimation) {
+        var index = $scope.pages.indexOf(activePage);
+        if (index>=0) {} else {
+            var index = $scope.pagesSetting.indexOf(activePage);
+        }
+        var translate = index * 100;
+
+        var $pages = document.getElementById("pages");
+
+        var transform;
+
+        if (CONFIG.transition === TRANSITIONS.ANIMATED_GPU) {
+            transform = 'translate3d(0, -' + translate + '%, 0)';
+        } else if (CONFIG.transition === TRANSITIONS.ANIMATED) {
+            transform = 'translate(0, -' + translate + '%)';
+        } else {
+            transform = 'translate(0, -' + translate + '%)';
+        }
+
+        $pages.style.transform = transform;
+
+        if (preventAnimation) {
+            $pages.style.transition = 'none';
+
+            setTimeout(function () {
+                $pages.style.transition = null;
+            }, 50);
+        }
+    }
+    function scrollToActivePageSetting(preventAnimation) {
+        var index = $scope.pages.length+$scope.pagesSetting.indexOf(activePage);
+
+        var translate = index * 100;
+
+        var $pages = document.getElementById("pages");
+
+        var transform;
+
+        if (CONFIG.transition === TRANSITIONS.ANIMATED_GPU) {
+            transform = 'translate3d(0, -' + translate + '%, 0)';
+        } else if (CONFIG.transition === TRANSITIONS.ANIMATED) {
+            transform = 'translate(0, -' + translate + '%)';
+        } else {
+            transform = 'translate(0, -' + translate + '%)';
+        }
+
+        $pages.style.transform = transform;
+
+        if (preventAnimation) {
+            $pages.style.transition = 'none';
+
+            setTimeout(function () {
+                $pages.style.transition = null;
+            }, 50);
+        }
+    }
+    $scope.isPageActive = function (page) {
+        return activePage === page;
+    };
+
+    $scope.shouldDrawPage = function (page) {
+        if (CONFIG.transition === TRANSITIONS.SIMPLE) {
+            return $scope.isPageActive(page);
+        }
+
+        return true;
+    };
+
+    $scope.isHidden = function (object, entity) {
+        if (object==null ) return false;
+        if (!('hidden' in object)) return false;
+
+        if (typeof object.hidden === "function") {
+            return callFunction(object.hidden, [object, entity]);
+        }
+
+        return object.hidden;
+    };
+
+    $scope.swipeUp = function () {
+        var index = $scope.pages.indexOf(activePage);
+
+        if ($scope.pages[index + 1]) {
+            $scope.openPage($scope.pages[index + 1]);
+        }
+    };
+
+    $scope.swipeDown = function () {
+        var index = $scope.pages.indexOf(activePage);
+
+        if ($scope.pages[index - 1]) {
+            $scope.openPage($scope.pages[index - 1]);
+        }
+    };
+
+    $scope.toggleSelect = function (item) {
+        if ($scope.selectOpened(item)) {
+            $scope.closeActiveSelect();
+        } else {
+            $scope.openSelect(item);
+        }
+    };
+
+    $scope.openSelect = function (item) {
+        $scope.activeSelect = item;
+    };
+
+    $scope.closeActiveSelect = function () {
+        $scope.activeSelect = null;
+    };
+
+    $scope.selectOpened = function (item) {
+        return $scope.activeSelect === item;
+    };
+
+    $scope.inputAlarm = function (num) {
+        $scope.alarmCode = $scope.alarmCode || "";
+
+        $scope.alarmCode += num;
+    };
+
+    $scope.clearAlarm = function () {
+        $scope.alarmCode = "";
+    };
+
+    $scope.sendDatetime = function () {
+        if (!$scope.activeDatetimeValid()) return;
+
+        var item = $scope.activeDatetime;
+        var entity = $scope.getItemEntity(item);
+
+        var str = $scope.getActiveDatetimeInput();
+        var dt = str.split(' ');
+
+        var data = {
+            entity_id: item.id
+        };
+
+        if (entity.attributes.has_date) data.date = dt[0];
+        if (entity.attributes.has_time) data.time = dt[1] || dt[0];
+
+        // sendItemData(item, {
+        //     type: "call_service",
+        //     domain: "input_datetime",
+        //     service: "set_datetime",
+        //     service_data: data
+        // });
+    };
+
+    $scope.inputDatetime = function (num) {
+        var entity = $scope.getItemEntity($scope.activeDatetime);
+
+        if (!entity) return;
+
+        var placeholder = getDatetimePlaceholder(entity);
+
+        placeholder = placeholder.replace(/\W/gi, "");
+
+        $scope.datetimeString = $scope.datetimeString || "";
+
+        if ($scope.datetimeString.length >= placeholder.length) return;
+
+        $scope.datetimeString += num;
+    };
+
+    $scope.clearCharDatetime = function () {
+        if ($scope.datetimeString) {
+            $scope.datetimeString = $scope.datetimeString
+                .slice(0, $scope.datetimeString.length - 1);
+        }
+    };
+
+    $scope.getActiveDatetimeInput = function () {
+        var entity = $scope.getItemEntity($scope.activeDatetime);
+        var placeholder = getDatetimePlaceholder(entity);
+
+        var res = $scope.datetimeString || "";
+
+        var i = 0;
+
+        return placeholder.replace(/\w|\W/gi, function (match, index) {
+            if (i >= res.length) return "";
+
+            if (/\W/.test(match)) return match;
+
+            return res[i++];
+        });
+    };
+
+    $scope.getActiveDatetimePlaceholder = function () {
+        var entity = $scope.getItemEntity($scope.activeDatetime);
+        var placeholder = getDatetimePlaceholder(entity);
+
+        var dt = $scope.getActiveDatetimeInput() || "";
+
+        return placeholder.slice(dt.length);
+    };
+
+    $scope.activeDatetimeValid = function () {
+        var entity = $scope.getItemEntity($scope.activeDatetime);
+
+        if (!entity) return false;
+
+        var placeholder = getDatetimePlaceholder(entity);
+
+        placeholder = placeholder.replace(/\W/gi, "");
+
+        $scope.datetimeString = $scope.datetimeString || "";
+
+        return $scope.datetimeString.length === placeholder.length;
+    };
+
+    function getDatetimePlaceholder(entity) {
+        var res = [];
+
+        if (!entity || !entity.attributes) return null;
+
+        if (entity.attributes.has_date) res.push("YYYY-MM-DD");
+        if (entity.attributes.has_time) res.push("hh:mm");
+
+        return res.join(" ");
+    }
+
+
+    /// INIT
+
+    /* Api.onError(function (data) {
+         console.error(data);
+         addError(data.message);
+     });
+
+     Api.onReady(function () {
+         Api.subscribeEvents("state_changed", function (res) {
+             debugLog('subscribed to state_changed', res);
+         });
+
+         Api.subscribeEvents("tileboard", function (res) {
+             debugLog('subscribed to tileboard', res);
+         });
+
+         Api.getStates(function (res) {
+             if (res.success) {
+                 debugLog(res.result);
+
+                 // in case of development, when sensors are predefined
+                 if (window.DEBUG_SENSORS) {
+                     setStates(DEBUG_SENSORS);
+                 } else {
+                     setStates(res.result);
+                 }
+             }
+
+             $scope.ready = true;
+
+             var pageNum = $location.hash();
+
+             if (!CONFIG.rememberLastPage || !$scope.pages[pageNum]) {
+                 pageNum = 0;
+             }
+
+             $scope.openPage($scope.pages[pageNum], null, true);
+
+             updateView();
+         });
+     });
+
+     Api.onUnready(function () {
+         $scope.ready = false;
+
+         updateView();
+     });
+
+     Api.onMessage(function (data) {
+         handleMessage(data);
+     });
+ */
+    angular.element(window).on('view:updated', function () {
+        updateView();
+    });
+
+    $scope.$watchGroup([
+        'activePage.scrolledVertically',
+        'activePage.scrolledHorizontally',
+    ], updateView);
+
+    function calcGroupSizes(group) {
+        var maxWidth = 1;
+        var maxHeight = 1;
+
+        for (var i = 0; i < group.items.length; i++) {
+            var item = group.items[i];
+
+            maxHeight = Math.max(maxHeight, (item.position ? item.position[1] : 0) + (item.height || 1));
+            maxWidth = Math.max(maxWidth, (item.position ? item.position[0] : 0) + (item.width || 1));
+        }
+
+        return {
+            width: maxWidth,
+            height: maxHeight
+        }
+    }
+
+    function getContext() {
+        return {
+            states: $scope.states,
+            $scope: $scope,
+            parseFieldValue: parseFieldValue.bind(this)
+        };
+    }
+
+    function callFunction(func, args) {
+        if (typeof func !== "function") return func;
+
+        return func.apply(getContext(), args || []);
+    }
+
+    function sendItemData(item, data, callback) {
+        if (item.loading) return;
+
+        item.loading = true;
+
+        Api.send(data, function (res) {
+            item.loading = false;
+
+            updateView();
+
+            if (callback) callback(res);
+        });
+    }
+
+    function getItemFieldValue(field, item, entity) {
+        var value = item[field];
+
+        return parseFieldValue(value, item, entity);
+    }
+
+    function parseFieldValue(value, item, entity) {
+        if (!value) return null;
+
+        if (typeof value === "function") return callFunction(value, [item, entity]);
+        if (typeof value === "string") return parseString(value, entity);
+
+        return value;
+    }
+
+    function parseVariable(value, entity) {
+        if (value[0] === "@") return getObjectAttr(entity, value.slice(1));
+        if (value[0] === "&") return getEntityAttr(value.slice(1));
+
+        return value;
+    }
+
+    function parseString(value, entity) {
+        return value.replace(/([&@][\w\d._]+)/gi, function (match, contents, offset) {
+            if (match[0] === "&" && match.split('.').length < 3) return match;
+
+            var res = parseVariable(match, entity);
+
+            if (typeof res === "undefined") {
+                if (match === value) return "";
+
+                return match;
+            }
+
+            if (res === null) return "";
+
+            return res;
+        });
+    }
+
+    function escapeClass(text) {
+        return text && typeof text === "string" ?
+            text.replace(/[^a-z0-9]/gi, '_').toLowerCase() : 'non';
+    }
+
+    function getEntityAttr(str) {
+        var path = str.split('.');
+
+        if (path.length < 3) return;
+
+        var entity = $scope.states[path.slice(0, 2).join('.')] || null;
+
+        return getObjectAttr(entity, path.slice(2).join('.'));
+    }
+
+    function getObjectAttr(obj, path) {
+        var res = obj;
+
+        path.split('.').forEach(function (key) {
+            res = typeof res === 'object' && res ? res[key] : undefined;
+        });
+
+        return res;
+    }
+
+    function setStates(states) {
+        states.forEach(function (state) {
+            $scope.states[state.entity_id] = state;
+        });
+    }
+
+    function setNewState(key, state) {
+        if (!$scope.states[key]) $scope.states[key] = state;
+
+        for (var k in state) $scope.states[key][k] = state[k];
+    }
+
+    function checkStatesTriggers(key, state) {
+        checkAlarmState(key, state);
+    }
+
+    function checkAlarmState(key, state) {
+        if (key in latestAlarmActions) {
+            var ts = latestAlarmActions[key];
+
+            if (Date.now() - ts < 3000) {
+                $scope.closeAlarm();
+                updateView();
+            }
+        }
+    }
+
+    function triggerEvents(eventData) {
+        if (!CONFIG.events) return;
+
+        CONFIG.events.forEach(function (event) {
+            if (eventData.command !== event.command) return;
+
+            if (typeof event.action === "function") {
+                callFunction(event.action, [eventData]);
+            }
+        });
+    }
+
+    function handleMessage(data) {
+        if (data.type === "event") handleEvent(data.event);
+    }
+
+    function handleEvent(event) {
+        try {
+            if (event.event_type === "state_changed") {
+                debugLog('state change', event.data.entity_id, event.data.new_state);
+
+                setNewState(event.data.entity_id, event.data.new_state);
+                checkStatesTriggers(event.data.entity_id, event.data.new_state);
+            } else if (event.event_type === "tileboard") {
+                debugLog('tileboard', event.data);
+
+                triggerEvents(event.data);
+            }
+        } catch (e) {
+            console.error(e);
+        }
+        updateView();
+    }
+
+    function addError(error) {
+        if (!CONFIG.ignoreErrors) Noty.addObject({
+            type: Noty.ERROR,
+            title: 'Error',
+            message: error,
+            lifetime: 10
+        });
+    }
+
+    function warnUnknownItem(item) {
+        if (!CONFIG.ignoreErrors) Noty.addObject({
+            type: Noty.WARNING,
+            title: 'Entity not found',
+            message: 'Entity id="' + item.id + '" not found, title="'+item.title+'"',
+            id: item.id
+        });
+    }
+
+    function debugLog() {
+        if (CONFIG.debug) {
+            console.log.apply(console, [].slice.call(arguments));
+        }
+    }
+
+    function updateView() {
+        if (!$scope.$$phase) $scope.$digest();
+    }
+
+    window.openPage = function (page) {
+        $scope.openPage(page);
+        updateView();
+    };
+
+
+    $.subscribe('wsConnected', function (_) {
+        // clearTimeout(httpRefreshTimer);
+        subscribeToDevices();
+    });
+    $.subscribe('wsData', function (_, response) {
+        if (response.action == 'subscribed') {
+            console.log('Subscription to devices confirmed.');
+            clearTimeout(subscribedWebSocketsTimer);
+            subscribedWebSockets = 1;
+        }
+        if (response.action == 'devices_data') {
+            var obj = jQuery.parseJSON(response.data);
+            if (typeof obj.DATA != 'object') return false;
+            var objCnt = obj.DATA.length;
+            if (objCnt) {
+                for (var i = 0; i < objCnt; i++) {
+                    setObj(obj.DATA[i]);
+                }
+            }
+        }
+    });
+
+    function setObj(data) {
+
+        if (data.type=="relay") {
+            if (data.status==1) data.state="on"; else data.state="off";
+        }
+        if (data.type=="dimmer"){
+            data.state=data.level;
+        }
+        objs[data.object] = data;
+        updateView();
+    }
+
+    function startWebSockets() {
+        var loc = window.location, new_uri;
+        var serverUrl = '';
+        if (loc.protocol === "https:") {
+            serverUrl = "wss:";
+        } else {
+            serverUrl = "ws:";
+        }
+        serverUrl += "//"+loc.hostname+":8001/majordomo";
+        try {
+            console.log('Conneting to ' + serverUrl);
+            if (window.MozWebSocket) {
+                wsSocket = new MozWebSocket(serverUrl);
+            } else if (window.WebSocket) {
+                wsSocket = new WebSocket(serverUrl);
+            }
+
+        } catch (e) {
+            console.log('Failed connecting to ' + serverUrl);
+            // httpRefreshDevices();
+            return false;
+        }
+        wsSocket.binaryType = 'blob';
+        wsSocket.onopen = function (msg) {
+            ///connected
+            console.log('WS connected (' + serverUrl + ')');
+            startedWebSockets = 1;
+            clearTimeout(wsTimer);
+            clearInterval(httpRefreshTimer);
+            $.publish('wsConnected');
+        };
+        wsSocket.onmessage = function (msg) {
+            console.log('WS data (' + serverUrl + ')');
+            var response;
+            response = JSON.parse(msg.data);
+            console.log('Action: ' + response.action + '; Data: ' + response.data);
+            $.publish('wsData', response);
+            return;
+        };
+        wsSocket.onclose = function (msg) {
+            //disconnected
+            startedWebSockets = 0;
+            httpRefreshTimer = setInterval(
+                function () {
+                    httpRefreshDevices()
+                }, 3000);
+            //wsTimer=setTimeout('startWebSockets();', 5*1000);
+            $.publish('wsDisconnected', []);
+            console.log('WS disconnected (' + serverUrl + ')');
+            return;
+        };
+    }
+
+    function subscribeToDevices() {
+        console.log('Sending devices subscription request...');
+        var payload;
+        payload = new Object();
+        payload.action = 'Subscribe';
+        payload.data = new Object();
+        payload.data.TYPE = 'devices_data';
+        payload.data.DEVICE_ID = '0';
+        wsSocket.send(JSON.stringify(payload));
+        subscribedWebSocketsTimer = setTimeout('subscribeToDevices();', 3000);
+        return false;
+    }
+
+    function httpRefreshDevices() {
+        //clearTimeout(httpRefreshTimer);
+        getJSON('/api/devices/', function (err, data) {
+            if (err != null) {
+                Noty.addObject({
+                    type: Noty.ERROR,
+                    title: 'Error',
+                    message: 'Something went wrong: ' + err,
+                    lifetime: 5
+                });
+            } else {
+                var objCnt = data.devices.length;
+                if (objCnt) {
+                    for (var i = 0; i < objCnt; i++) {
+
+                        if (data.devices[i].type=="relay")
+                            if (data.status==1) data.devices[i].state="on"; else data.devices[i].state="off";
+                        objs[data.devices[i].object] = data.devices[i];
+                    }
+                }
+
+            }
+        });
+        updateView();
+        return true;
+        // httpRefreshTimer = setTimeout('httpRefreshDevices()',3000);
+    }
+
+    function sendItemData(item,entity) {
+
+        var xhr = new XMLHttpRequest();
+
+        if (item.type=="slider") {
+            var json = JSON.stringify({
+                data: entity.state,
+            });
+            xhr.open('POST', '/api/data/'+item.id + '.level', true);
+            xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+            xhr.send(json);
+        }
+        if (item.type=="switch") {
+            xhr.open('GET', '/api/method/' + item.id + '.switch', true);
+            xhr.send();
+        }
+        xhr.onreadystatechange = function () {
+            if (xhr.status === 200 && xhr.readyState == 4) {
+
+                // alert('ok');
+
+
+            }
+        }
+    }
+
+
+
+
+
+
+}
