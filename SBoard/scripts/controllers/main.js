@@ -581,7 +581,7 @@ function MainController($scope, $location, ngModel) {
                         }
                     else
                     {
-                        if (CONFIG.pages.length>=0) {
+                        if (CONFIG.pages.length>0) {
                             activePage = CONFIG.pages[0];
                             scrollToActivePage(true);
                             $scope.activePage = activePage;
