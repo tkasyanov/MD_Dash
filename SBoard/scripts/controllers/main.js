@@ -508,7 +508,7 @@ function MainController($scope, $location, ngModel) {
     };
 
     function getJsonConfig() {
-        getJSON('/api/devices/', function (err, data) {
+        getJSON('/api.php/devices/', function (err, data) {
             if (err != null) {
                 Noty.addObject({
                     type: Noty.ERROR,
@@ -3280,7 +3280,7 @@ function MainController($scope, $location, ngModel) {
 
     function httpRefreshDevices() {
         //clearTimeout(httpRefreshTimer);
-        getJSON('/api/devices/', function (err, data) {
+        getJSON('/api.php/devices/', function (err, data) {
             if (err != null) {
                 Noty.addObject({
                     type: Noty.ERROR,
@@ -3314,12 +3314,12 @@ function MainController($scope, $location, ngModel) {
             var json = JSON.stringify({
                 data: entity.state,
             });
-            xhr.open('POST', '/api/data/'+item.id + '.level', true);
+            xhr.open('POST', '/api.php/data/'+item.id + '.level', true);
             xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
             xhr.send(json);
         }
         if (item.type=="switch") {
-            xhr.open('GET', '/api/method/' + item.id + '.switch', true);
+            xhr.open('GET', '/api.php/method/' + item.id + '.switch', true);
             xhr.send();
         }
         xhr.onreadystatechange = function () {
