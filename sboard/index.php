@@ -60,7 +60,7 @@
     <script src="scripts/init.js"></script>
     <script src="scripts/directives.js?v1_2"></script>
 
-    <script src="scripts/controllers/main.js?v1_2"></script>
+    <script src="scripts/controllers/main.js?v1_201"></script>
     <script src="scripts/controllers/noty.js"></script>
     <script src="scripts/controllers/screensaver.js"></script>
 </head>

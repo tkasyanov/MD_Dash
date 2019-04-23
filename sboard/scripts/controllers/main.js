@@ -820,6 +820,7 @@ App.controller('Main', function MainController($scope, $location, $sce) {
 
                         //COMMENT IF LOCAL
                         CONFIG = convertToObject(data.config);
+
                         //CONFIG.pageSettingIndex=CONFIG.pages.push(convertToObject($scope.pageSetting));
                         $scope.tileConfig = tile;
                         $scope.customTheme = CONFIG.customTheme;
@@ -840,7 +841,7 @@ App.controller('Main', function MainController($scope, $location, $sce) {
                             $scope.showheader = "on";
                             $scope.pagesSetting[0].groups[0].items[1].id = {"state": "on"};
                         }
-                        if ($scope.showheader == "on")
+                        if ($scope.showheader == "on" && typeof CONFIG.header=="object")
                             CONFIG.header.left = [{
                                 type: HEADER_ITEMS.DATETIME,
                                 dateFormat: 'EEEE, LLLL dd', //https://docs.angularjs.org/api/ng/filter/date
