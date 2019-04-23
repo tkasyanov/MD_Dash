@@ -846,8 +846,11 @@ App.controller('Main', function MainController($scope, $location, $sce) {
                                 type: HEADER_ITEMS.DATETIME,
                                 dateFormat: 'EEEE, LLLL dd', //https://docs.angularjs.org/api/ng/filter/date
                             }];
-                        else
-                            CONFIG.header.left = [];
+                        else {
+                            CONFIG.header = {};
+                            CONFIG.header.left = {};
+                            CONFIG.header.right ={};
+                        }
 
                         bodyClass = null;
                         $scope.getBodyClass();
