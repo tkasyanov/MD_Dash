@@ -1,10 +1,8 @@
 <?php
 /**
 * SBoard 
-* @package project
-* @author Wizard <sergejey@gmail.com>
-* @copyright http://majordomo.smartliving.ru/ (c)
-* @version 0.1 (wizard, 17:02:45 [Feb 25, 2019])
+
+* @version 1.1
 */
 //
 //

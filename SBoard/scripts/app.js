@@ -29,6 +29,7 @@ var PASSWORD_TYPES = {};
 
 var TYPES = {
     DEVICE_TRACKER: 'device_tracker',
+    TERMOSTAT: 'termostat',
     SCRIPT: 'script',
     AUTOMATION: 'automation',
     SENSOR: 'sensor',

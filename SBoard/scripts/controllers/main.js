@@ -6,7 +6,7 @@ var CONFIG = {
     tileMargin: 6,
     doorEntryTimeout: 1000,
     authToken: null, // optional: make an long live token and put it here
-    //googleApiKey: "XXXXXXXXXX", // Required if you are using Google Maps for device tracker
+    // Required if you are using Google Maps for device tracker
     debug: false, // Prints entities and state change info to the console.
 
     // next fields are optional
@@ -30,10 +30,13 @@ var CONFIG = {
 
     pages: {}
 };
+var temp_properties = [];
+var editingMode = false;
+var objs = {};
 saveConfigAction = function () {
     var xhr = new XMLHttpRequest();
 
-    xhr.open('POST', '/SBoard/json.php');
+    xhr.open('POST', '/sboard/json.php');
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify(CONFIG));
 
@@ -46,14 +49,11 @@ saveConfigAction = function () {
     //$scope.getBodyClass();
     // $scope.editingMode = !$scope.editingMode;
 };
-var  tile = {
+var tile = {
     "sensor": {
         "title": "string",
         "unit": "string",
         "example": {
-            "id": {
-                "state": "0"
-            },
             "state": false,
             "title": "example",
             "unit": "C"
@@ -68,9 +68,6 @@ var  tile = {
             "step": "int"
         },
         "example": {
-            "id": {
-                "state": 0
-            },
             "unit": "%",
             "bottom": true,
             "slider": {
@@ -87,9 +84,6 @@ var  tile = {
         "states": "array[2]",
         "icons": "array[2]",
         "example": {
-            "id": {
-                "state": "on"
-            },
             "title": "example",
             "states": {
                 "on": "On",
@@ -107,9 +101,6 @@ var  tile = {
         "states": "array[2]",
         "icons": "array[2]",
         "example": {
-            "id": {
-                "state": "on"
-            },
             "title": "example_switch",
             "subtitle": "Kitchen",
             "states": {
@@ -137,6 +128,21 @@ var  tile = {
             }
         }
     },
+    "input_number": {
+        "title": "string",
+        "attributes": "array",
+        "example": {
+            "title": "Tile size",
+            "id": {
+                "attributes": {
+                    "step": 25,
+                    "min": 25,
+                    "max": 250
+                }
+            },
+            "value": 150,
+        }
+    },
     "progress": {
         "title": "string",
         "value": "float",
@@ -145,7 +151,6 @@ var  tile = {
         "color": "string",
         "refresh": "int",
         "example": {
-            "id": [],
             "title": "Progress",
             "value": "50",
             "unit": "%",
@@ -157,7 +162,6 @@ var  tile = {
         "refresh": "int",
         "url": "string",
         "example": {
-            "id": [],
             "refresh": 0,
             "url": "http:\/\/www.youtube.com\/embed\/M7lc1UVf-VE?autoplay=1&origin=http:\/\/example.com"
         }
@@ -169,7 +173,6 @@ var  tile = {
         "options": [],
         "example": {
             "title": "example_graph",
-            "id": [],
             "width": 2,
             "tile_color": "white",
             "data": [
@@ -227,79 +230,115 @@ var  tile = {
         "example": {
             "title": "example_custom",
             "icon": "mdi-monitor",
-            "id": [],
             "action": "\/function(item, entity){\n                        alert('test');\n                    }\/"
         }
     },
-    "media_player" : {
+    "media_player": {
         "title": "string",
         "hideSource": "boolen",
         "hideMuteButton": "boolen",
-        "state":"boolen" ,
+        "state": "boolen",
         "example": {
-            "title": "example_custom",
-            "id": [],
-            "hideSource" : false,
+            "hideSource": false,
             "hideMuteButton": false,
-            "state":true
+            "state": true
         }
 
+    },
+    "camera": {
+        "bgSize": "string",
+        "refresh": "int",
+        "example": {
+            "bgSize": "cover",
+            "fullscreen": "camera",
+            "refresh": 0,
+
+        }
+    },
+    "device_tracker": {
+        "zoomLevels": "array", // or [9] for only one map slide
+        "hideEntityPicture": "bool", //hide entity pic, if you need only map
+        "slidesDelay": "int",
+        "example": {
+            "zoomLevels": [9, 13, 15],
+            "hideEntityPicture": true,
+            "slidesDelay": 2
+
+        }
+
+    },
+    "termostat": {
+        "example": {
+            "width": 3,
+            "height": 1,
+            "controlsEnabled": false,
+            "property": ["currentTargetValue", "value", "normalTargetValue", "ecoTargetValue"]
+        }
     }
 };
-App.controller('Main', ['$scope', '$location',MainController]);
-function MainController($scope, $location, ngModel) {
+App.controller('Main', function MainController($scope, $location, $sce) {
     if (!window.CONFIG) return;
+
     $scope.iconData = [];
     $scope.icons = [];
     $scope.pageIcon = {};
     $scope.pageBg = {};
     $scope.selected = 'mdi-vector-square';
-    var http=$.get('//cdn.materialdesignicons.com/1.8.36/meta.json', function( data ) {
+    var http = $.get('//cdn.materialdesignicons.com/1.8.36/meta.json', function (data) {
         $scope.iconData = data;
         $scope.icons = data.map(function (v) {
             return v.name;
         }).slice(0, 301);
     });
 
-    $scope.selectImage = function(i){
+    $scope.selectImage = function (i) {
         $scope.pageBg.img = i.thumb;
     }
-    $scope.images =[{
-        id:1,
-        thumb:'/SBoard/images/bg1.jpg'
+    $scope.images = [{
+        id: 1,
+        thumb: '/sboard/images/bg1.jpg'
     },
         {
-            id:2,
-            thumb:'/SBoard/images/bg2.png'
+            id: 2,
+            thumb: '/sboard/images/bg2.png'
         },
         {
-            id:3,
-            thumb:'/SBoard/images/bg3.jpg'
+            id: 3,
+            thumb: '/sboard/images/bg3.jpg'
         },
         {
-            id:4,
-            thumb:'/SBoard/images/bg4.jpg'
+            id: 4,
+            thumb: '/sboard/images/bg4.jpg'
         },
         {
-            id:5,
-            thumb:'/SBoard/images/bg5.jpg'
+            id: 5,
+            thumb: '/sboard/images/bg5.jpg'
         },
         {
-            id:6,
-            thumb:'/SBoard/images/bg6.jpg'
+            id: 6,
+            thumb: '/sboard/images/bg6.jpg'
         },
         {
-            id:7,
-            thumb:'/SBoard/images/bg7.jpg'
+            id: 7,
+            thumb: '/sboard/images/bg7.jpg'
         }
     ];
     $scope.searchTerm = '';
     $scope.selectIcon = function (icon) {
         $scope.pageIcon.Icon = 'mdi-' + icon;
-        $scope.searchTerm= 'mdi-' + icon;
+        $scope.searchTerm = 'mdi-' + icon;
 
     };
-    $scope.$watch('pageIcon.Icon',function (term) {
+    $scope.tab = 1;
+
+    $scope.setTab = function (newTab) {
+        $scope.tab = newTab;
+    };
+
+    $scope.isSet = function (tabNum) {
+        return $scope.tab === tabNum;
+    };
+    $scope.$watch('pageIcon.Icon', function (term) {
 
         if (typeof term == 'undefined'
             || term == null || term == ''
@@ -347,30 +386,88 @@ function MainController($scope, $location, ngModel) {
     $scope.jsonData = null;
     $scope.groupName = "";
     $scope.pageTitle = "";
+    $scope.sliders_termostat =
+        [
+            {
+                "id": 1,
+                "title": "Пн"
+            },
+            {
+                "id": 2,
+                "title": "Вт"
+            },
+            {
+                "id": 3,
+                "title": "Ср"
+            },
+            {
+                "id": 4,
+                "title": "Чт"
+            },
+            {
+                "id": 5,
+                "title": "Пт"
+            },
+            {
+                "id": 6,
+                "title": "Сб"
+            },
+            {
+                "id": 7,
+                "title": "Вс"
+            }
+
+        ];
+    $scope.addItem = function (id) {
+        $scope.probs[id].push({
+            p: Math.random()
+        });
+    }
+    $scope.removeItem = function (id) {
+        $scope.probs[id].pop();
+    }
+    $scope.probs = {};
+    for (i = 1; i <= 7; i++) {
+        $scope.probs[i] = [{
+            p: 0,
+            //symbol: $sce.trustAsHtml('0')
+        }, {
+            p: 1440,
+            //symbol: $sce.trustAsHtml('1440')
+        }, {
+            p: 0,
+            //  symbol: $sce.trustAsHtml('0')
+        }];
+    }
+
 
     $scope.sizes = [
+        {'id': 0.5, 'label': '0.5'},
         {'id': 1, 'label': '1'},
         {'id': 2, 'label': '2'},
         {'id': 3, 'label': '3'},
         {'id': 4, 'label': '4'},
+        {'id': 5, 'label': '5'},
+        {'id': 6, 'label': '6'},
+        {'id': 7, 'label': '7'},
     ];
     $scope.pagesSetting = convertToObject([{
-        "title":"Setting",
-        "bg":"images\/bg2.png",
-        "icon":"mdi-settings",
-        "groups":[
+        "title": "Setting",
+        "bg": "images\/bg2.png",
+        "icon": "mdi-settings",
+        "groups": [
             {
-                "title":"Theme",
-                "items":[
+                "title": "Theme",
+                "items": [
                     {
-                        "position":[
+                        "position": [
                             0,
                             0
                         ],
-                        "type":"input_select",
-                        "id":{
-                            "attributes":{
-                                "options":[
+                        "type": "input_select",
+                        "id": {
+                            "attributes": {
+                                "options": [
                                     "win10",
                                     "transparent",
                                     "material",
@@ -382,9 +479,136 @@ function MainController($scope, $location, ngModel) {
                                 ]
                             }
                         },
-                        "value":"win10",
-                        "title":"Theme",
-                        "action":"\/Function(function (item,entity){CONFIG.customTheme=item.value;saveConfigAction();return false;})\/"
+                        "value": "win10",
+                        "title": "Theme",
+                        "setting": true,
+                        "action": function (item, entity) {
+                            CONFIG.customTheme = item.value;
+                            saveConfigAction();
+                            return false;
+                        }
+                    },
+                    {
+                        "position": [
+                            0,
+                            1
+                        ],
+                        "id": {},
+                        "type": "switch",
+                        "states": {
+                            "on": "On",
+                            "off": "Off"
+                        },
+                        "icons": {
+                            "on": "mdi-checkbox-marked",
+                            "off": "mdi-checkbox-blank-outline"
+                        },
+                        "setting": true,
+                        "title": "Show Header",
+                        "action": function (item, entity) {
+                            if (item.id.state == "on")
+                                CONFIG.showheader = "off";
+                            else
+                                CONFIG.showheader = "on";
+                            saveConfigAction();
+                            return false;
+                        }
+                    },
+                    {
+                        "position": [
+                            1,
+                            0
+                        ],
+                        "type": "input_select",
+                        "id": {
+                            "attributes": {
+                                "options": [
+                                    "small",
+                                    "normal",
+                                    "big"
+                                ]
+                            }
+                        },
+                        "value": "normal",
+                        "title": "size",
+                        "setting": true,
+                        "action": function (item, entity) {
+                            CONFIG.entitySize = item.value;
+                            saveConfigAction();
+                            return false;
+                        }
+                    },
+                    {
+                        "position": [1, 1],
+                        "type": "input_number",
+                        "title": "Tile size",
+                        "setting": true,
+                        "id": {
+                            "attributes": {
+                                "step": 25,
+                                "min": 75,
+                                "max": 250
+                            },
+                            "state": 150,
+                        },
+
+                        "action": function (item, entity) {
+                            if (item.value > 25) {
+                                CONFIG.tileSize = item.value;
+                                saveConfigAction();
+                                return false;
+                            }
+                        }
+                    }
+
+
+                ]
+            },
+            {
+                "title": "General",
+                "items": [
+                    {
+                        "position": [
+                            0,
+                            0
+                        ],
+                        "id": {},
+                        "type": "switch",
+                        "states": {
+                            "on": "On",
+                            "off": "Off"
+                        },
+                        "icons": {
+                            "on": "mdi-checkbox-marked",
+                            "off": "mdi-checkbox-blank-outline"
+                        },
+                        "setting": true,
+                        "title": "Websocket",
+                        "action": function (item, entity) {
+                            if (item.id.state == "on")
+                                CONFIG.websocket = "off";
+                            else
+                                CONFIG.websocket = "on";
+                            saveConfigAction();
+                            return false;
+                        }
+                    },
+                    {
+                        "position": [
+                            1,
+                            0
+                        ],
+                        "id": {},
+                        "type": "custom",
+                        //"icon":"mdi-pencil-outline",
+                        "icon": "mdi-playlist-edit",
+                        "setting": true,
+                        "title": "Edit config",
+                        "action": function (item, entity) {
+                            $scope.cofigJson.data = CONFIG;
+                            $scope.editConfig = true;
+                            return false;
+                        }
                     }
                 ]
             }
@@ -397,20 +621,20 @@ function MainController($scope, $location, ngModel) {
         {
             text: 'Configure Tile',
             html: '<a href="#"><i class="fa fa-gear" aria-hidden="true"></i>&nbsp;&nbsp;Configure Tile</a>',
-            click:  function ($itemScope, $event, modelValue, text, $li) {
-                $scope.editTileClick($itemScope.$parent.item,$itemScope.$parent );
+            click: function ($itemScope, $event, modelValue, text, $li) {
+                $scope.editTileClick($itemScope.$parent.item, $itemScope.$parent);
             }
         },
         {
             html: '<a href="#"><i class="fa fa-plus-square-o" aria-hidden="true"></i>&nbsp;&nbsp;Add Tile</a>',
-            click:  function ($itemScope, $event, modelValue, text, $li) {
-                $scope.openAddTilePopup($itemScope.$parent.$parent.$parent.group );
+            click: function ($itemScope, $event, modelValue, text, $li) {
+                $scope.openAddTilePopup($itemScope.$parent.$parent.$parent.group);
             }
         },
         {
             html: '<a href="#"><i class="fa fa-remove" aria-hidden="true"></i>&nbsp;&nbsp;Remove Tile</a>',
-            click:  function ($itemScope, $event, modelValue, text, $li) {
-                $scope.removeTileClick($itemScope.$parent.item,$itemScope.$parent );
+            click: function ($itemScope, $event, modelValue, text, $li) {
+                $scope.removeTileClick($itemScope.$parent.item, $itemScope.$parent);
             }
         }];
 
@@ -419,34 +643,35 @@ function MainController($scope, $location, ngModel) {
         {
             text: 'Configure Tile',
             html: '<a href="#"><i class="fa fa-gear" aria-hidden="true"></i>&nbsp;&nbsp;Configure Group</a>',
-            click:  function ($itemScope, $event, modelValue, text, $li) {
-                $scope.openEditGroupPopup($itemScope.$parent.group,$itemScope.$parent.$parent);
+            click: function ($itemScope, $event, modelValue, text, $li) {
+                $scope.openEditGroupPopup($itemScope.$parent.group, $itemScope.$parent.$parent);
             }
         },
         {
             html: '<a href="#"><i class="fa fa-plus-square-o" aria-hidden="true"></i>&nbsp;&nbsp;Add Group</a>',
-            click:  function ($itemScope, $event, modelValue, text, $li) {
-                $scope.openAddGroupPopup($itemScope.$parent.group,);
+            click: function ($itemScope, $event, modelValue, text, $li) {
+                $scope.openAddGroupPopup($itemScope.$parent.group);
             }
         },
         {
             html: '<a href="#"><i class="fa fa-plus-square-o" aria-hidden="true"></i>&nbsp;&nbsp;Add Tile</a>',
-            click:  function ($itemScope, $event, modelValue, text, $li) {
-                $scope.openAddTilePopup($itemScope.$parent.group, );
+            click: function ($itemScope, $event, modelValue, text, $li) {
+                $scope.openAddTilePopup($itemScope.$parent.group);
             }
         },
         {
             html: '<a href="#"><i class="fa fa-remove" aria-hidden="true"></i>&nbsp;&nbsp;Remove Group</a>',
-            click:  function ($itemScope, $event, modelValue, text, $li) {
-                $scope.removeGroupClick($itemScope.$parent.group,$itemScope.$parent);
+            click: function ($itemScope, $event, modelValue, text, $li) {
+                $scope.removeGroupClick($itemScope.$parent.group, $itemScope.$parent);
             }
         }];
 
-    if (typeof($scope.jsonData)==="object" && $scope.jsonData !==null)
+    if (typeof($scope.jsonData) === "object" && $scope.jsonData !== null)
         $scope.jsonStringData = convertToString($scope.jsonData);
 
     $scope.positionCss = {position: "absolute", top: "30px", left: "40px"};
     $scope.objJson = {data: $scope.jsonData, options: {mode: 'tree'}};
+    $scope.cofigJson = {data: CONFIG, options: {mode: 'tree'}};
     $scope.changeOptions = function (param) {
         $scope.objJson.options.mode = param;
         $scope.changeInputStyle(param);
@@ -454,10 +679,11 @@ function MainController($scope, $location, ngModel) {
     $scope.pretty = function (objJson) {
         return objJson;
     };
+    $scope.Math = window.Math;
 
     var wsTimer = 0;
     var startedWebSockets = 0;
-    var objs = {};
+
 
     var httpRefreshTimer = 0;
     var subscribedWebSockets = 0;
@@ -480,6 +706,7 @@ function MainController($scope, $location, ngModel) {
     var editGroup = false;
     var editPage = false;
     var editTile = false;
+    var editConfig = false;
 
     $scope.selectedWidth = null;
     $scope.selectedHeight = null;
@@ -491,8 +718,15 @@ function MainController($scope, $location, ngModel) {
     $scope.tileTypeList = null;
     $scope.tileConfig = null;
     $scope.tileDevice = null;
+    $scope.tileObjectArray = [];
+    $scope.tileDeviceArray = [];
+    // $scope.tileDeviceArrayName =[];
+    $scope.tileDevicePropertyArray = null;
     $scope.exampleHTML = "";
     $scope.drag = false;
+    $scope.selectedDevice = null;
+    $scope.selectedProperty = null;
+    $scope.selectedObject = null;
 
 
     var defaultDropPlace = {
@@ -508,7 +742,7 @@ function MainController($scope, $location, ngModel) {
     };
 
     function getJsonConfig() {
-        getJSON('/api.php/devices/', function (err, data) {
+        getJSON('/api.php/objects/', function (err, data) {
             if (err != null) {
                 Noty.addObject({
                     type: Noty.ERROR,
@@ -517,21 +751,23 @@ function MainController($scope, $location, ngModel) {
                     lifetime: 5
                 });
             } else {
-                var objCnt = data.devices.length;
-                if (objCnt) {
-                    for (var i = 0; i < objCnt; i++) {
-                        if (data.devices[i].type=="relay")
-                            if (data.devices[i].status==1) data.devices[i].state="on"; else data.devices[i].state="off";
-                        if (data.devices[i].type=="dimmer"){
-                            data.devices[i].state=data.devices[i].level;
-                        }
-                        objs[data.devices[i].object] = data.devices[i];
-                    }
-                    $scope.tileDevice = objs;
-                }
 
+                for (var dev in data.objects) {
+                    if (typeof objs[data.objects[dev].TITLE] === "undefined")
+                        objs[data.objects[dev].TITLE] = {};
+                    for (var prop in data.objects[dev]) {
+                        objs[data.objects[dev].TITLE][prop] = data.objects[dev][prop];
+                    }
+                    $scope.tileObjectArray[data.objects[dev].ID] = {}
+                    $scope.tileObjectArray[data.objects[dev].ID].id = data.objects[dev].ID;
+                    $scope.tileObjectArray[data.objects[dev].ID].name = data.objects[dev].TITLE;
+                    //   $scope.tileDeviceArrayName[data.objects[dev].TITLE]=data.objects[dev].ID;
+                }
+                $scope.tileDevice = objs;
             }
-            getJSON('/SBoard/json.php', function (err, data) {
+
+
+            getJSON('/api.php/devices/', function (err, data) {
                 if (err != null) {
                     Noty.addObject({
                         type: Noty.ERROR,
@@ -540,79 +776,235 @@ function MainController($scope, $location, ngModel) {
                         lifetime: 5
                     });
                 } else {
-
-                    //COMMENT IF LOCAL
-                    CONFIG = convertToObject(data.config);
-                    //CONFIG.pageSettingIndex=CONFIG.pages.push(convertToObject($scope.pageSetting));
-                    $scope.tileConfig = tile;
-                    $scope.customTheme = CONFIG.customTheme;
-                    $scope.pagesSetting[0].groups[0].items[0].value  = CONFIG.customTheme;
-
-
-                    if (CONFIG.header == null) {
-                        CONFIG.header = {
-                            styles: {
-                                padding: '0px 130px 0',
-                                fontSize: '28px'
-                            },
-                            right: [],
-                            left: []
-                        };
-                    }
-                    bodyClass = null;
-                    $scope.getBodyClass();
-                    $scope.pages = CONFIG.pages;
-                    $scope.tileTypeList = Object.keys($scope.tileConfig);
-
-                    var pageIndex = localStorage.getItem('page');
-                    //pageIndex=0;
-                    if (pageIndex && pageIndex < CONFIG.pages.length + $scope.pagesSetting.length && pageIndex>=0)
-                        if (pageIndex>=CONFIG.pages.length) {
-                            activePage = $scope.pagesSetting[pageIndex - CONFIG.pages.length];
-                            scrollToActivePageSetting(true);
-                            $scope.activePage = activePage;
-                            $scope.selectedItem = activePage.groups[0];
-                        }
-                        else {
-                            activePage = CONFIG.pages[pageIndex];
-                            scrollToActivePage(true);
-                            $scope.activePage = activePage;
-                            $scope.selectedItem = activePage.groups[0];
-                        }
-                    else
-                    {
-                        if (CONFIG.pages.length>0) {
-                            activePage = CONFIG.pages[0];
-                            scrollToActivePage(true);
-                            $scope.activePage = activePage;
-                            $scope.selectedItem = activePage.groups[0];
-
+                    for (i in data.devices) {
+                        if (data.devices[i].type == "relay")
+                            if (data.devices[i].status == 1) data.devices[i].state = "on"; else data.devices[i].state = "off";
+                        if (data.devices[i].type == "dimmer") {
+                            data.devices[i].state = data.devices[i].level;
                         }
                     }
+                    /*var objCnt = data.devices.length;
+                    if (objCnt) {
+                        for (var i = 0; i < objCnt; i++) {
+                            if (data.devices[i].type == "relay")
+                                if (data.devices[i].status == 1) data.devices[i].state = "on"; else data.devices[i].state = "off";
+                            if (data.devices[i].type == "dimmer") {
+                                data.devices[i].state = data.devices[i].level;
+                            }
+                        }*/
 
-                    $scope.ready = true;
-                    $scope.$digest();
-                    //activePage = CONFIG.activePage;
-
-                    try {
-                        startWebSockets();
-
-                    } catch (e) {
-                        //     httpRefreshDevices();
+                    for (var dev in data.devices) {
+                        if (typeof objs[data.devices[dev].object] === "undefined")
+                            objs[data.devices[dev].object] = {};
+                        for (var prop in data.devices[dev]) {
+                            objs[data.devices[dev].object][prop] = data.devices[dev][prop];
+                            //   objs[data.devices[dev].object] = data.devices[i];
+                        }
+                        $scope.tileDeviceArray[data.devices[dev].id] = {}
+                        $scope.tileDeviceArray[data.devices[dev].id].id = data.devices[dev].id;
+                        $scope.tileDeviceArray[data.devices[dev].id].name = data.devices[dev].object;
+                        $scope.tileDeviceArray[data.devices[dev].id].title = data.devices[dev].title;
                     }
+
 
                 }
+                getJSON('/sboard/json.php', function (err, data) {
+                    if (err != null) {
+                        Noty.addObject({
+                            type: Noty.ERROR,
+                            title: 'Error',
+                            message: 'Something went wrong: ' + err,
+                            lifetime: 5
+                        });
+                    } else {
+
+                        //COMMENT IF LOCAL
+                        CONFIG = convertToObject(data.config);
+                        //CONFIG.pageSettingIndex=CONFIG.pages.push(convertToObject($scope.pageSetting));
+                        $scope.tileConfig = tile;
+                        $scope.customTheme = CONFIG.customTheme;
+                        $scope.pagesSetting[0].groups[0].items[0].value = CONFIG.customTheme;
+                        $scope.pagesSetting[0].groups[0].items[2].value = CONFIG.entitySize;
+                        $scope.pagesSetting[0].groups[0].items[3].id.state = CONFIG.tileSize;
+                        if (CONFIG.websocket == "on" || CONFIG.websocket == "off") {
+                            $scope.websocket = CONFIG.websocket;
+                            $scope.pagesSetting[0].groups[1].items[0].id = {"state": CONFIG.websocket};
+                        } else {
+                            $scope.websocket = "on";
+                            $scope.pagesSetting[0].groups[1].items[0].id = {"state": "on"};
+                        }
+                        if (CONFIG.showheader == "on" || CONFIG.showheader == "off") {
+                            $scope.showheader = CONFIG.showheader;
+                            $scope.pagesSetting[0].groups[0].items[1].id = {"state": CONFIG.showheader};
+                        } else {
+                            $scope.showheader = "on";
+                            $scope.pagesSetting[0].groups[0].items[1].id = {"state": "on"};
+                        }
+                        if ($scope.showheader == "on")
+                            CONFIG.header.left = [{
+                                type: HEADER_ITEMS.DATETIME,
+                                dateFormat: 'EEEE, LLLL dd', //https://docs.angularjs.org/api/ng/filter/date
+                            }];
+                        else
+                            CONFIG.header.left = [];
+
+                        bodyClass = null;
+                        $scope.getBodyClass();
+                        $scope.pages = CONFIG.pages;
+                        $scope.tileTypeList = Object.keys($scope.tileConfig);
+
+                        var pageIndex = localStorage.getItem('page');
+                        //pageIndex=0;
+                        if (pageIndex && pageIndex < CONFIG.pages.length + $scope.pagesSetting.length && pageIndex >= 0)
+                            if (pageIndex >= CONFIG.pages.length) {
+                                activePage = $scope.pagesSetting[pageIndex - CONFIG.pages.length];
+                                scrollToActivePageSetting(true);
+                                $scope.activePage = activePage;
+                                $scope.selectedItem = activePage.groups[0];
+                            }
+                            else {
+                                activePage = CONFIG.pages[pageIndex];
+                                scrollToActivePage(true);
+                                $scope.activePage = activePage;
+                                $scope.selectedItem = activePage.groups[0];
+                            }
+                        else {
+                            if (CONFIG.pages.length > 0) {
+                                activePage = CONFIG.pages[0];
+                                scrollToActivePage(true);
+                                $scope.activePage = activePage;
+                                $scope.selectedItem = activePage.groups[0];
+
+                            }
+                        }
+
+                        $scope.ready = true;
+                        $scope.$digest();
+                        //activePage = CONFIG.activePage;
+
+                        for (var page in CONFIG.pages) {
+                            for (var group in CONFIG.pages[page].groups) {
+                                for (var item in CONFIG.pages[page].groups[group].items) {
+                                    var item_config = CONFIG.pages[page].groups[group].items[item]
+                                    if (typeof item_config.id === "object")
+                                        if (typeof item_config.property === "string") {
+                                            if (typeof item_config.id.name === "string")
+                                                temp_properties.push(item_config.id.name + '.' + item_config.property);
+                                        } else if (typeof item_config.property === "object") {
+                                            if (typeof item_config.id.name === "string")
+                                                for (var i = 0; i < item_config.property.length; i++) {
+                                                    temp_properties.push(item_config.id.name + '.' + item_config.property[i]);
+                                                }
+                                        }
+                                }
+                            }
+                        }
+
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('POST', '/api.php/data/');
+                        xhr.setRequestHeader('Content-Type', 'application/json');
+                        xhr.send(JSON.stringify({"properties": temp_properties}));
+                        xhr.onreadystatechange = function () {
+                            if (xhr.status === 200) {
+                                if (xhr.response != "") {
+                                    var obj = jQuery.parseJSON(xhr.response);
+                                    if (typeof obj != 'object') return false;
+                                    for (key in obj.data) {
+                                        var pr_arr = key.split('.');
+                                        objs[pr_arr[0]][pr_arr[1]] = obj.data[key];
+                                    }
+                                }
+
+                                updateView();
+                            }
+                        };
+
+
+                        try {
+                            if (CONFIG.websocket == "on")
+                                startWebSockets();
+                            else
+                                httpRefreshTimer = setInterval(
+                                    function () {
+                                        $scope.httpRefreshDevices()
+                                    }, 3000);
+
+                        } catch (e) {
+                            //     httpRefreshDevices();
+                        }
+
+                    }
+                });
             });
         });
     }
 
+    $scope.propertyShow = function (type) {
+        if (type == "termostat") return false;
+        else return true;
+    }
+
     $scope.changeTileDevices = function (selectedDevices, group) {
+        $scope.tileDevicePropertyArray.selected = undefined;
+        selectedDevices = $scope.tileDeviceArray[$scope.tileDeviceArray.selected];
         if (selectedDevices != null) {
-            $scope.jsonData.id = selectedDevices;
-            $scope.jsonData.title = objs[selectedDevices].title;
+            $scope.jsonData.id = {};
+            $scope.jsonData.id.id = objs[selectedDevices.name].ID;
+            $scope.jsonData.id.name = selectedDevices.name;
+            $scope.jsonData.id.title = selectedDevices.title;
+            $scope.jsonData.title = selectedDevices.title;
+
+
+            getJSON('/api.php/data/' + selectedDevices.name, function (err, data) {
+                if (typeof (data.data) === "object")
+                    $scope.tileDevicePropertyArray = Object.keys(data.data);
+
+            });
+            if (typeof objs[selectedDevices.name].type !== "undefined") {
+                $scope.tileDevicePropertyArray.selected = "status";
+                if (objs[selectedDevices.name].type == "sensor" || objs[selectedDevices.name].type == "sensor_temp")
+                    $scope.tileDevicePropertyArray.selected = "value";
+                if (objs[selectedDevices.name].type == "dimmer")
+                    $scope.tileDevicePropertyArray.selected = "level";
+
+                $scope.jsonData.property = $scope.tileDevicePropertyArray.selected
+            }
+
+            $scope.tileObjectArray.selected = $scope.jsonData.id;
+            $scope.jsonStringData = convertToString($scope.jsonData);
+
+        }
+    }
+
+    $scope.changeTileObject = function (selectedObject, group) {
+
+        $scope.tileDeviceArray.selected = undefined;
+        $scope.tileDevicePropertyArray.selected = undefined;
+
+
+        if (selectedObject != null) {
+            $scope.jsonData.id = selectedObject;
+            $scope.jsonData.title = selectedObject.title;
+            $scope.jsonStringData = convertToString($scope.jsonData);
+
+            getJSON('/api.php/data/' + selectedObject.name, function (err, data) {
+                if (typeof (data.data) === "object")
+                    $scope.tileDevicePropertyArray = Object.keys(data.data);
+
+            });
+
+        }
+    }
+
+
+    $scope.changeDevicesProperty = function (selectedProperty) {
+        $scope.tileDeviceArray.selected = undefined;
+        if (selectedProperty != null) {
+            $scope.jsonData.property = selectedProperty;
             $scope.jsonStringData = convertToString($scope.jsonData);
         }
     }
+
     $scope.changeTileHeight = function (selectedHeight, group) {
         if (selectedHeight != null) {
             $scope.jsonData.height = selectedHeight;
@@ -628,9 +1020,17 @@ function MainController($scope, $location, ngModel) {
 
 
     $scope.changeTileType = function (selectedType, group) {
+        $scope.tileObjectArray.selected = undefined;
+        $scope.tileDeviceArray.selected = undefined;
+        if ($scope.tileDevicePropertyArray == null)
+            $scope.tileDevicePropertyArray={};
+        if (typeof $scope.tileDevicePropertyArray.selected == "undefined")
+            $scope.tileDevicePropertyArray.selected= null;
+        $scope.tileDevicePropertyArray.selected = undefined;
         if (selectedType == null)
             selectedType = $scope.tileTypeList[0];
         $scope.selectedType = selectedType;
+
         var example = $scope.tileConfig[$scope.selectedType].example;
         $scope.exampleHTML = $scope.tileConfig[$scope.selectedType].html;
         example.type = $scope.selectedType;
@@ -638,7 +1038,9 @@ function MainController($scope, $location, ngModel) {
         example.position = getFirstFreePosition(group);
         $scope.jsonData = $scope.tileConfig[$scope.selectedType].example;
         $scope.jsonStringData = convertToString($scope.jsonData);
-        $scope.objJson.data=$scope.jsonData;
+        $scope.objJson.data = $scope.jsonData;
+
+
     }
 
     function getFirstFreePosition(group) {
@@ -703,6 +1105,9 @@ function MainController($scope, $location, ngModel) {
         group.height = height;
     }
 
+    $scope.$on('context-menu-opening', function (event, args) {
+
+    });
     $scope.set = function (data) {
         $scope.jsonData = parse(data);
         $scope.nodeOptions.refresh();
@@ -726,13 +1131,13 @@ function MainController($scope, $location, ngModel) {
 
 
     $scope.editTileClick = function (item, parent) {
-        $scope.objJson.data=$scope.jsonData;
+        $scope.objJson.data = $scope.jsonData;
         $scope.openEditTilePopup(item);
         $scope.editedItemIdx = parent.$index;
         $scope.editedGroupIdx = parent.$parent.$parent.$index;
         $scope.selectedItem = $scope.activePage.groups[$scope.editedGroupIdx];
         if (item.id != null)
-            $scope.selectedDevice = item.id;
+            $scope.selectedObject = item.id;
         $scope.exampleHTML = null;
         $scope.selectedWidth = item.width;
         $scope.selectedHeight = item.height;
@@ -824,7 +1229,7 @@ function MainController($scope, $location, ngModel) {
                 });
             }
 
-            CONFIG.entitySize= 'small';
+
             if (CONFIG.entitySize) {
                 bodyClass.push('-' + CONFIG.entitySize + '-entity');
             }
@@ -860,12 +1265,17 @@ function MainController($scope, $location, ngModel) {
     };
 
     $scope.getItemEntity = function (item) {
+        if (item.setting || item.type == "dropplace")
+            return item.id;
         if (typeof objs[item.id] === "object") return objs[item.id];
-        if (typeof item.id === "object") return item.id;
+        if (typeof item.id === "object") if (typeof objs[item.id.name] === "object")
+            return objs[item.id.name];
 
+
+        if (item.type == "iframe") return {};
         if (!(item.id in $scope.states)) {
             warnUnknownItem(item);
-            item.id={};
+            item.id = {};
 
             return item.id;
         }
@@ -887,6 +1297,7 @@ function MainController($scope, $location, ngModel) {
 
 
     $scope.hasTrackerCoords = function (entity) {
+        return true;
         if (!entity.attributes) return false;
 
         return entity.attributes.longitude || entity.attributes.latitude;
@@ -895,15 +1306,15 @@ function MainController($scope, $location, ngModel) {
     $scope.slideMapStyles = function (item, page, obj, zoom, state) {
         var key = 'mapStyles' + zoom + (item.width || '1') + (item.height || '1');
 
-        if (!obj[key]) {
+        if (1 == 1) {
+
             var width = item.width || 1,
                 height = item.height || 1;
             var tileSize = page.tileSize || CONFIG.tileSize;
-            var name = obj.friendly_name || ' ';
+            var name = item.id.name || ' ';
 
-            if (!obj.longitude && !obj.latitude) return null;
 
-            var coords = obj.longitude + ',' + obj.latitude;
+            coords = objs[item.id.name][item.property];
             // +80 - hack to hide logo
             var sizes = Math.ceil(tileSize * width) + ',' + Math.ceil((tileSize * height) + 80);
 
@@ -920,10 +1331,9 @@ function MainController($scope, $location, ngModel) {
                 url = "https://static-maps.yandex.ru/1.x/?lang=en-US&ll=" +
                     coords + "&z=" + zoom + "&l=map&size=" + sizes + "&pt=" + pt;
             } else {
-                coords = obj.latitude + ',' + obj.longitude;
                 sizes = sizes.replace(',', 'x');
 
-                var label = name[0].toUpperCase();
+                var label = name.toUpperCase();
                 var marker = encodeURIComponent("color:gray|label:" + label + "|" + coords);
 
                 url = "https://maps.googleapis.com/maps/api/staticmap?center=" +
@@ -980,6 +1390,16 @@ function MainController($scope, $location, ngModel) {
         return page.styles;
     };
 
+    $scope.openTermostatSliders = function ($event, item, entity) {
+        //    item.controlsEnabled = true;
+
+    }
+    $scope.closeTermostatSliders = function ($event, item, entity) {
+        //  item.controlsEnabled = false;
+
+    }
+
+
     $scope.showPagesMenu = function () {
         return CONFIG.pages.length > 1;
     };
@@ -1018,9 +1438,9 @@ function MainController($scope, $location, ngModel) {
         if (!entity.trackerBg) {
             var styles = {};
 
-            if (entity.attributes.entity_picture) {
-                styles.backgroundImage = 'url(' + entity.attributes.entity_picture + ')';
-            }
+            //  if (entity.attributes.entity_picture) {
+            //    styles.backgroundImage = 'url(' + entity.attributes.entity_picture + ')';
+            //}
 
             entity.trackerBg = styles;
         }
@@ -1029,10 +1449,9 @@ function MainController($scope, $location, ngModel) {
     };
 
     $scope.showTrackerBg = function (item, entity) {
-        if (!entity.attributes.entity_picture) {
-            return false;
-        }
-
+        //  if (!entity.attributes.entity_picture) {
+        //      return false;
+        //  }
         return !item.hideEntityPicture;
     };
 
@@ -1076,7 +1495,10 @@ function MainController($scope, $location, ngModel) {
         event.stopPropagation();
     }
 
-
+    $scope.dragDrag = function (event, ui, item, group) {
+        updateView();
+        event.stopPropagation();
+    }
     $scope.dragDrop = function (event, ui, item, group) {
         var editedItem = Object.assign({}, group.items[$scope.editedItemIdx]);
         editedItem.position = item.position;
@@ -1105,23 +1527,23 @@ function MainController($scope, $location, ngModel) {
 
 
     $scope.dragStart = function (event, ui, element, group, parent) {
-        if (!$scope.editingMode ) {
+        if (!$scope.editingMode) {
             $scope.drag = false;
             updateView();
-            event.stopPropagation();
-            return;
+            event.stopImmediatePropagation();
+            return false;
         }
-        if (element.width>0) w=element.width; else w=1;
-        if (element.height>0) h=element.height; else h=1;
-        defaultDropPlace.width=w;
-        defaultDropPlace.height=h;
+        if (element.width > 0) w = element.width; else w = 1;
+        if (element.height > 0) h = element.height; else h = 1;
+        defaultDropPlace.width = w;
+        defaultDropPlace.height = h;
 
         $scope.editedItemIdx = parent.$index;
         var temp = [];
         var width = group.width + 1;
         var height = group.height + 1;
-        for (var i = 0; i < width; i=i+w) {
-            for (var j = 0; j < height; j=j+h) {
+        for (var i = 0; i < width; i = i + w) {
+            for (var j = 0; j < height; j = j + h) {
                 var item = Object.assign({}, defaultDropPlace);
                 item.position = [i, j];
                 temp.push(item);
@@ -1130,14 +1552,14 @@ function MainController($scope, $location, ngModel) {
 
         for (var i = 0; i < group.items.length; i++) {
             var item = group.items[i];
-            if (typeof(item.height) == "undefined") item.height=1;
-            if (typeof(item.width) == "undefined") item.width=1;
+            if (typeof(item.height) == "undefined") item.height = 1;
+            if (typeof(item.width) == "undefined") item.width = 1;
             temp = temp.filter(function (obj) {
                 var answer = true;
-                for (var jh = 0; jh < item.height; jh++) {
-                    for (var j = 0; j < item.width; j++) {
-                        for (var jho = 0; jho < obj.height; jho++) {
-                            for (var jo = 0; jo < obj.width; jo++) {
+                for (var jh = 0; jh < item.height; jh = jh + 0.5) {
+                    for (var j = 0; j < item.width; j = j + 0.5) {
+                        for (var jho = 0; jho < obj.height; jho = jho + 0.5) {
+                            for (var jo = 0; jo < obj.width; jo = jo + 0.5) {
                                 if (JSON.stringify([obj.position[0] + jo, obj.position[1] + jho]) === JSON.stringify([item.position[0] + j, item.position[1] + jh])) answer = false;
                             }
                         }
@@ -1211,12 +1633,12 @@ function MainController($scope, $location, ngModel) {
             item.styles.backgroundColor = item.tile_color;
         }
 
-        // if ($scope.editingMode) {
-        //     item.styles.borderStyle = 'solid';
-        //     item.styles.border = 1;
-        // } else {
-        //     item.styles.borderStyle = 'none';
-        // }
+        if ($scope.editingMode) {
+            item.styles.borderStyle = 'solid';
+            item.styles.border = 1;
+        } else {
+            item.styles.borderStyle = 'none';
+        }
 
         if (item.customStyles) {
             var res;
@@ -1284,7 +1706,9 @@ function MainController($scope, $location, ngModel) {
     };
 
     $scope.itemClasses = function (item) {
+
         var entity = $scope.getItemEntity(item);
+        if (typeof entity.state === "undefined") entity.state = "";
 
         if (!item._classes) {
             item._classes = [];
@@ -1340,6 +1764,32 @@ function MainController($scope, $location, ngModel) {
     $scope.entityIcon = function (item, entity) {
         var state = entity.state;
 
+
+        if (typeof item.property !== "undefined") {
+
+
+            if (entity.type == "relay") {
+                if (objs[item.id.name][item.property] == 1) {
+                    state = "on";
+                    entity.state = state;
+                }
+                if (objs[item.id.name][item.property] == 0) {
+                    state = "off";
+                    entity.state = state;
+                }
+            }
+
+            if (typeof objs[item.id.name] != "undefined")
+                delete  objs[item.id.name][item.property];
+        } else {
+            if (typeof item.id === "string") {
+                if (entity.type == "relay") {
+                    if (entity.status == 1) state = "on"; else state = "off";
+                }
+            }
+        }
+
+
         if (item.icon) {
             state = parseFieldValue(item.icon, item, entity);
         }
@@ -1377,17 +1827,56 @@ function MainController($scope, $location, ngModel) {
         return getItemFieldValue('subtitle', item, entity);
     };
 
+
+    $scope.entityValueTermostat = function (item, entity, property) {
+        $scope.ecoTemp=entity[property];
+        if (typeof entity[property]!=="undefined") {
+            return entity[property];
+        }
+        return "";
+    }
+
     $scope.entityValue = function (item, entity) {
+
         var value = entity.state;
         if (entity.value) {
             value = entity.value;
             entity.state = entity.value;
         }
-
         if (item.value) {
             value = getItemFieldValue('value', item, entity);
         }
 
+        if (typeof item.property !== "undefined") {
+
+            if (item.type == "sensor")
+                value = objs[item.id.name][item.property];
+            if (item.type == "slider") {
+
+                if (objs[item.id.name][item.property] != null) {
+
+                    entity.state = objs[item.id.name][item.property];
+                    if (typeof entity.attributes !== "undefined")
+                        entity.attributes._c.value = Number(objs[item.id.name][item.property]);
+                    delete  objs[item.id.name][item.property];
+                }
+                value = entity.state;
+
+            }
+            if (item.type == "switch")
+                if (objs[item.id.name][item.property] == 1) value = "on"; else value = "off";
+
+        } else {
+            if (typeof item.id === "string") {
+                if (entity.type == "relay") {
+                    if (entity.status == 1) value = "on"; else value = "off";
+                }
+                if (entity.type == "dimmer") {
+                    value = entity.level;
+
+                }
+            }
+        }
         if (typeof item.filter === "function") {
             return callFunction(item.filter, [value, item, entity]);
         }
@@ -1578,9 +2067,17 @@ function MainController($scope, $location, ngModel) {
     };
 
     $scope.getHeader = function (page) {
-        if (!page) return CONFIG.header;
+        if (!page) {
+            if (CONFIG.header.left.length > 0 || CONFIG.header.right.length > 0) {
+                return CONFIG.header;
+            } else {
+                return false;
+            }
+            return CONFIG.header;
+        }
+        if (typeof page.header == "undefined") return false;
 
-        return page.header;
+
     };
 
     $scope.getSliderConf = function (item, entity) {
@@ -1761,7 +2258,7 @@ function MainController($scope, $location, ngModel) {
             }
 
         if (!value.request) return;
-        sendItemData(item,entity);
+        sendItemData(item, entity);
 
 
         // sendItemData(item, {
@@ -1779,7 +2276,7 @@ function MainController($scope, $location, ngModel) {
     };
 
     $scope.volumeChanged = function (item, entity, conf) {
-        if (!entity.attributes._sliderInited) return;
+        // if (!entity.attributes._sliderInited) return;
 
         var value = {
             value: conf.value / 100,
@@ -1806,30 +2303,14 @@ function MainController($scope, $location, ngModel) {
         if (item.action && typeof item.action === "function")
             callFunction(item.action, [item, entity]);
 
-        var domain = "homeassistant";
-        // var group = item.id.split('.')[0];
-        // if (['switch', 'light', 'fan'].indexOf(group) !== -1) domain = group;
-
-        var service = "toggle";
-
-        if (entity.state === "off") service = "turn_on";
-        else if (entity.state === "on") service = "turn_off";
-
         if (entity.state === "off") entity.state = "on";
         else if (entity.state === "on") entity.state = "off";
 
-        sendItemData(item);
-        //, {
-        //     type: "call_service",
-        //     domain: domain,
-        //     service: service,
-        //     service_data: {
-        //         entity_id: item.id
-        //     }
-        // }, callback);
+        sendItemData(item, entity);
     };
     $scope.toggleEdit = function (item) {
         $scope.editingMode = !$scope.editingMode;
+        editingMode = $scope.editingMode;
     };
 
 
@@ -1841,7 +2322,7 @@ function MainController($scope, $location, ngModel) {
 
         var xhr = new XMLHttpRequest();
 
-        xhr.open('POST', '/SBoard/json.php');
+        xhr.open('POST', '/sboard/json.php');
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.send(JSON.stringify(CONFIG));
         //CONFIG.pageSettingIndex=CONFIG.pages.push($scope.pageSetting);
@@ -1859,7 +2340,7 @@ function MainController($scope, $location, ngModel) {
     saveConfigAction = function () {
         var xhr = new XMLHttpRequest();
 
-        xhr.open('POST', '/SBoard/json.php');
+        xhr.open('POST', '/sboard/json.php');
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.send(JSON.stringify(CONFIG));
 
@@ -1878,7 +2359,7 @@ function MainController($scope, $location, ngModel) {
         $scope.changeTileType($scope.selectedType, group);
         $scope.addTile = true;
         $scope.changeInputStyle('json');
-        $scope.objJson.data=$scope.jsonData;
+        $scope.objJson.data = $scope.jsonData;
 
     };
 
@@ -1892,6 +2373,43 @@ function MainController($scope, $location, ngModel) {
         $scope.pageBg.img = "";
         $scope.pageIcon.Icon = "";
         $scope.addPage = true;
+    };
+    $scope.openAddAutoPagePopup = function () {
+        $scope.pageTitle = "";
+        $scope.pageBg.img = "";
+        $scope.pageIcon.Icon = "";
+        $scope.addAutoPage = true;
+
+        getJSON('/api.php/rooms/', function (err, data) {
+            if (typeof (data.rooms) === "object") {
+                $scope.rooms = {};
+                for (var room in data.rooms) {
+                    $scope.rooms[data.rooms[room].object] = data.rooms[room];
+                    $scope.rooms[data.rooms[room].object].devices = {};
+                }
+
+
+                getJSON('/api.php/devices/', function (err, data) {
+                    if (err != null) {
+                        Noty.addObject({
+                            type: Noty.ERROR,
+                            title: 'Error',
+                            message: 'Something went wrong: ' + err,
+                            lifetime: 5
+                        });
+                    } else {
+                        // $scope.rooms[data.devices[dev].linkedRoom].devices={};
+                        for (var dev in data.devices) {
+                            if (typeof  $scope.rooms[data.devices[dev].linkedRoom] !== "undefined" && $scope.rooms[data.devices[dev].linkedRoom] != "")
+                                $scope.rooms[data.devices[dev].linkedRoom].devices[data.devices[dev].object] = data.devices[dev];
+                        }
+
+
+                    }
+                });
+            }
+            updateView();
+        });
     };
 
     $scope.openEditGroupPopup = function (group, parent) {
@@ -1911,11 +2429,26 @@ function MainController($scope, $location, ngModel) {
     };
 
     $scope.openEditTilePopup = function (item) {
+        $scope.selectedProperty = null;
+        $scope.selectedObject = null;
         $scope.jsonData = item;
-        $scope.objJson.data=item;
-        // delete $scope.jsonData.styles;
-        //delete $scope.jsonData._prevTileSize;
-        // delete $scope.jsonData._classes;
+        $scope.objJson.data = item;
+        $scope.selectedType = item.type;
+        if (typeof item.id === "object") {
+            if (item.id.name != null) {
+                getJSON('/api.php/data/' + item.id.name, function (err, data) {
+                    if (typeof (data.data) === "object")
+                        $scope.tileDevicePropertyArray = Object.keys(data.data);
+
+                });
+            }
+        }
+
+        if (typeof item.property !== "undefined") {
+            $scope.selectedProperty = item.property;
+        } else {
+            delete $scope.tileDevicePropertyArray;
+        }
         $scope.jsonStringData = convertToString($scope.jsonData);
         $scope.editTile = true;
         $scope.changeInputStyle('json');
@@ -2112,6 +2645,9 @@ function MainController($scope, $location, ngModel) {
     $scope.setInputNumber = function (item, value) {
         if (item.loading) return;
         item.value = value;
+        if (item.action && typeof item.action === "function")
+            if (!callFunction(item.action, [item]))
+                return;
 
         // sendItemData(item, {
         //     type: "call_service",
@@ -2338,7 +2874,7 @@ function MainController($scope, $location, ngModel) {
     };
     $scope.openPageSetting = function (page, parent, preventAnimation) {
 
-        localStorage.setItem('page', $scope.pages.length+$scope.pagesSetting.indexOf(page));
+        localStorage.setItem('page', $scope.pages.length + $scope.pagesSetting.indexOf(page));
         preventAnimation = preventAnimation || false;
         showedPages = [];
 
@@ -2431,7 +2967,9 @@ function MainController($scope, $location, ngModel) {
         $scope.addPage = false;
         $scope.editPage = false;
     };
-
+    $scope.closeAddAutoPage = function () {
+        $scope.addAutoPage = false;
+    };
     $scope.closeEditGroup = function () {
         $scope.editGroup = false;
     };
@@ -2442,6 +2980,9 @@ function MainController($scope, $location, ngModel) {
 
     $scope.closeEditTile = function () {
         $scope.editTile = false;
+    };
+    $scope.closeEditConfig = function () {
+        $scope.editConfig = false;
     };
 
     $scope.addNewTile = function (tile, group) {
@@ -2460,6 +3001,7 @@ function MainController($scope, $location, ngModel) {
         recalculateGroupSize();
         $scope.addTile = false;
         $scope.editTile = false;
+
     };
 
     $scope.addNewGroup = function (name) {
@@ -2521,6 +3063,112 @@ function MainController($scope, $location, ngModel) {
         $scope.pages.push(a);
         recalculateGroupSize();
         $scope.addPage = false;
+    };
+    $scope.addNewAutoPage = function (pageTitle, pageBg, pageIcon, rooms) {
+        if (pageTitle.length == 0) {
+            Noty.addObject({
+                type: Noty.ERROR,
+                title: 'Error',
+                message: 'Incorrect group name',
+                lifetime: 5
+            });
+            return;
+        }
+        if (pageBg.img.length == 0) {
+            Noty.addObject({
+                type: Noty.ERROR,
+                title: 'Error',
+                message: 'Incorrect backgroud',
+                lifetime: 5
+            });
+            return;
+        }
+        if (pageIcon.Icon.length == 0) {
+            Noty.addObject({
+                type: Noty.ERROR,
+                title: 'Error',
+                message: 'Incorrect icon',
+                lifetime: 5
+            });
+            return;
+        }
+        a = {
+            title: pageTitle,
+            bg: pageBg.img,
+            icon: pageIcon.Icon,
+            groups: []
+        };
+
+        for (var room in rooms) {
+
+            b = {
+                "title": rooms[room].title,
+                "width": 0, "height": 0,
+                "items": []
+            };
+            for (var dev in rooms[room].devices) {
+                if (rooms[room].devices[dev].enabled) {
+                    sizes = calcGroupSizes(b);
+                    b.width = sizes.width;
+                    b.height = sizes.height;
+                    obj = {
+                        "id": {
+                            "id": rooms[room].devices[dev].id,
+                            "name": dev,
+                        },
+
+                        "state": false,
+                        "title": rooms[room].devices[dev].title,
+
+                        "height": 1,
+                        "width": 1,
+                    };
+                    switch (rooms[room].devices[dev].type) {
+                        case "dimmer":
+                            obj.property = "level";
+                            obj.type = "slider";
+                            obj.unit = "%";
+                            obj.slider = {"max": 100, "min": 0, "step": 1};
+                            obj.bottom = true;
+                            break;
+                        case "sensor_temphum":
+                            obj.property = "value";
+                            obj.type = "sensor";
+                            obj.unit = "C";
+                            break;
+                        case "relay":
+                            obj.property = "status";
+                            obj.type = "switch";
+                            obj.states = {
+                                "on": "On",
+                                "off": "Off"
+                            };
+                            obj.icons = {
+                                "on": "mdi-lightbulb-on",
+                                "off": "mdi-lightbulb"
+                            };
+                            break;
+                        case "button":
+                            obj.property = "status";
+                            obj.type = "switch";
+                            obj.icon = "mdi-radiobox-blank";
+                            break;
+                        default:
+                            obj.property = "value";
+                            obj.type = "sensor";
+                    }
+                    obj.position = getFirstFreePosition(b)
+                    b.items.push(obj);
+                }
+            }
+            if (b.items.length > 0)
+                a.groups.push(b);
+        }
+
+
+        $scope.pages.push(a);
+        recalculateGroupSize();
+        $scope.addAutoPage = false;
     };
 
     $scope.editExistGroup = function (name) {
@@ -2584,7 +3232,7 @@ function MainController($scope, $location, ngModel) {
     };
 
     $scope.editExistTile = function (group) {
-        if (typeof($scope.jsonData)!=="object") {
+        if (typeof($scope.jsonData) !== "object") {
             Noty.addObject({
                 type: Noty.ERROR,
                 title: 'Error',
@@ -2602,25 +3250,40 @@ function MainController($scope, $location, ngModel) {
         group.items.push(editedItem);
         $scope.editTile = false;
     };
+    $scope.editExistConfig = function (conf) {
+        if (typeof($scope.cofigJson.data) !== "object") {
+            Noty.addObject({
+                type: Noty.ERROR,
+                title: 'Error',
+                message: 'Incorrect JSON',
+                lifetime: 5
+            });
+            return;
+        }
+        $scope.editConfig = false;
+        CONFIG = $scope.cofigJson.data;
+        saveConfigAction();
+
+    };
+
 
     $scope.removeTile = function () {
         $scope.activePage.groups[$scope.editedGroupIdx].items.splice($scope.editedItemIdx, 1);
         $scope.editTile = false;
     };
-    $scope.removeTileClick = function (item,parent) {
+    $scope.removeTileClick = function (item, parent) {
         $scope.editedItemIdx = parent.$index;
         $scope.editedGroupIdx = parent.$parent.$parent.$index;
         $scope.activePage.groups[$scope.editedGroupIdx].items.splice($scope.editedItemIdx, 1);
         $scope.editTile = false;
 
     };
-    $scope.removeGroupClick = function (item,parent) {
+    $scope.removeGroupClick = function (item, parent) {
         $scope.editedGroupIdx = parent.$index;
         $scope.activePage.groups.splice($scope.editedGroupIdx, 1);
         $scope.editGroup = false;
 
     };
-
 
 
     function convertToObject(html) {
@@ -2690,7 +3353,8 @@ function MainController($scope, $location, ngModel) {
 
     function scrollToActivePage(preventAnimation) {
         var index = $scope.pages.indexOf(activePage);
-        if (index>=0) {} else {
+        if (index >= 0) {
+        } else {
             var index = $scope.pagesSetting.indexOf(activePage);
         }
         var translate = index * 100;
@@ -2717,8 +3381,9 @@ function MainController($scope, $location, ngModel) {
             }, 50);
         }
     }
+
     function scrollToActivePageSetting(preventAnimation) {
-        var index = $scope.pages.length+$scope.pagesSetting.indexOf(activePage);
+        var index = $scope.pages.length + $scope.pagesSetting.indexOf(activePage);
 
         var translate = index * 100;
 
@@ -2744,6 +3409,7 @@ function MainController($scope, $location, ngModel) {
             }, 50);
         }
     }
+
     $scope.isPageActive = function (page) {
         return activePage === page;
     };
@@ -2757,7 +3423,7 @@ function MainController($scope, $location, ngModel) {
     };
 
     $scope.isHidden = function (object, entity) {
-        if (object==null ) return false;
+        if (object == null) return false;
         if (!('hidden' in object)) return false;
 
         if (typeof object.hidden === "function") {
@@ -2912,58 +3578,6 @@ function MainController($scope, $location, ngModel) {
     }
 
 
-    /// INIT
-
-    /* Api.onError(function (data) {
-         console.error(data);
-         addError(data.message);
-     });
-
-     Api.onReady(function () {
-         Api.subscribeEvents("state_changed", function (res) {
-             debugLog('subscribed to state_changed', res);
-         });
-
-         Api.subscribeEvents("tileboard", function (res) {
-             debugLog('subscribed to tileboard', res);
-         });
-
-         Api.getStates(function (res) {
-             if (res.success) {
-                 debugLog(res.result);
-
-                 // in case of development, when sensors are predefined
-                 if (window.DEBUG_SENSORS) {
-                     setStates(DEBUG_SENSORS);
-                 } else {
-                     setStates(res.result);
-                 }
-             }
-
-             $scope.ready = true;
-
-             var pageNum = $location.hash();
-
-             if (!CONFIG.rememberLastPage || !$scope.pages[pageNum]) {
-                 pageNum = 0;
-             }
-
-             $scope.openPage($scope.pages[pageNum], null, true);
-
-             updateView();
-         });
-     });
-
-     Api.onUnready(function () {
-         $scope.ready = false;
-
-         updateView();
-     });
-
-     Api.onMessage(function (data) {
-         handleMessage(data);
-     });
- */
     angular.element(window).on('view:updated', function () {
         updateView();
     });
@@ -3004,19 +3618,6 @@ function MainController($scope, $location, ngModel) {
         return func.apply(getContext(), args || []);
     }
 
-    function sendItemData(item, data, callback) {
-        if (item.loading) return;
-
-        item.loading = true;
-
-        Api.send(data, function (res) {
-            item.loading = false;
-
-            updateView();
-
-            if (callback) callback(res);
-        });
-    }
 
     function getItemFieldValue(field, item, entity) {
         var value = item[field];
@@ -3157,8 +3758,8 @@ function MainController($scope, $location, ngModel) {
         if (!CONFIG.ignoreErrors) Noty.addObject({
             type: Noty.WARNING,
             title: 'Entity not found',
-            message: 'Entity id="' + item.id + '" not found, title="'+item.title+'"',
-            id: item.id
+            message: 'Entity id="' + item.id + '" not found, title="' + item.title + '"',
+            id: Math.floor(Math.random() * (999999))
         });
     }
 
@@ -3185,8 +3786,20 @@ function MainController($scope, $location, ngModel) {
     $.subscribe('wsData', function (_, response) {
         if (response.action == 'subscribed') {
             console.log('Subscription to devices confirmed.');
-            clearTimeout(subscribedWebSocketsTimer);
+            clearInterval(subscribedWebSocketsTimer);
             subscribedWebSockets = 1;
+        }
+        if (response.action == 'properties') {
+            var obj = jQuery.parseJSON(response.data);
+            if (typeof obj != 'object') return false;
+            var objCnt = obj.length;
+            if (objCnt) {
+                for (var i = 0; i < objCnt; i++) {
+                    var pr_arr = obj[i].PROPERTY.split('.');
+                    objs[pr_arr[0]][pr_arr[1]] = obj[i].VALUE;
+                }
+            }
+            updateView();
         }
         if (response.action == 'devices_data') {
             var obj = jQuery.parseJSON(response.data);
@@ -3202,11 +3815,12 @@ function MainController($scope, $location, ngModel) {
 
     function setObj(data) {
 
-        if (data.type=="relay") {
-            if (data.status==1) data.state="on"; else data.state="off";
+        if (data.type == "relay") {
+            // if (data.status==1) data.state="on"; else data.state="off";
         }
-        if (data.type=="dimmer"){
-            data.state=data.level;
+        if (data.type == "dimmer") {
+            //     data.state=data.level;
+
         }
         objs[data.object] = data;
         updateView();
@@ -3220,7 +3834,7 @@ function MainController($scope, $location, ngModel) {
         } else {
             serverUrl = "ws:";
         }
-        serverUrl += "//"+loc.hostname+":8001/majordomo";
+        serverUrl += "//" + loc.hostname + ":8001/majordomo";
         try {
             console.log('Conneting to ' + serverUrl);
             if (window.MozWebSocket) {
@@ -3256,8 +3870,8 @@ function MainController($scope, $location, ngModel) {
             startedWebSockets = 0;
             httpRefreshTimer = setInterval(
                 function () {
-                    httpRefreshDevices()
-                }, 3000);
+                    $scope.httpRefreshDevices()
+                }, 5000);
             //wsTimer=setTimeout('startWebSockets();', 5*1000);
             $.publish('wsDisconnected', []);
             console.log('WS disconnected (' + serverUrl + ')');
@@ -3267,74 +3881,75 @@ function MainController($scope, $location, ngModel) {
 
     function subscribeToDevices() {
         console.log('Sending devices subscription request...');
-        var payload;
-        payload = new Object();
-        payload.action = 'Subscribe';
-        payload.data = new Object();
-        payload.data.TYPE = 'devices_data';
-        payload.data.DEVICE_ID = '0';
-        wsSocket.send(JSON.stringify(payload));
-        subscribedWebSocketsTimer = setTimeout('subscribeToDevices();', 3000);
+
+        if (temp_properties.length > 0) {
+            var payload;
+            payload = new Object();
+            payload.action = 'Subscribe';
+            payload.data = new Object();
+            payload.data.TYPE = 'properties';
+            payload.data.PROPERTIES = temp_properties.join();
+            wsSocket.send(JSON.stringify(payload));
+        }
+        subscribedWebSocketsTimer = setInterval(
+            function () {
+                subscribeToDevices()
+            }, 3000);
         return false;
     }
 
-    function httpRefreshDevices() {
-        //clearTimeout(httpRefreshTimer);
-        getJSON('/api.php/devices/', function (err, data) {
-            if (err != null) {
-                Noty.addObject({
-                    type: Noty.ERROR,
-                    title: 'Error',
-                    message: 'Something went wrong: ' + err,
-                    lifetime: 5
-                });
-            } else {
-                var objCnt = data.devices.length;
-                if (objCnt) {
-                    for (var i = 0; i < objCnt; i++) {
-
-                        if (data.devices[i].type=="relay")
-                            if (data.status==1) data.devices[i].state="on"; else data.devices[i].state="off";
-                        objs[data.devices[i].object] = data.devices[i];
+    $scope.httpRefreshDevices = function () {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/api.php/data/');
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify({"properties": temp_properties}));
+        xhr.onreadystatechange = function () {
+            if (xhr.status === 200) {
+                if (xhr.response != "") {
+                    var obj = jQuery.parseJSON(xhr.response);
+                    if (typeof obj != 'object') return false;
+                    for (key in obj.data) {
+                        var pr_arr = key.split('.');
+                        objs[pr_arr[0]][pr_arr[1]] = obj.data[key];
                     }
                 }
 
             }
-        });
+        };
         updateView();
         return true;
         // httpRefreshTimer = setTimeout('httpRefreshDevices()',3000);
     }
 
-    function sendItemData(item,entity) {
+    function sendItemData(item, entity) {
 
         var xhr = new XMLHttpRequest();
+        if (typeof item.id === "object")
+            var device = item.id.name;
+        else
+            var device = item.id;
 
-        if (item.type=="slider") {
+        if (item.type == "slider") {
             var json = JSON.stringify({
                 data: entity.state,
             });
-            xhr.open('POST', '/api.php/data/'+item.id + '.level', true);
+            xhr.open('POST', '/api.php/data/' + device + '.level', true);
             xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
             xhr.send(json);
         }
-        if (item.type=="switch") {
-            xhr.open('GET', '/api.php/method/' + item.id + '.switch', true);
+        if (item.type == "switch") {
+            if (entity.state == "off")
+                xhr.open('GET', '/api.php/method/' + device + '.turnOff', true);
+            else
+                xhr.open('GET', '/api.php/method/' + device + '.turnOn', true);
             xhr.send();
         }
         xhr.onreadystatechange = function () {
             if (xhr.status === 200 && xhr.readyState == 4) {
-
-                // alert('ok');
-
 
             }
         }
     }
 
 
-
-
-
-
-}
+});

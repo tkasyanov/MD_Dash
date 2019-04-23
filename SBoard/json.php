@@ -30,9 +30,8 @@ if ($method == "GET"):
     $setting["config"] = json_decode($Record["CONFIG"], true);
     if ($setting["config"] == null) $setting["config"]["pages"] = array();
     if ($setting["config"]["customTheme"] ==null) $setting["config"]["customTheme"]= "homekit";
-    $setting["config"]["tileSize"] = 150;
+    if ($setting["config"]["tileSize"]<75) $setting["config"]["tileSize"] = 75;
     $setting["config"]["tileMargin"] = 6;
-    $setting["config"]["entitySize"] = "normal";
     print_r(json_encode($setting));
 endif;
 ?>

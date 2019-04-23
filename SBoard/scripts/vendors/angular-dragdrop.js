@@ -39,6 +39,7 @@ var jqyoui = angular.module('ngDragDrop', []).service('ngDragDropService', ['$ti
     this.callEventCallback = function (scope, callbackName, event, ui) {
       if (!callbackName) return;
 
+
       var objExtract = extract(callbackName),
           callback = objExtract.callback,
           constructor = objExtract.constructor,
@@ -65,6 +66,7 @@ var jqyoui = angular.module('ngDragDrop', []).service('ngDragDropService', ['$ti
     };
 
     this.invokeDrop = function ($draggable, $droppable, event, ui) {
+
       var dragModel = '',
         dropModel = '',
         dragSettings = {},
@@ -171,6 +173,7 @@ var jqyoui = angular.module('ngDragDrop', []).service('ngDragDropService', ['$ti
     };
 
     this.move = function($fromEl, $toEl, toPos, duration, dropSettings, callback) {
+
       if ($fromEl.length === 0) {
         if (callback) {
           window.setTimeout(function() {
@@ -241,6 +244,7 @@ var jqyoui = angular.module('ngDragDrop', []).service('ngDragDropService', ['$ti
     };
 
     this.mutateDraggable = function(scope, dropSettings, dragSettings, dragModel, dropModel, dropItem, $draggable) {
+
       var isEmpty = angular.equals(dropItem, {}) || !dropItem,
         dragModelValue = scope.$eval(dragModel);
 
@@ -313,6 +317,9 @@ var jqyoui = angular.module('ngDragDrop', []).service('ngDragDropService', ['$ti
               .draggable(jqyouiOptions)
               .draggable({
                 start: function(event, ui) {
+                  if ($(this)[0].dataset.drag== "false") {
+                    return false;
+                  }
                   ngDragDropService.draggableScope = scope;
                   zIndex = $(jqyouiOptions.helper ? ui.helper : this).css('z-index');
                   $(jqyouiOptions.helper ? ui.helper : this).css('z-index', 9999);

@@ -53,6 +53,9 @@
 .item.-th-sensor {
   background-color: #35a3ef;
 }
+.item.-th-sensor_two {
+  background-color: #35a3ef;
+}
 
 .item.-th-sensor_icon {
   background-color: #296cca;
@@ -323,11 +326,11 @@ body {
 }
 
 .-menu-left.-scrolled-horizontally .pages-menu--scroll-indicator {
-  opacity: 1;
+  opacity: 0;
 }
 
 .-menu-bottom.-scrolled-vertically .pages-menu--scroll-indicator {
-  opacity: 1;
+  opacity: 0;
 }
 
 .-menu-bottom .page {
@@ -981,7 +984,6 @@ body {
   vertical-align: top;
   font-size: 34px;
   display: inline-block;
-  max-width: 70%;
   overflow: hidden;
 }
 
@@ -1394,6 +1396,9 @@ camera-thumbnail div {
   right: 0;
   bottom: 0;
   z-index: 9;
+  background: rgba(45, 49, 53, 0.8);
+  overflow-x: hidden;
+  padding: 50px;
 }
 
 .alarm-popup-filters {
@@ -1429,23 +1434,16 @@ camera-thumbnail div {
   right: 0;
   bottom: 0;
   z-index: 10;
-  background: rgba(45, 49, 53, 0.8);
   cursor: pointer;
 }
 
 .alarm-popup-container,
 .datetime-popup-container {
-  background: #111;
   width: 280px;
   overflow: hidden;
   white-space: nowrap;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  margin-left: -140px;
-  margin-top: -211.5px;
+  position: relative;
   z-index: 12;
-  box-sizing: border-box;
   padding: 10px;
 }
 
@@ -1480,30 +1478,15 @@ pre {
 
 .addtile-popup-container,
 .datetime-popup-container {
-  background: #111;
-  width: 280px;
-  overflow: hidden;
   white-space: nowrap;
-  position: absolute;
-  left: 35%;
-  top: 50%;
-  margin-left: -375px;
-  margin-top: -350.5px;
+  position: relative;
   z-index: 12;
-  box-sizing: border-box;
-  padding: 10px;
   max-width: 1200px;
   width: 100%;
   padding: 30px;
-  /* background-color: rgba(0, 0, 0, 0.58); */
-
 }
 
 
-.alarm-popup-container.-no-code,
-.datetime-popup-container.-no-code {
-  margin-top: -80px;
-}
 
 .alarm-popup .datetime-popup-container,
 .datetime-popup .datetime-popup-container {
@@ -2420,4 +2403,11 @@ input[type=range]::-moz-range-thumb {
 /*# sourceMappingURL=main.css.map */
 
 
+
+
+@media screen and (max-height: 730px) {
+  .alarm-popup.ai-center {
+    align-items: start;
+  }
+}
 

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="referrer" content="no-referrer" />
+    <meta name="referrer" content="no-referrer"/>
     <title>Sboard</title>
 
     <meta name="mobile-web-app-capable" content="yes">
@@ -19,18 +19,20 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
-    <link rel="stylesheet" href="styles/main.css" />
-    <link rel="stylesheet" href="styles/themes.css" />
-    <link rel="stylesheet" href="styles/weather-icons.css" />
-    <link rel="stylesheet" href="styles/font-awesome.min.css" />
-    <link rel="stylesheet" href="styles/add.css" />
-    <link rel="stylesheet" href="styles/jsoneditor.min.css" />
-    <link rel="stylesheet" href="styles/angularjs-color-picker.min.css" />
-    <link rel="stylesheet" href="styles/styles.css" />
-    <link rel="stylesheet" href="styles/angular-tooltips.css" />
+    <link rel="stylesheet" href="styles/main.css?v1_2"/>
+    <link rel="stylesheet" href="styles/themes.css"/>
+    <link rel="stylesheet" href="styles/weather-icons.css"/>
+    <link rel="stylesheet" href="styles/font-awesome.min.css"/>
+    <link rel="stylesheet" href="styles/add.css?v1_2"/>
+    <link rel="stylesheet" href="styles/jsoneditor.min.css"/>
+    <link rel="stylesheet" href="styles/angularjs-color-picker.min.css"/>
+    <link rel="stylesheet" href="styles/styles.css"/>
+    <link rel="stylesheet" href="styles/angular-tooltips.css"/>
 
     <style>
-        [ng-cloak] { display: none; }
+        [ng-cloak] {
+            display: none;
+        }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
@@ -47,14 +49,18 @@
     <script src="scripts/vendors/angular-dragdrop.js"></script>
     <script src="scripts/vendors/nvd3/angular-nvd3.js"></script>
     <script src="scripts/vendors/angular-long-press.js"></script>
+    <script src="scripts/vendors/select.min.js"></script>
+    <script src="scripts/vendors/multirange-slider.js"></script>
     <script src="scripts/models/noty.js"></script>
+
     <script src="scripts/app.js"></script>
     <script src="/js/jquery.tiny-pubsub.js"></script>
 
-    <script src="scripts/init.js"></script>
-    <script src="scripts/directives.js"></script>
 
-    <script src="scripts/controllers/main.js?<?=rand(0,999999)?>"></script>
+    <script src="scripts/init.js"></script>
+    <script src="scripts/directives.js?v1_2"></script>
+
+    <script src="scripts/controllers/main.js?v1_2"></script>
     <script src="scripts/controllers/noty.js"></script>
     <script src="scripts/controllers/screensaver.js"></script>
 </head>
@@ -66,7 +72,8 @@
 
         <div class="camera-popup-container">
             <div class="camera-popup--list">
-                <div class="camera-popup--list-item" ng-click="openCamera(item)" ng-class="{'-active': activeCamera === item}"
+                <div class="camera-popup--list-item" ng-click="openCamera(item)"
+                     ng-class="{'-active': activeCamera === item}"
                      ng-repeat="item in getCameraList() track by $index">
             <span ng-show="entity = getItemEntity(item)">
               <span ng-bind="entityTitle(item, entity)"></span>
@@ -75,12 +82,12 @@
             </div>
 
             <div class="camera-popup--camera">
-                <div ng-if="activeCamera.fullscreen.type === TYPES.CAMERA">
-                    <camera item="activeCamera.fullscreen" entity="entity" freezed="false"></camera>
+                <div ng-if="activeCamera.fullscreen == 'camera'">
+                    <camera item="activeCamera" entity="entity" freezed="false"></camera>
                 </div>
 
-                <div ng-if="activeCamera.fullscreen.type === TYPES.CAMERA_THUMBNAIL">
-                    <camera-thumbnail item="activeCamera.fullscreen" entity="entity" freezed="false"></camera-thumbnail>
+                <div ng-if="activeCamera.fullscreen == 'camera_thumbnall'">
+                    <camera-thumbnail item="activeCamera" entity="entity" freezed="false"></camera-thumbnail>
                 </div>
             </div>
 
@@ -100,7 +107,8 @@
                 </div>
 
                 <div ng-if="activeDoorEntry.layout.camera.type === TYPES.CAMERA_THUMBNAIL">
-                    <camera-thumbnail item="activeDoorEntry.layout.camera" entity="cameraEntity" freezed="false"></camera-thumbnail>
+                    <camera-thumbnail item="activeDoorEntry.layout.camera" entity="cameraEntity"
+                                      freezed="false"></camera-thumbnail>
                 </div>
             </div>
 
@@ -114,7 +122,8 @@
         </div>
     </div>
 
-    <div class="alarm-popup" ng-if="activeAlarm && (alarmEntity = getItemEntity(activeAlarm))">
+    <div class="alarm-popup d-flex jc-center ai-center"
+         ng-if="activeAlarm && (alarmEntity = getItemEntity(activeAlarm))">
 
         <div class="alarm-popup-overlay" ng-click="closeAlarm()"></div>
 
@@ -140,7 +149,8 @@
             <div class="alarm-popup-buttons">
                 <div ng-if="alarmEntity.attributes.code_format">
                     <div class="alarm-popup-buttons-line" ng-repeat="line in [6, 3, 0] track by $index">
-                        <div class="alarm-popup-button" ng-bind="button + line" ng-click="inputAlarm(button + line)" ng-repeat="button in [1, 2, 3] track by $index"></div>
+                        <div class="alarm-popup-button" ng-bind="button + line" ng-click="inputAlarm(button + line)"
+                             ng-repeat="button in [1, 2, 3] track by $index"></div>
                     </div>
 
                     <div class="alarm-popup-buttons-line">
@@ -152,21 +162,27 @@
                 </div>
 
                 <div class="alarm-popup-buttons-line">
-                    <div class="alarm-popup-button -icon -home" ng-click="actionAlarm('alarm_arm_home', activeAlarm, alarmEntity)">
-                        <div class="mdi mdi-bell-plus"></div> Arm home
+                    <div class="alarm-popup-button -icon -home"
+                         ng-click="actionAlarm('alarm_arm_home', activeAlarm, alarmEntity)">
+                        <div class="mdi mdi-bell-plus"></div>
+                        Arm home
                     </div>
-                    <div class="alarm-popup-button -icon -away" ng-click="actionAlarm('alarm_arm_away', activeAlarm, alarmEntity)">
-                        <div class="mdi mdi-bell"></div> Arm away
+                    <div class="alarm-popup-button -icon -away"
+                         ng-click="actionAlarm('alarm_arm_away', activeAlarm, alarmEntity)">
+                        <div class="mdi mdi-bell"></div>
+                        Arm away
                     </div>
-                    <div class="alarm-popup-button -icon -disarm" ng-click="actionAlarm('alarm_disarm', activeAlarm, alarmEntity)">
-                        <div class="mdi mdi-bell-off"></div> Disarm
+                    <div class="alarm-popup-button -icon -disarm"
+                         ng-click="actionAlarm('alarm_disarm', activeAlarm, alarmEntity)">
+                        <div class="mdi mdi-bell-off"></div>
+                        Disarm
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="alarm-popup" ng-if="addGroup">
+    <div class="alarm-popup d-flex jc-center ai-center" ng-if="addGroup">
         <div class="alarm-popup-overlay" ng-click="closeAddGroup()"></div>
         <div class="alarm-popup-container" ng-class="{'-no-code': !alarmEntity.attributes.code_format}">
             <div class="alarm-popup--close" ng-click="closeAddGroup()">
@@ -182,17 +198,19 @@
             <div class="alarm-popup-buttons">
                 <div class="alarm-popup-buttons-line">
                     <div class="alarm-popup-button -icon -away group-popup-btn" ng-click="closeAddGroup()">
-                        <div class="mdi mdi-cancel"></div>Cancel
+                        <div class="mdi mdi-cancel"></div>
+                        Cancel
                     </div>
                     <div class="alarm-popup-button -icon -disarm group-popup-btn" ng-click="addNewGroup(groupName)">
-                        <div class="mdi mdi-plus"></div>Add
+                        <div class="mdi mdi-plus"></div>
+                        Add
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="alarm-popup" ng-if="editGroup">
+    <div class="alarm-popup d-flex jc-center ai-center" ng-if="editGroup">
         <div class="alarm-popup-overlay" ng-click="closeEditGroup()"></div>
         <div class="alarm-popup-container" ng-class="{'-no-code': !alarmEntity.attributes.code_format}">
             <div class="alarm-popup--close" ng-click="closeEditGroup()">
@@ -208,41 +226,49 @@
             <div class="alarm-popup-buttons">
                 <div class="alarm-popup-buttons-line">
                     <div class="alarm-popup-button -icon -away" ng-click="closeEditGroup()">
-                        <div class="mdi mdi-cancel"></div>Cancel
+                        <div class="mdi mdi-cancel"></div>
+                        Cancel
                     </div>
                     <div class="alarm-popup-button -icon -away" ng-click="removeGroup()">
-                        <div class="mdi mdi-trash-can"></div>Remove
+                        <div class="mdi mdi-trash-can"></div>
+                        Remove
                     </div>
                     <div class="alarm-popup-button -icon -disarm" ng-click="editExistGroup(groupName)">
-                        <div class="mdi mdi-content-save"></div>Save
+                        <div class="mdi mdi-content-save"></div>
+                        Save
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="alarm-popup" ng-if="addPage || editPage">
+    <div class="alarm-popup d-flex jc-center ai-center" ng-if="addPage || editPage">
         <div class="alarm-popup-overlay" ng-click="closeAddPage()"></div>
         <div class="alarm-popup-container" ng-class="{'-no-code': !alarmEntity.attributes.code_format}">
             <div class="alarm-popup--close" ng-click="closeAddPage()">
                 <i class="mdi mdi-close"></i>
             </div>
             <div class="alarm-popup-state"></div>
-                <input class="add-page-input" title="Page title" placeholder="Page title" ng-model="pageTitle">
-                <input class="add-page-input" title="Page background" placeholder="Page background" ng-model="pageBg.img">
+            <input class="add-page-input" title="Page title" placeholder="Page title" ng-model="pageTitle">
+            <input class="add-page-input" title="Page background" placeholder="Page background" ng-model="pageBg.img">
             <div class="ng-thumbnails-wrapper">
-                   <div class="ng-thumbnails slide-left">
-                             <span ng-repeat="i in images" ng-click="selectImage(i)"><img ng-src="{{ i.thumb }}"  /></span>
-                     </div>
+                <div class="ng-thumbnails slide-left">
+                    <span ng-repeat="i in images" ng-click="selectImage(i)"><img ng-src="{{ i.thumb }}"/></span>
+                </div>
             </div>
-                <input class="add-page-input" title="Page icon" placeholder="Page icon" ng-model="pageIcon.Icon">
+            <input class="add-page-input" title="Page icon" placeholder="Page icon" ng-model="pageIcon.Icon">
             <div class="page-popup-buttons">
-                <div mdi-picker="" ng-model="icon" class="ng-pristine ng-untouched ng-valid dropdown mdi-picker ng-not-empty open">
+                <div mdi-picker="" ng-model="icon"
+                     class="ng-pristine ng-untouched ng-valid dropdown mdi-picker ng-not-empty open">
                     <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <div ng-show="icons.length == 0" class="" style="padding: 10px 4px 4px 4px;">No icons found</div>
+                        <div ng-show="icons.length == 0" class="" style="padding: 10px 4px 4px 4px;">No icons found
+                        </div>
                         <div class="icons">
-                            <span ng-repeat="icon in icons" class="mdi mdi-24px mdi-{{icon}}" ng-attr-title="{{icon}}" ng-click="selectIcon(icon)"></span>
-                            <div ng-show="icons.length == 301" class="" style="padding: 10px 4px 4px 4px;">Please filter to view others...</div>
+                            <span ng-repeat="icon in icons" class="mdi mdi-24px mdi-{{icon}}" ng-attr-title="{{icon}}"
+                                  ng-click="selectIcon(icon)"></span>
+                            <div ng-show="icons.length == 301" class="" style="padding: 10px 4px 4px 4px;">Please filter
+                                to view others...
+                            </div>
                         </div>
                     </div>
 
@@ -251,30 +277,118 @@
             <div class="page-popup-buttons" ng-if="addPage">
                 <div class="alarm-popup-buttons-line">
                     <div class="alarm-popup-button -icon -away group-popup-btn" ng-click="closeAddPage()">
-                        <div class="mdi mdi-cancel"></div>Cancel
+                        <div class="mdi mdi-cancel"></div>
+                        Cancel
                     </div>
-                    <div class="alarm-popup-button -icon -disarm group-popup-btn" ng-click="addNewPage(pageTitle,pageBg,pageIcon)">
-                        <div class="mdi mdi-plus"></div>Add
+                    <div class="alarm-popup-button -icon -disarm group-popup-btn"
+                         ng-click="addNewPage(pageTitle,pageBg,pageIcon)">
+                        <div class="mdi mdi-plus"></div>
+                        Add
                     </div>
                 </div>
-            </div >
-            <div class="page-popup-buttons"  ng-if="editPage">
+            </div>
+            <div class="page-popup-buttons" ng-if="editPage">
                 <div class="alarm-popup-buttons-line">
                     <div class="alarm-popup-button -icon -away" ng-click="closeEditPage()">
-                        <div class="mdi mdi-cancel"></div>Cancel
+                        <div class="mdi mdi-cancel"></div>
+                        Cancel
                     </div>
                     <div class="alarm-popup-button -icon -away" ng-click="removePage()">
-                        <div class="mdi mdi-trash-can"></div>Remove
+                        <div class="mdi mdi-trash-can"></div>
+                        Remove
                     </div>
                     <div class="alarm-popup-button -icon -disarm" ng-click="editExistPage(pageTitle,pageBg,pageIcon)">
-                        <div class="mdi mdi-content-save"></div>Save
+                        <div class="mdi mdi-content-save"></div>
+                        Save
                     </div>
                 </div>
             </div>
         </div>
-        </div>
+    </div>
 
-    <div class="alarm-popup" ng-if="addTile || editTile">
+
+    <div class="alarm-popup d-flex jc-center ai-center" ng-if="addAutoPage">
+        <div class="alarm-popup-overlay" ng-click="closeAddAutoPage()"></div>
+        <div class="autopage-popup-container" ng-class="{'-no-code': !alarmEntity.attributes.code_format}">
+            <div class="alarm-popup--close" ng-click="closeAddAutoPage()">
+                <i class="mdi mdi-close"></i>
+            </div>
+            <div class="d-flex jc-between">
+
+                <div class="newpageset">
+                    <div class="alarm-popup-state"></div>
+                    <input class="add-page-input" title="Page title" placeholder="Page title" ng-model="pageTitle">
+                    <input class="add-page-input" title="Page background" placeholder="Page background"
+                           ng-model="pageBg.img">
+                    <div class="ng-thumbnails-wrapper">
+                        <div class="ng-thumbnails slide-left">
+                            <span ng-repeat="i in images" ng-click="selectImage(i)"><img ng-src="{{ i.thumb }}"/></span>
+                        </div>
+                    </div>
+                    <input class="add-page-input" title="Page icon" placeholder="Page icon" ng-model="pageIcon.Icon">
+                    <div class="page-popup-buttons">
+                        <div mdi-picker="" ng-model="icon"
+                             class="ng-pristine ng-untouched ng-valid dropdown mdi-picker ng-not-empty open">
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <div ng-show="icons.length == 0" class="" style="padding: 10px 4px 4px 4px;">No icons
+                                    found
+                                </div>
+                                <div class="icons">
+                                    <span ng-repeat="icon in icons" class="mdi mdi-24px mdi-{{icon}}"
+                                          ng-attr-title="{{icon}}" ng-click="selectIcon(icon)"></span>
+                                    <div ng-show="icons.length == 301" class="" style="padding: 10px 4px 4px 4px;">
+                                        Please filter to view others...
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="roomsset">
+
+                    <ul class="nav nav-rooms nav-stacked">
+                        <li ng-repeat="room in rooms" ng-class="{ active: isSet(room.id) }">
+                            <a href ng-click="setTab(room.id)">{{room.title}}</a>
+                        </li>
+                    </ul>
+
+
+                    <div class="jumbotron">
+                        <div ng-repeat="room in rooms" ng-show="isSet(room.id)">
+                            <h1>{{room.title}}</h1>
+                            <div ng-repeat="dev in room.devices">
+                                    <span class="squared-input">
+                                        <input type="checkbox" ng-model="dev.enabled" class="checkall" id="{{dev.id}}">
+                                        <label for="{{dev.id}}"></label>
+                                        {{dev.object}} ({{dev.title}})
+                                    </span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="page-popup-buttons" ng-if="addAutoPage">
+                <div class="alarm-popup-buttons-line">
+                    <div class="alarm-popup-button -icon -away group-popup-btn autopagebntcancel"
+                         ng-click="closeAddAutoPage()">
+                        <div class="mdi mdi-cancel"></div>
+                        Cancel
+                    </div>
+                    <div class="alarm-popup-button -icon -disarm group-popup-btn autopagebnt"
+                         ng-click="addNewAutoPage(pageTitle,pageBg,pageIcon,rooms)">
+                        <div class="mdi mdi-plus"></div>
+                        Generate page
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="alarm-popup d-flex jc-center ai-center" ng-if="addTile || editTile">
 
         <div class="alarm-popup-overlay" ng-click="closeEditTile()"></div>
 
@@ -290,48 +404,105 @@
 
             <div class="d-flex jc-between">
                 <div class="select-box">
-                    <div class="df-center">
+                    <div class="df-center select-item">
                         <label for="select_1" class="select-title">Group</label>
                         <div class="select-wrap long">
-                            <select ng-model="selectedItem" class="select-group" ng-options="group as group.title for group in activePage.groups">
+                            <select ng-model="selectedItem" class="select-group"
+                                    ng-options="group as group.title for group in activePage.groups">
                             </select>
                         </div>
                     </div>
-                    <div class="df-center">
+                    <div class="df-center select-item">
                         <label for="select_1" class="select-title">Type Tile</label>
                         <div class="select-wrap long">
-                            <select ng-model="selectedType" class="select-group" ng-change="changeTileType(selectedType,selectedItem)"
+                            <select ng-model="selectedType" class="select-group"
+                                    ng-change="changeTileType(selectedType,selectedItem)"
                                     ng-options="key as key for (key,val) in tileConfig">
                             </select>
                         </div>
                     </div>
-                    <div class="df-center">
+                    <div class="df-center select-item-accent">
+
                         <label for="select_1" class="select-title">Device</label>
                         <div class="select-wrap long">
-                            <select ng-model="selectedDevice" class="select-devices" ng-change="changeTileDevices(selectedDevice,selectedItem)"
-                                    ng-options="key as key for (key,val) in tileDevice">
-                            </select>
+                            <ui-select ng-model="tileDeviceArray.selected" theme="selectize" ng-disabled="disabled"
+                                       on-select="changeTileDevices($item)" style="width: 100%;">
+                                <ui-select-match placeholder="Select or search a device...">{{$select.selected.name}}
+                                    ({{$select.selected.title}})
+                                </ui-select-match>
+                                <ui-select-choices
+                                        repeat="device.id as  device in (tileDeviceArray | filter: $select.search)">
+                                    <span ng-bind-html="device.name | highlight: $select.search"></span>
+                                    (
+                                    <small ng-bind-html="device.title | highlight: $select.search"></small>
+                                    )
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+
+                    </div>
+                    <div class="df-center">
+                        <span class="hr">or</span>
+                    </div>
+
+                    <div class="df-center select-item-accent">
+                        <label for="select_1" class="select-title">Object</label>
+                        <div class="select-wrap long">
+                            <ui-select ng-model="tileObjectArray.selected" theme="selectize" ng-disabled="disabled"
+                                       on-select="changeTileObject($item)" style="width: 100%;">
+                                <ui-select-match placeholder="Select or search a device...">{{$select.selected.name}}
+                                    ({{$select.selected.name}})
+                                </ui-select-match>
+                                <ui-select-choices
+                                        repeat="object.id as  object in (tileObjectArray | filter: $select.search)">
+                                    <span ng-bind-html="object.name | highlight: $select.search"></span>
+                                    (
+                                    <small ng-bind-html="object.id | highlight: $select.search"></small>
+                                    )
+                                </ui-select-choices>
+                            </ui-select>
                         </div>
                     </div>
-                    <div class="d-flex jc-start ai-center f-wrap" tooltips tooltip-template="Size Tile">
+                    <div ng-if="propertyShow(selectedType)" class="df-center select-item-accent">
+                        <label for="select_1" class="select-title">Property</label>
+                        <div class="select-wrap long">
+                            <ui-select ng-model="tileDevicePropertyArray.selected" theme="selectize" ng-disabled="disabled"
+                                       on-select="changeDevicesProperty($item)" style="width: 100%;">
+                                <ui-select-match placeholder="Select or search a property...">{{$select.selected}}
+                                </ui-select-match>
+                                <ui-select-choices
+                                        repeat="property in tileDevicePropertyArray | filter: $select.search">
+                                    <span ng-bind-html="property | highlight: $select.search"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+
+                    <div class="d-flex select-item jc-start ai-center f-wrap" tooltips tooltip-template="Size Tile">
                         <div class="select-title">Size</div>
                         <div class="df-center">
                             <div class="select-wrap short">
-                                <select id="select_3"  ng-model="selectedWidth" class="select-group" ng-change="changeTileWidth(selectedWidth)"  >
-                                    <option ng-selected="selectedWidth==item.id" ng-repeat="item in sizes" ng-value="item.id">{{item.label}}</option>
-                                </select>                            </div>
+                                <select id="select_3" ng-model="selectedWidth" class="select-group"
+                                        ng-change="changeTileWidth(selectedWidth)">
+                                    <option ng-selected="selectedWidth==item.id" ng-repeat="item in sizes"
+                                            ng-value="item.id">{{item.label}}
+                                    </option>
+                                </select></div>
                             <label for="select_3">Width</label>
                         </div>
                         <div class="df-center">
                             <div class="select-wrap short">
-                                <select id="select_4" ng-model="selectedHeight" class="select-group" ng-change="changeTileHeight(selectedHeight)"  >
-                                    <option ng-selected="selectedHeight==item.id" ng-repeat="item in sizes" ng-value="item.id">{{item.label}}</option>
+                                <select id="select_4" ng-model="selectedHeight" class="select-group"
+                                        ng-change="changeTileHeight(selectedHeight)">
+                                    <option ng-selected="selectedHeight==item.id" ng-repeat="item in sizes"
+                                            ng-value="item.id">{{item.label}}
+                                    </option>
                                 </select>
                             </div>
                             <label for="select_4">Height</label>
                         </div>
                     </div>
-                    <div class="df-center" tooltips tooltip-template="Color Tile">
+                    <div class="df-center select-item" tooltips tooltip-template="Color Tile">
                         <label for="select_1" class="select-title">Color</label>
                         <div class="select-wrap long">
                             <color-picker ng-model="objJson.data.tile_color"></color-picker>
@@ -340,11 +511,15 @@
                 </div>
 
                 <div class="addtile-popup-input-container">
-                    <div ng-jsoneditor ng-model="objJson.data" options="objJson.options" style="height: 94%; min-height: 450px;"></div>
+                    <div ng-jsoneditor ng-model="objJson.data" options="objJson.options"
+                         style="height: 94%; min-height: 450px;"></div>
                     <div class="alarm-popup-filters">
                         <div class="alarm-popup-tabs">
-                            <div class="alarm-popup-tabs__item active add-tile-tree" ng-click="changeOptions('tree')">tree</div>
-                            <div class="alarm-popup-tabs__item add-tile-code" ng-click="changeOptions('code')">code</div>
+                            <div class="alarm-popup-tabs__item active add-tile-tree" ng-click="changeOptions('tree')">
+                                tree
+                            </div>
+                            <div class="alarm-popup-tabs__item add-tile-code" ng-click="changeOptions('code')">code
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -352,25 +527,68 @@
             <div class="alarm-popup-buttons">
                 <div ng-if="editTile" class="alarm-popup-buttons-line">
                     <div class="alarm-popup-button -icon -away" ng-click="closeEditTile()">
-                        <div class="mdi mdi-cancel"></div>Cancel
+                        <div class="mdi mdi-cancel"></div>
+                        Cancel
                     </div>
                     <div class="alarm-popup-button -icon -away" ng-click="removeTile()">
-                        <div class="mdi mdi-trash-can"></div>Remove
+                        <div class="mdi mdi-trash-can"></div>
+                        Remove
                     </div>
                     <div class="alarm-popup-button -icon -disarm" ng-click="editExistTile(selectedItem)">
-                        <div class="mdi mdi-content-save"></div>Save
+                        <div class="mdi mdi-content-save"></div>
+                        Save
                     </div>
                 </div>
-                    <div ng-if="addTile" class="alarm-popup-buttons-line">
-                        <div class="alarm-popup-button -icon -away" ng-click="closeAddTile()">
-                            <div class="mdi mdi-cancel"></div>Cancel
-                        </div>
-                        <div class="alarm-popup-button -icon -disarm" ng-click="addNewTile(jsonStringData,selectedItem)">
-                            <div class="mdi mdi-plus"></div>Add
-                        </div>
-                </div>            </div>
+                <div ng-if="addTile" class="alarm-popup-buttons-line">
+                    <div class="alarm-popup-button -icon -away" ng-click="closeAddTile()">
+                        <div class="mdi mdi-cancel"></div>
+                        Cancel
+                    </div>
+                    <div class="alarm-popup-button -icon -disarm" ng-click="addNewTile(jsonStringData,selectedItem)">
+                        <div class="mdi mdi-plus"></div>
+                        Add
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+    <div class="alarm-popup d-flex jc-center ai-center" ng-if="editConfig">
+
+        <div class="alarm-popup-overlay" ng-click="closeEditConfig()"></div>
+
+        <div class="addtile-popup-container" ng-class="{'-no-code': !alarmEntity.attributes.code_format}">
+
+            <div class="alarm-popup--close" ng-click="closeEditConfig()">
+                <i class="mdi mdi-close"></i>
+            </div>
+
+
+            <div ng-jsoneditor ng-model="cofigJson.data" options="objJson.options"
+                 style="height: 94%; min-height: 450px;"></div>
+            <div class="alarm-popup-filters">
+                <div class="alarm-popup-tabs">
+                    <div class="alarm-popup-tabs__item active add-tile-tree" ng-click="changeOptions('tree')">tree</div>
+                    <div class="alarm-popup-tabs__item add-tile-code" ng-click="changeOptions('code')">code</div>
+                </div>
+            </div>
+
+            <div class="alarm-popup-buttons">
+                <div ng-if="editConfig" class="alarm-popup-buttons-line">
+                    <div class="alarm-popup-button -icon -away" ng-click="closeEditConfig()">
+                        <div class="mdi mdi-cancel"></div>
+                        Cancel
+                    </div>
+                    <div class="alarm-popup-button -icon -disarm" ng-click="editExistConfig(selectedItem)">
+                        <div class="mdi mdi-content-save"></div>
+                        Save
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
 
     <div class="datetime-popup" ng-if="activeDatetime && (dtEntity = getItemEntity(activeDatetime))">
 
@@ -405,7 +623,8 @@
                     </div>
                     <div class="datetime-popup-button" ng-click="inputDatetime(0)">0</div>
 
-                    <div class="datetime-popup-button -success" ng-class="{'-disabled': !activeDatetimeValid()}" ng-click="sendDatetime()">
+                    <div class="datetime-popup-button -success" ng-class="{'-disabled': !activeDatetimeValid()}"
+                         ng-click="sendDatetime()">
                         <div class="mdi mdi-check"></div>
                     </div>
                 </div>
@@ -413,19 +632,21 @@
         </div>
     </div>
 
-    <div class="pages-menu"  ng-class="pagesMenuClasses()">
+    <div class="pages-menu" ng-class="pagesMenuClasses()">
 
         <div class="pages-menu--scroll-indicator"></div>
 
         <div class="pages-menu--aligner"></div>
 
         <div class="pages-menu--items">
-            <div ng-repeat="page in pages track by $index" class="pages-menu--item" ng-click="openPage(page,$parent)" ng-if="!isHidden(page)"
+            <div ng-repeat="page in pages track by $index" class="pages-menu--item" ng-click="openPage(page,$parent)"
+                 ng-if="!isHidden(page)"
                  ng-class="{'-active': isPageActive(page)}">
 
                 <i class="mdi" ng-class="page.icon"></i>
             </div>
-            <div ng-repeat="page in pagesSetting track by $index" class="pages-menu--item" ng-click="openPageSetting(page,$parent)" ng-if="!isHidden(page)"
+            <div ng-repeat="page in pagesSetting track by $index" class="pages-menu--item"
+                 ng-click="openPageSetting(page,$parent)" ng-if="!isHidden(page)"
                  ng-class="{'-active': isPageActive(page)}">
 
                 <i class="mdi" ng-class="page.icon"></i>
@@ -433,7 +654,11 @@
             <div class="pages-menu--item add-btn" ng-show="editingMode==true" ng-click="openAddPagePopup()">
                 <i title="Add new page" class="mdi mdi-plus"></i>
             </div>
-            <div ng-show="editingMode !== true" id="edit-tiles" class="pages-menu--item ng-hide" ng-click="toggleEdit(this)">
+            <div class="pages-menu--item add-btn" ng-show="editingMode==true" ng-click="openAddAutoPagePopup()">
+                <i title="Add new page" class="mdi mdi-auto-fix"></i>
+            </div>
+            <div ng-show="editingMode !== true" id="edit-tiles" class="pages-menu--item ng-hide"
+                 ng-click="toggleEdit(this)">
                 <i title="Edit configuration" class="mdi mdi-border-color"></i>
             </div>
             <div ng-show="editingMode === true" id="save-tiles" class="pages-menu--item" ng-click="saveConfig()">
@@ -441,17 +666,16 @@
             </div>
         </div>
 
-        <div class="header-actions">
 
-        </div>
     </div>
 
-    <div class="header ng-hide" ng-if="header = getHeader()" ng-include="'header.html'"></div>
+    <div class="header" ng-if="header = getHeader()" ng-include="'header.html'"></div>
 
-    <div class="pages" id="pages"  ng-click="">
+    <div class="pages" id="pages" ng-click="">
         <div class="page-overlay" ng-if="activeSelect" ng-click="closeActiveSelect()"></div>
 
-        <div ng-repeat="page in pages track by $index" ng-class="{'-active': isPageActive(page)}" ng-if="shouldDrawPage(page) && !isHidden(page)"
+        <div ng-repeat="page in pages track by $index" ng-class="{'-active': isPageActive(page)}"
+             ng-if="shouldDrawPage(page) && !isHidden(page)"
              ng-style="pageStyles(page)" class="page" on-scroll on-scroll-model="page">
 
             <!-- legacy -->
@@ -461,10 +685,13 @@
 
             <div class="page-align"></div>
 
-            <div ng-repeat="group in page.groups track by $index" ng-if="!isHidden(group)" class="group" ng-style="groupStyles(group, page)">
+            <div ng-repeat="group in page.groups track by $index" ng-if="!isHidden(group)" class="group"
+                 ng-style="groupStyles(group, page)">
                 <div ng-bind="group.title" class="group-title"></div>
-                <div class="hovermenu"  ng-show="editingMode && !drag"  context-menu="menuOptionsGroups" context-menu-on="editingMode && click">
-                    <i class="fa fa-big fa-ellipsis-h dropdown-toggle" data-toggle="dropdown" aria-hidden="true" ng-click="editModeClick(page, item, entity,$parent,$event)"></i>
+                <div class="hovermenu" ng-show="editingMode && !drag" context-menu="menuOptionsGroups"
+                     context-menu-on="editingMode && click">
+                    <i class="fa fa-big fa-ellipsis-h dropdown-toggle" data-toggle="dropdown" aria-hidden="true"
+                       ng-click="editModeClick(page, item, entity,$parent,$event)"></i>
                 </div>
 
                 <div tile ng-repeat="item in group.items track by $index"></div>
@@ -473,7 +700,8 @@
                 <i title="Add group" class="mdi mdi-plus"></i>
             </div>
         </div>
-        <div ng-repeat="page in pagesSetting track by $index" ng-class="{'-active': isPageActive(page)}" ng-if="shouldDrawPage(page) && !isHidden(page)"
+        <div ng-repeat="page in pagesSetting track by $index" ng-class="{'-active': isPageActive(page)}"
+             ng-if="shouldDrawPage(page) && !isHidden(page)"
              ng-style="pageStyles(page)" class="page" on-scroll on-scroll-model="page">
 
             <!-- legacy -->
@@ -483,7 +711,8 @@
 
             <div class="page-align"></div>
 
-            <div ng-repeat="group in page.groups track by $index" ng-if="!isHidden(group)" class="group" ng-style="groupStyles(group, page)">
+            <div ng-repeat="group in page.groups track by $index" ng-if="!isHidden(group)" class="group"
+                 ng-style="groupStyles(group, page)">
                 <div ng-bind="group.title" class="group-title"></div>
                 <div tile ng-repeat="item in group.items track by $index"></div>
             </div>
@@ -492,7 +721,8 @@
     </div>
 </div>
 
-<div class="screensaver" ng-click="hideScreensaver()" ng-show="isShowed" ng-controller="Screensaver" ng-style="conf.styles">
+<div class="screensaver" ng-click="hideScreensaver()" ng-show="isShowed" ng-controller="Screensaver"
+     ng-style="conf.styles">
 
     <div class="screensaver-slides" ng-if="isShowed">
         <div class="screensaver-slide" ng-style="getSlideStyle(slide)" ng-class="getSlideClasses($index, slide)"
@@ -576,14 +806,6 @@
         </div>
         <div class="header--right">
             <div header-item ng-repeat="item in header.right track by $index"></div>
-            <div class="header-actions">
-                <div ng-show="editingMode !== true" id="edit-tiles" class="header-actions__item" ng-click="toggleEdit(this)">
-                    <i title="Edit configuration" class="mdi mdi-border-color"></i>
-                </div>
-                <div ng-show="editingMode === true" id="save-tiles" class="header-actions__item" ng-click="saveConfig()">
-                    <i title="Save changes" class="mdi mdi-content-save"></i>
-                </div>
-            </div>
         </div>
     </div>
 </script>
@@ -631,14 +853,15 @@
 </script>
 
 
-
 <!-- TILE TEMPLATE -->
 
 <script type="text/ng-template" id="tile.html">
-    <div ng-style="itemStyles(page, item, entity)" context-menu="menuOptions" context-menu-on="editingMode && click" class="item"
-         jqyoui-draggable="{index: {{$index}}, onStart:'dragStart(item, $parent.$parent.$parent.group,$parent)', onStop:'dragStop(item, $parent.$parent.$parent.group,$parent)'}"
+    <div ng-style="itemStyles(page, item, entity)" context-menu="menuOptions" context-menu-on="click ,item.setting"
+         class="item"
+         jqyoui-draggable="{index: {{$index}}, onStart:'dragStart(item, $parent.$parent.$parent.group,$parent,editingMode)', onStop:'dragStop(item, $parent.$parent.$parent.group,$parent,editingMode)'}"
          data-drag="{{editingMode && item.type !== TYPES.DROPPLACE }}"
-         data-drop="item.type === TYPES.DROPPLACE" jqyoui-droppable="{index: {{$index}}, onOver:'dragOver()',onOut:'dragOut()',  onDrop:'dragDrop(item,$parent.$parent.$parent.group)'}"
+         data-drop="item.type === TYPES.DROPPLACE"
+         jqyoui-droppable="{index: {{$index}}, onOver:'dragOver()',onOut:'dragOut()',  onDrop:'dragDrop(item,$parent.$parent.$parent.group)'}"
          data-jqyoui-options="{revert: 'invalid'}"
          ng-click="entityClick(page, item, entity,$parent,$event)"
          on-long-press="entityLongClick($event, page, item, entity)"
@@ -672,17 +895,12 @@
             <div class="item-slides-container" ng-if="hasTrackerCoords(entity)">
                 <div class="item-slides" ng-class="trackerSlidesClass(item, entity)"
                      ng-style="slidesStyles(item, $index)">
-                    <div class="item-slide -bg" ng-style="trackerBg(entity)"
-                         ng-if="showTrackerBg(item, entity)"></div>
 
                     <div class="item-slide -map"
                          ng-repeat="zoom in trackerZoomLevels(item, entity) track by $index"
-                         ng-style="slideMapStyles(item, page, entity.attributes, zoom, entity.state)"></div>
+                         ng-style="slideMapStyles(item, page, entity, zoom, entity.state)"></div>
                 </div>
             </div>
-
-            <div ng-if="!hasTrackerCoords(entity) && entity.attributes.entity_picture"
-                 class="item-background" ng-style="trackerBg(entity)"></div>
         </div>
 
         <div ng-if="item.type === TYPES.SENSOR"
@@ -690,14 +908,72 @@
             <div class="item-entity">
             <span ng-bind="entityValue(item, entity)"
                   class="item-entity--value"></span>
-
                 <span ng-if="(_unit = entityUnit(item, entity))"
                       class="item-entity--unit" ng-bind="_unit"></span>
-
             </div>
-
         </div>
 
+        <div ng-if="item.type === TYPES.TERMOSTAT"
+             class="item-entity-container at-multirange-slider">
+
+        <div class="d-flex jc-center ai-center h-100">
+            <ui-timepicker ng-model="ecoTemp" item="item" entity="entity" title="eco" class="eco termostat_circle" value="entityValueTermostat(item, entity,'ecoTargetValue')"></ui-timepicker>
+            <div data-v-f16bb266="" class="termostat_data"><div class="termostat_temp item-entity--value " ng-bind="entityValueTermostat(item, entity,'value')"><span class="display-2">˚C</span></div>
+                <p class="caption">Текущая температура</p>
+                <div data-v-f16bb266="">
+                    <button data-v-f16bb266="" type="button" class="text-none v-btn v-btn--round v-btn--small theme--dark" style="background-color: rgb(239, 83, 80); border-color: rgb(239, 83, 80);">
+                        <div class="v-btn__content">Текущий режим: Обычный</div>
+                    </button>
+                    <div data-v-f16bb266="" class="v-menu">
+                        <div data-v-f16bb266="" class="v-menu__content theme--light" style="min-width: 140px; top: 620px; left: 881px; transform-origin: left top; z-index: 8; display: none;">
+                            <div data-v-f16bb266="" role="list" class="v-list theme--light">
+                                <div data-v-f16bb266="" role="listitem"><a class="v-list__tile v-list__tile--link theme--light">
+                                        <div data-v-f16bb266="" class="v-list__tile__title">Обычный</div></a></div>
+                                <div data-v-f16bb266="" role="listitem"><a class="v-list__tile v-list__tile--link theme--light"><div data-v-f16bb266="" class="v-list__tile__title">Эко</div></a></div><div data-v-f16bb266="" role="listitem"><a class="v-list__tile v-list__tile--link theme--light"><div data-v-f16bb266="" class="v-list__tile__title">Выкл</div></a></div></div></div></div></div>
+                <div ng-if="!item.controlsEnabled" ng-click="openTermostatSliders($event, item, entity)" class="controlsTermostat">
+                    <i class="mdi mdi-big-arrow mdi-chevron-double-down"></i>
+                </div>
+                <div ng-if="item.controlsEnabled" ng-click="closeTermostatSliders($event, item, entity)">
+                    <i class="mdi mdi-big-arrow mdi-chevron-double-up"></i>
+                </div>
+            </div>
+            <ui-timepicker ng-model="standartTemp" item="item" entity="entity" class="termostat_circle" title="standart" value="entityValueTermostat(item, entity,'normalTargetValue')"></ui-timepicker>
+        </div>
+
+            <div ng-if="item.controlsEnabled" class="sliders_termostat">
+                <div class="d-flex ai-center" model="val_sl" ng-repeat="val_sl in sliders_termostat">
+                    <div class="termostat_day" style="width 100%;">
+                        {{val_sl['title']}}
+                    </div>
+                    <div class="termostat_slider">
+                        <slider step="30">
+                            <slider-range model="cl.p" ng-repeat="cl in probs[val_sl['id']]">
+                                <div class="slider-handle" ng-bind-html="cl.symbol"></div>
+                                <div class="slider-label" ng-if="!$last" ng-class-even="'range'"><span
+                                            class="range_text d-flex" ng-class-even="'right'">{{ (Math.trunc(cl.p / 60)) + ":" + cl.p % 60  }}</span>
+                                </div>
+                            </slider-range>
+
+                        </slider>
+                        <div class="clock_text d-flex">
+                            <span class="range_text"><ins>0</ins></span>
+                            <span class="range_text"><ins>3</ins></span>
+                            <span class="range_text"><ins>6</ins></span>
+                            <span class="range_text"><ins>9</ins></span>
+                            <span class="range_text"><ins>12</ins></span>
+                            <span class="range_text"><ins>15</ins></span>
+                            <span class="range_text"><ins>18</ins></span>
+                            <span class="range_text"><ins>21</ins></span>
+                            <span class="range_text"><ins>24</ins></span>
+                        </div>
+                    </div>
+                    <div class="slider_button d-flex">
+                        <button ng-click="addItem(val_sl['id'])"><i class="mdi mdi-plus"></i></button>
+                        <button ng-click="removeItem(val_sl['id'])"><i class="mdi mdi-minus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div ng-if="item.type === TYPES.SWITCH"
              class="item-entity-container">
 
@@ -1002,7 +1278,8 @@
                 <path fill="none" stroke="{{item.background}}" stroke-width="2" d="M23 5.0845
                       a 15.9155 15.9155 0 0 1 0 31.831
                       a 15.9155 15.9155 0 0 1 0 -31.831"></path>
-                <path fill="none" stroke="{{item.color}}" stroke-width="2" stroke-linecap="round" stroke-dasharray="{{item.value}}, 100" d="M23 5.0845
+                <path fill="none" stroke="{{item.color}}" stroke-width="2" stroke-linecap="round"
+                      stroke-dasharray="{{item.value}}, 100" d="M23 5.0845
                       a 15.9155 15.9155 0 0 1 0 31.831
                       a 15.9155 15.9155 0 0 1 0 -31.831"></path>
             </svg>
@@ -1015,7 +1292,7 @@
 
 
         <div ng-if="item.type === TYPES.DROPPLACE"
-             class="item-entity-container" >
+             class="item-entity-container">
             <div class="item-entity">
           <span ng-bind="entityValue(item, entity)"
                 class="item-entity--value" style="font-size: 16px;"></span>
@@ -1031,7 +1308,6 @@
                 <span>IFRAME</span>
             </div>
         </div>
-
 
 
         <div ng-if="item.type === TYPES.DOOR_ENTRY" class="item-entity-container">
@@ -1067,13 +1343,15 @@
                 </div>
 
                 <div class="weather-line" ng-if="item.fields.highTemperature">
-                    <span class="weather-line--small-label" ng-bind="getWeatherField('highTemperatureLabel', item, entity) || 'High'"></span>
+                    <span class="weather-line--small-label"
+                          ng-bind="getWeatherField('highTemperatureLabel', item, entity) || 'High'"></span>
                     <span ng-bind="getWeatherField('highTemperature', item, entity)"></span>
                     <span ng-bind="getWeatherField('highTemperatureUnit', item, entity)"></span>
                 </div>
 
                 <div class="weather-line" ng-if="item.fields.lowTemperature">
-                    <span class="weather-line--small-label" ng-bind="getWeatherField('lowTemperatureLabel', item, entity) || 'Low'"></span>
+                    <span class="weather-line--small-label"
+                          ng-bind="getWeatherField('lowTemperatureLabel', item, entity) || 'Low'"></span>
                     <span ng-bind="getWeatherField('lowTemperature', item, entity)"></span>
                     <span ng-bind="getWeatherField('lowTemperatureUnit', item, entity)"></span>
                 </div>
@@ -1149,7 +1427,8 @@
                             <div class="weather-list-icon" ng-if="(_icon = weatherListIcon(line, item, entity))">
                                 <div class="wu " ng-class="'wu-' + _icon"></div>
                             </div>
-                            <div class="weather-list-icon-image" ng-if="(_imgStyles = weatherListImageStyles(line, item, entity))">
+                            <div class="weather-list-icon-image"
+                                 ng-if="(_imgStyles = weatherListImageStyles(line, item, entity))">
                                 <div ng-style="_imgStyles"></div>
                             </div>
                         </td>
@@ -1166,10 +1445,12 @@
 
         <div ng-if="item.type === TYPES.CLIMATE" class="item-entity-container">
             <div>
-                <div class="item-button -center-right" ng-if="entity.attributes.temperature && entity.state !== 'off'" ng-click="increaseClimateTemp($event, item, entity)">
+                <div class="item-button -center-right" ng-if="entity.attributes.temperature && entity.state !== 'off'"
+                     ng-click="increaseClimateTemp($event, item, entity)">
                     <i class="mdi mdi-plus"></i>
                 </div>
-                <div class="item-button -bottom-right" ng-if="entity.attributes.temperature && entity.state !== 'off'" ng-click="decreaseClimateTemp($event, item, entity)">
+                <div class="item-button -bottom-right" ng-if="entity.attributes.temperature && entity.state !== 'off'"
+                     ng-click="decreaseClimateTemp($event, item, entity)">
                     <i class="mdi mdi-minus"></i>
                 </div>
             </div>
@@ -1177,16 +1458,19 @@
             <div class="item-climate">
                 <div class="item-climate--target">
                     <span ng-bind="climateTarget(item, entity)"></span>
-                    <span ng-if="(_unit = entityUnit(item, entity))" class="item-climate--target--unit" ng-bind="_unit"></span>
+                    <span ng-if="(_unit = entityUnit(item, entity))" class="item-climate--target--unit"
+                          ng-bind="_unit"></span>
                 </div>
                 <div class="item-climate--mode" ng-if="entity.attributes.operation_mode" ng-click="openSelect(item)">
                     <span ng-bind="entity.attributes.operation_mode"></span>
                 </div>
             </div>
 
-            <div ng-if="selectOpened(item)" class="item-select" ng-style="itemSelectStyles(entity, entity.attributes.operation_list)">
+            <div ng-if="selectOpened(item)" class="item-select"
+                 ng-style="itemSelectStyles(entity, entity.attributes.operation_list)">
 
-                <div class="item-select--option" ng-repeat="option in entity.attributes.operation_list track by $index" ng-class="{'-active': option === entity.state}"
+                <div class="item-select--option" ng-repeat="option in entity.attributes.operation_list track by $index"
+                     ng-class="{'-active': option === entity.state}"
                      ng-click="setClimateOption($event, item, entity, option)">
                     <span ng-bind="option"></span>
                 </div>
@@ -1207,11 +1491,14 @@
                                 <span class="mdi mdi-stop" ng-if="entity.state === 'playing'"
                                       ng-click="sendPlayer('media_stop', item, entity)"></span>
 
-                                <span class="mdi mdi-play" ng-if="entity.state === 'stopped'" ng-click="sendPlayer('media_play', item, entity)"></span>
+                                <span class="mdi mdi-play" ng-if="entity.state === 'stopped'"
+                                      ng-click="sendPlayer('media_play', item, entity)"></span>
 
-                                <span class="mdi mdi-play" ng-if="entity.state === 'paused'" ng-click="sendPlayer('media_play', item, entity)"></span>
+                                <span class="mdi mdi-play" ng-if="entity.state === 'paused'"
+                                      ng-click="sendPlayer('media_play', item, entity)"></span>
 
-                                <span class="mdi mdi-play" ng-if="entity.state === 'idle'" ng-click="sendPlayer('media_play', item, entity)"></span>
+                                <span class="mdi mdi-play" ng-if="entity.state === 'idle'"
+                                      ng-click="sendPlayer('media_play', item, entity)"></span>
 
                             </div>
                         </td>
@@ -1247,16 +1534,18 @@
 
                     <tr class="media-player-table--source">
                         <td colspan="3" class="media-player-table--td-source">
-                            <div class="media-player--source" ng-click="openSelect(item)" ng-if="entity.attributes.source_list.length && !item.hideSource">
+                            <div class="media-player--source" ng-click="openSelect(item)"
+                                 ng-if="entity.attributes.source_list.length && !item.hideSource">
                                 <span ng-bind="entity.attributes.source || 'Source'"></span>
                             </div>
                         </td>
                     </tr>
 
-                    <tr <?/*ng-if="shouldShowVolumeSlider(entity) && (_c = getVolumeConf(item, entity))"*/?>>
+                    <tr <? /*ng-if="shouldShowVolumeSlider(entity) && (_c = getVolumeConf(item, entity))"*/ ?>>
                         <td colspan="3" class="media-player-table--td-volume">
                             <div class="media-player--volume">
-                                <input type="range" ng-model="_c.value" ng-change="volumeChanged(item, entity, _c)" step="{{ _c.step }}"
+                                <input type="range" ng-model="_c.value" ng-change="volumeChanged(item, entity, _c)"
+                                       step="{{ _c.step }}"
                                        min="{{ _c.min }}" max="{{ _c.max }}">
                             </div>
                         </td>
@@ -1264,11 +1553,13 @@
 
                     <tr ng-if="shouldShowVolumeButtons(entity)">
                         <td colspan="3" class="media-player-table--td-volume-buttons">
-                            <div class="media-player--button -volume_down" ng-click="sendPlayer('volume_down', item, entity)">
+                            <div class="media-player--button -volume_down"
+                                 ng-click="sendPlayer('volume_down', item, entity)">
                                 <i class="mdi mdi-volume-minus"></i>
                             </div>
 
-                            <div class="media-player--button -volume_up" ng-click="sendPlayer('volume_up', item, entity)">
+                            <div class="media-player--button -volume_up"
+                                 ng-click="sendPlayer('volume_up', item, entity)">
                                 <i class="mdi mdi-volume-plus"></i>
                             </div>
                         </td>
@@ -1279,11 +1570,13 @@
                         <td class="media-player-table--td-mute">
                             <div ng-if="entity.state !== 'off' && !item.hideMuteButton">
                                 <div>
-                                    <div class="media-player--button -mute" ng-if="entity.attributes.is_volume_muted" ng-click="mutePlayer(false, item, entity)">
+                                    <div class="media-player--button -mute" ng-if="entity.attributes.is_volume_muted"
+                                         ng-click="mutePlayer(false, item, entity)">
                                         <i class="mdi mdi-volume-mute"></i>
                                     </div>
 
-                                    <div class="media-player--button -mute" ng-if="!entity.attributes.is_volume_muted" ng-click="mutePlayer(true, item, entity)">
+                                    <div class="media-player--button -mute" ng-if="!entity.attributes.is_volume_muted"
+                                         ng-click="mutePlayer(true, item, entity)">
                                         <i class="mdi mdi-volume-high"></i>
                                     </div>
                                 </div>
@@ -1293,9 +1586,11 @@
                 </table>
             </div>
 
-            <div ng-if="selectOpened(item)" class="item-select" ng-style="itemSelectStyles(entity, entity.attributes.source_list)">
+            <div ng-if="selectOpened(item)" class="item-select"
+                 ng-style="itemSelectStyles(entity, entity.attributes.source_list)">
 
-                <div class="item-select--option" ng-repeat="option in entity.attributes.source_list track by $index" ng-class="{'-active': option === entity.attributes.source}"
+                <div class="item-select--option" ng-repeat="option in entity.attributes.source_list track by $index"
+                     ng-class="{'-active': option === entity.attributes.source}"
                      ng-click="setSourcePlayer($event, item, entity, option)">
                     <span ng-bind="option"></span>
                 </div>
