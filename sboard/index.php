@@ -23,11 +23,14 @@
     <link rel="stylesheet" href="styles/themes.css"/>
     <link rel="stylesheet" href="styles/weather-icons.css"/>
     <link rel="stylesheet" href="styles/font-awesome.min.css"/>
-    <link rel="stylesheet" href="styles/add.css?v1_2"/>
+
     <link rel="stylesheet" href="styles/jsoneditor.min.css"/>
     <link rel="stylesheet" href="styles/angularjs-color-picker.min.css"/>
     <link rel="stylesheet" href="styles/styles.css"/>
     <link rel="stylesheet" href="styles/angular-tooltips.css"/>
+    <link rel="stylesheet" href="styles/colorPickerStyle.css"/>
+
+    <link rel="stylesheet" href="styles/add.css?v1_2"/>
 
     <style>
         [ng-cloak] {
@@ -39,11 +42,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.1/nv.d3.min.css">
     <script src="scripts/vendors/nvd3/d3.js" charset="utf-8"></script>
     <script src="scripts/vendors/nvd3/nv.d3.js"></script>
+
     <script src="scripts/vendors/angular.min.js"></script>
     <script src="scripts/vendors/jsoneditor.min.js"></script>
     <script src="scripts/vendors/angular-tooltips.js"></script>
     <script src="scripts/vendors/contextMenu.js"></script>
     <script src="scripts/vendors/tinycolor-min.js"></script>
+
     <script src="scripts/vendors/angularjs-color-picker.min.js"></script>
     <script src="scripts/vendors/ng-jsoneditor.js"></script>
     <script src="scripts/vendors/angular-dragdrop.js"></script>
@@ -51,6 +56,11 @@
     <script src="scripts/vendors/angular-long-press.js"></script>
     <script src="scripts/vendors/select.min.js"></script>
     <script src="scripts/vendors/multirange-slider.js"></script>
+    <script src="scripts/vendors/colorPicker.js"></script>
+
+
+
+
     <script src="scripts/models/noty.js"></script>
 
     <script src="scripts/app.js"></script>
@@ -60,7 +70,7 @@
     <script src="scripts/init.js"></script>
     <script src="scripts/directives.js?v1_2"></script>
 
-    <script src="scripts/controllers/main.js?v1_201"></script>
+    <script src="scripts/controllers/main.js?v1_202"></script>
     <script src="scripts/controllers/noty.js"></script>
     <script src="scripts/controllers/screensaver.js"></script>
 </head>
@@ -394,7 +404,10 @@
 
         <div class="addtile-popup-container" ng-class="{'-no-code': !alarmEntity.attributes.code_format}">
 
-            <div class="alarm-popup--close" ng-click="closeEditTile()">
+            <div class="alarm-popup--close"  ng-if="editTile"  ng-click="closeEditTile()">
+                <i class="mdi mdi-close"></i>
+            </div>
+            <div class="alarm-popup--close"  ng-if="addTile"  ng-click="closeEditTile()">
                 <i class="mdi mdi-close"></i>
             </div>
 
@@ -471,7 +484,7 @@
                                 <ui-select-match placeholder="Select or search a property...">{{$select.selected}}
                                 </ui-select-match>
                                 <ui-select-choices
-                                        repeat="property in tileDevicePropertyArray | filter: $select.search">
+                                        repeat="property in (tileDevicePropertyArray | filter: $select.search)">
                                     <span ng-bind-html="property | highlight: $select.search"></span>
                                 </ui-select-choices>
                             </ui-select>
@@ -663,6 +676,9 @@
             </div>
             <div ng-show="editingMode === true" id="save-tiles" class="pages-menu--item" ng-click="saveConfig()">
                 <i title="Save changes" class="mdi mdi-content-save"></i>
+            </div>
+            <div id="mic" class="pages-menu--item" ng-click="rec()">
+                <i title="Save changes" class="mdi mdi-microphone"></i>
             </div>
         </div>
 
@@ -904,12 +920,10 @@
         </div>
 
 
-        <div ng-if="item.type === TYPES.DEVICE_TRACKER"
+        <div ng-if="item.type === TYPES.INPUT_TEXT"
              class="item-entity-container -below">
-
-            <div class="item-entity">
-            <input type="text" ng-bind="entityValue(item, entity)"
-                   class="item-entity--value">
+            <div >
+            <input type="text" ng-value="entityValue(item, entity)" ng-model="inputText" ng-change="updateInputText(item,entity, inputText)" >
             </div>
         </div>
 
@@ -1122,49 +1136,9 @@
         </div>
 
         <div ng-if="item.type === TYPES.LIGHT"
-             class="item-entity-container">
-
-            <div ng-if="!item.controlsEnabled">
-                <div ng-if="entity.state !== 'off'">
-                    <div class="item-button -center-right"
-                         ng-click="increaseBrightness($event, item, entity)">
-                        <i class="mdi mdi-plus"></i>
-                    </div>
-                    <div class="item-button -bottom-right"
-                         ng-click="decreaseBrightness($event, item, entity)">
-                        <i class="mdi mdi-minus"></i>
-                    </div>
-                </div>
-                <div class="item-entity">
-               <span class="item-entity--icon mdi"
-                     ng-class="entityIcon(item, entity)"></span>
-                </div>
+             class="item-entity-container ">
+                    <color-picker-small color="color" options="colorOptions" on-color-changed="colorChanged(newColor, oldColor, item)"></color-picker-small>
             </div>
-            <div ng-if="item.controlsEnabled" class="item-entity-sliders"
-                 ng-click="preventClick($event)">
-                <div ng-repeat="slider in item.sliders track by $index"
-                     ng-if="(_c = getLightSliderConf(slider, entity))"
-                     class="item-slider-container">
-
-                    <div class="item-slider-title" ng-if="slider.title">
-                        <span ng-bind="slider.title"></span>:
-                        <span ng-bind="getLightSliderValue(slider, _c)"></span>
-                    </div>
-
-                    <div class="item-slider">
-                        <input type="range" ng-model="_c.value" value="{{ _c.value }}"
-                               ng-change="lightSliderChanged(slider, item, entity, _c)"
-                               step="{{ _c.step }}" min="{{ _c.min }}" max="{{ _c.max }}">
-                    </div>
-                </div>
-
-                <div class="item-entity--back-button"
-                     ng-click="closeLightSliders($event, item, entity)">
-                    <i class="mdi mdi-chevron-left"></i> Back
-                </div>
-            </div>
-        </div>
-
         <div ng-if="item.type === TYPES.TEXT_LIST"
              class="item-entity-container">
             <div class="item-list">
@@ -1260,8 +1234,8 @@
             </div>
         </div>
 
-        <div ng-if="item.type === TYPES.SLIDER"
-             class="item-entity-container" ng-class="{'-slider-bottom': item.bottom}">
+        <div ng-if="item.type === TYPES.SLIDER && item.width>0.5"
+             class="item-entity-container flex" ng-class="{'-slider-bottom': item.bottom}">
 
             <div class="item-entity">
             <span ng-bind="entityValue(item, entity)"
@@ -1277,7 +1251,23 @@
             </div>
 
         </div>
+        <div ng-if="item.type === TYPES.SLIDER && item.width==0.5"
+             class="item-entity-container flex" ng-class="{'-slider-bottom': item.bottom}">
 
+            <div class="slider_value_min">
+            <span ng-bind="entityValue(item, entity)"
+                  class="item-entity--value"></span>
+                <span ng-if="(_unit = entityUnit(item, entity))"
+                      class="" ng-bind="_unit"></span>
+            </div>
+
+            <div class="rotare-slider" ng-if="(_c = getSliderConf(item, entity))">
+                <input type="range" ng-model="_c.value"
+                       ng-change="sliderChanged(item, entity, _c)"
+                       step="{{ _c.step }}" min="{{ _c.min }}" max="{{ _c.max }}">
+            </div>
+
+        </div>
         <div ng-if="item.type === TYPES.PROGRESS"
              class="item-entity-container" ng-class="{'-progress-bottom': item.bottom}">
 
@@ -1322,6 +1312,14 @@
             </div>
         </div>
 
+        <div ng-if="item.type === TYPES.IMG" class="item-entity-container">
+
+            <div class="item-img  df-center">
+                <img ng-src="{{ item.url }}">
+            </div>
+
+        </div>
+
 
         <div ng-if="item.type === TYPES.DOOR_ENTRY" class="item-entity-container">
 
@@ -1352,7 +1350,7 @@
 
                 <div class="weather-temperature" ng-if="item.fields.temperature">
                     <span ng-bind="getWeatherField('temperature', item, entity)"></span>
-                    <span ng-bind="getWeatherField('temperatureUnit', item, entity)"></span>
+                    &deg;<span ng-bind="getWeatherField('temperatureUnit', item, entity)"></span>
                 </div>
 
                 <div class="weather-line" ng-if="item.fields.highTemperature">
@@ -1386,7 +1384,7 @@
                 </div>
 
                 <div class="weather-line" ng-repeat="line in item.fields.list">
-                    <span ng-bind="getWeatherLine(line, item. entity)"></span>
+                    <span ng-bind="getWeatherLine(line, item, entity)"></span>
                 </div>
 
                 <!-- DEPRECATED -->

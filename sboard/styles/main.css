@@ -177,6 +177,9 @@
   background-color: #259eb0;
 }
 
+.item.-th-input_text{
+  background: #4682B4;
+}
 html,
 body {
   font-size: 14px;

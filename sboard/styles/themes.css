@@ -653,3 +653,12 @@
   background: none;
   color: #444;
 }
+
+
+.-theme-homekit .-input_text input,
+.-theme-material .-input_text input {
+  border-radius: 6px;
+  color: #222;
+  border: 2px solid #444;
+}
+

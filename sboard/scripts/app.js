@@ -45,6 +45,7 @@ var TYPES = {
     INPUT_NUMBER: 'input_number',
     INPUT_SELECT: 'input_select',
     INPUT_DATETIME: 'input_datetime',
+    INPUT_TEXT: 'input_text',
     CAMERA: 'camera',
     CAMERA_THUMBNAIL: 'camera_thumbnail',
     SCENE: 'scene',
@@ -61,6 +62,7 @@ var TYPES = {
     PROGRESS: 'progress',
     GRAPH: 'graph',
     DROPPLACE: 'dropplace',
+    IMG : 'img'
 };
 
 var HEADER_ITEMS = {

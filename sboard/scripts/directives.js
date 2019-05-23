@@ -51,7 +51,7 @@ App.directive('camera', function () {
                         }
 
                       if (typeof objs[$scope.item.id.name]=="object" && $scope.item.property !=null) {
-                          return objs[$scope.item.id.name][$scope.item.property];
+                          return '/modules/thumb/thumb.php?&url='+window.btoa(objs[$scope.item.id.name][$scope.item.property])+'&username='+objs[$scope.item.id.name]["cameraUsername"]+'&password='+objs[$scope.item.id.name]["cameraPassword"]+'&transport='+objs[$scope.item.id.name]["streamTransport"];
                       }
 
                         return null;
@@ -197,13 +197,8 @@ App.directive('clock', ['$interval', function ($interval) {
                         var m = d.getMinutes();
                         var postfix = '';
 
-                        if (CONFIG.timeFormat === 12) {
-                              postfix = h >= 12 ? 'PM' : 'AM';
+                        h = leadZero(h);
 
-                              h = h % 12 || 12;
-                        } else {
-                              h = leadZero(h);
-                        }
 
                         $h.textContent = h;
                         $m.textContent = leadZero(m);

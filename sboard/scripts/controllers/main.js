@@ -10,12 +10,15 @@ var CONFIG = {
     debug: false, // Prints entities and state change info to the console.
 
     // next fields are optional
+    YandexReverse: "off",
+    maps: "Google",
     events: [],
     timeFormat: 24,
     menuPosition: MENU_POSITIONS.LEFT, // or BOTTOM
+    mobile: "off",
     hideScrollbar: false, // horizontal scrollbar
     groupsAlign: GROUP_ALIGNS.HORIZONTALLY, // or VERTICALLY
-
+    colorOptions : ['transparent','#FF8A80', '#FFD180', '#FFFF8D', '#CFD8DC', '#80D8FF', '#A7FFEB', '#CCFF90'],
     header: { // https://github.com/resoai/TileBoard/wiki/Header-configuration
         styles: {
             padding: '30px 130px 0',
@@ -252,6 +255,10 @@ var tile = {
             "bgSize": "cover",
             "fullscreen": "camera",
             "refresh": 0,
+            "username":"",
+            "password":"",
+            "fps_small":"2",
+            "fps_big":"25"
 
         }
     },
@@ -274,9 +281,111 @@ var tile = {
             "controlsEnabled": false,
             "property": ["currentTargetValue", "value", "normalTargetValue", "ecoTargetValue"]
         }
+    },
+    "weather": {
+        "title":"string",
+        "example":
+            {
+
+                "fields": { // most of that fields are optional
+                    "temperature": "&temperature",
+                    "temperatureUnit": 'C',
+                    "windSpeed": '&wind_speed',
+                    "windSpeedUnit": 'м/с',
+                    "humidity": '&humidity',
+                    "humidityUnit": '%',
+                    "list":[
+                        'Давление  '
+                        + '&pressure_mmhg'
+                        + 'мм рт.ст.',
+
+                    ]
+
+
+                },
+                "title":"Сегодня",
+                "classes":["-compact"],
+                "icon":"&image",
+                "icons": {
+                    '01d': 'clear',
+                    '01n': 'nt-clear',
+                    '02d': 'partlycloudy',
+                    '02n': 'nt-partlycloudy',
+                    '03d': 'cloudy',
+                    '03n': 'cloudy',
+                    '04d': 'cloudy',
+                    '04n': 'cloudy',
+                    '09n': 'rain',
+                    '09d': 'rain',
+                    '10n': 'rain',
+                    '10d': 'rain',
+                    '11n': 'chancetstorms',
+                    '11d': 'chancetstorms',
+                    '13d': 'snow',
+                    '13n': 'hazy',
+                    '50d': 'fog',
+                    '50n': 'fog',
+
+
+                },
+                "property": [
+                    "temperature",
+                    "wind_speed",
+                    "humidity",
+                    "image",
+                    "weather_type",
+                    "pressure_mmhg"
+                ],
+                "state": "&weather_type"
+
+            }
+    },
+    "light":{
+        "example": {
+
+            "title": 'Floor lamp',
+            "subtitle": 'Lounge',
+            "id": {},
+            "states": {
+                "on": "On",
+                "off": "Off"
+            },
+            "icons": {
+                "on": "mdi-lightbulb-on",
+                "off": "mdi-lightbulb",
+            },
+            "sliders": [
+                {
+                    "title": 'Brightness',
+                    "field": 'brightness',
+                    "max": 255,
+                    "min": 0,
+                    "step": 5,
+
+                },
+                {
+                    "title": 'Color temp',
+                    "field": 'color_temp',
+                    "max": 588,
+                    "min": 153,
+                    "step": 15,
+
+                }
+            ],
+            "colorpicker": true,
+            "property":
+                [
+                    "brightness",
+                    "color"
+                ]        }
+    },
+    "img":{
+        "example":{
+            "url":"",
+        }
     }
 };
-App.controller('Main', function MainController($scope, $location, $sce) {
+App.controller('Main', function MainController($scope, $location) {
     if (!window.CONFIG) return;
 
     $scope.iconData = [];
@@ -338,6 +447,13 @@ App.controller('Main', function MainController($scope, $location, $sce) {
     $scope.isSet = function (tabNum) {
         return $scope.tab === tabNum;
     };
+
+    $scope.updateInputText= function (item,entity,value) {
+       CONFIG[item.property_config]=value;
+       saveConfigAction();
+    };
+
+
     $scope.$watch('pageIcon.Icon', function (term) {
 
         if (typeof term == 'undefined'
@@ -386,6 +502,17 @@ App.controller('Main', function MainController($scope, $location, $sce) {
     $scope.jsonData = null;
     $scope.groupName = "";
     $scope.pageTitle = "";
+    $scope.colorOptions = ['#FF8A80', '#FFD180', '#FFFF8D', '#CFD8DC', '#80D8FF', '#A7FFEB', '#CCFF90',
+        '#8e503f','#c4a851','#f26458','#fe9675','#c37f7c','#aa613c','#a64a31','#c5a9aa','#894633','#c83f2a','#53bab0',
+        '#9e514e','#dda197','#dd7778','#adbc8a','#b25b4d','#ffa147','#f9ad4f','#b2582f','#c65740','#d26e65','#c97968',
+        '#e3d7e0','#ba6680','#45575f','#9e698a','#ae5527','#e76c01','#6b8991','#f73864','#91164d','#eebe71','#5c7556',
+        '#249acf','#e98b7d','#e66563','#fbc96d','#e85a67','#8acecf','#f24d6b','#fb435c','#fb2f4a'];
+
+    $scope.colorOptions = ['#800000','#A52A2A','#DC143C','#FF0000','#FF6347',
+    '#FF4500','#FFA500','#DAA520','#FFD700','#FFFF00',
+    '#808000','#556B2F','#006400','#00FF00','#90EE90',
+    '#00008B','#4682B4','#66CDAA','#008080','#00CED1']
+
     $scope.sliders_termostat =
         [
             {
@@ -493,6 +620,7 @@ App.controller('Main', function MainController($scope, $location, $sce) {
                             0,
                             1
                         ],
+                        "height": 0.5,
                         "id": {},
                         "type": "switch",
                         "states": {
@@ -559,7 +687,34 @@ App.controller('Main', function MainController($scope, $location, $sce) {
                                 return false;
                             }
                         }
-                    }
+                    },
+                    {
+                        "position": [
+                            0,
+                            1.5
+                        ],
+                        "height": 0.5,
+                        "id": {},
+                        "type": "switch",
+                        "states": {
+                            "on": "On",
+                            "off": "Off"
+                        },
+                        "icons": {
+                            "on": "mdi-checkbox-marked",
+                            "off": "mdi-checkbox-blank-outline"
+                        },
+                        "setting": true,
+                        "title": "Mobile auto size",
+                        "action": function (item, entity) {
+                            if (item.id.state == "on")
+                                CONFIG.mobile = "off";
+                            else
+                                CONFIG.mobile = "on";
+                            saveConfigAction();
+                            return false;
+                        }
+                    },
 
 
                 ]
@@ -609,7 +764,73 @@ App.controller('Main', function MainController($scope, $location, $sce) {
                             $scope.editConfig = true;
                             return false;
                         }
-                    }
+                    },
+                    {
+                        "position": [
+                            0,
+                            1
+                        ],
+                        "height": 0.5,
+                        "width": 2,
+                        "id": {},
+                        "type": "input_text",
+                        "setting": true,
+                        "title": "GooleApi",
+                        "property_config":"googleApiKey"
+                    },
+                    {
+                        "position": [
+                            0,
+                            1.5
+                        ],
+                        "type": "input_select",
+                        "id": {
+                            "attributes": {
+                                "options": [
+                                    "Yandex",
+                                    "Google"
+                                ]
+                            }
+                        },
+                        "width":1,
+                        "height":0.5,
+                        "value": "Google",
+                        "title": "Maps",
+                        "setting": true,
+                        "action": function (item, entity) {
+                            CONFIG.maps = item.value;
+                            saveConfigAction();
+                            return false;
+                        }
+                    },
+                    {
+                        "position": [
+                            1,
+                            1.5
+                        ],
+                        "height": 0.5,
+                        "id": {},
+                        "type": "switch",
+                        "states": {
+                            "on": "On",
+                            "off": "Off"
+                        },
+                        "icons": {
+                            "on": "mdi-checkbox-marked",
+                            "off": "mdi-checkbox-blank-outline"
+                        },
+                        "setting": true,
+                        "title": "Yandex Reverse",
+                        "action": function (item, entity) {
+                            if (item.id.state == "on")
+                                CONFIG.YandexReverse = "off";
+                            else
+                                CONFIG.YandexReverse = "on";
+                            saveConfigAction();
+                            return false;
+                        }
+                    },
+
                 ]
             }
         ],
@@ -631,6 +852,14 @@ App.controller('Main', function MainController($scope, $location, $sce) {
                 $scope.openAddTilePopup($itemScope.$parent.$parent.$parent.group);
             }
         },
+        {
+            html: '<a href="#"><i class="mdi mdi-content-copy" aria-hidden="true"></i>&nbsp;&nbsp;Copy Tile</a>',
+            click: function ($itemScope, $event, modelValue, text, $li) {
+                $scope.openCopyTilePopup($itemScope.$parent.item, $itemScope.$parent.$parent.$parent.group);
+            }
+        },
+
+
         {
             html: '<a href="#"><i class="fa fa-remove" aria-hidden="true"></i>&nbsp;&nbsp;Remove Tile</a>',
             click: function ($itemScope, $event, modelValue, text, $li) {
@@ -834,6 +1063,34 @@ App.controller('Main', function MainController($scope, $location, $sce) {
                             $scope.websocket = "on";
                             $scope.pagesSetting[0].groups[1].items[0].id = {"state": "on"};
                         }
+                        if (typeof CONFIG.colorOptions==="undefined")
+                            CONFIG.colorOptions = ['transparent','#FF8A80', '#FFD180', '#FFFF8D', '#CFD8DC', '#80D8FF', '#A7FFEB', '#CCFF90'];
+                       else
+                            colorOptions = CONFIG.colorOptions;
+                        if (CONFIG.mobile == "on" || CONFIG.mobile == "off") {
+                            $scope.pagesSetting[0].groups[0].items[4].id = {"state": CONFIG.mobile};
+                            if (CONFIG.mobile == "on") {
+                                var groupWidth = 3; // count of tiles horizontally
+                                var tileMargin = 5; // px
+                                var groupMargin = 5; // px
+
+                                // var tileSize = getTileSize(groupWidth, tileMargin, groupMargin);
+
+
+                                var width = window.innerWidth;
+                                width -= groupMargin * 2 + tileMargin * (groupWidth - 1);
+                                CONFIG.tileSize = (width / groupWidth).toFixed(1);
+                                CONFIG.groupMarginCss = '2';
+                                CONFIG.tileMargin = '2';
+
+                            }
+                            else {
+                                if (CONFIG.tileSize > 250) CONFIG.tileSize = 250;
+                            }
+                        }
+                        $scope.pagesSetting[0].groups[0].items[3].id.state = CONFIG.tileSize;
+
+
                         if (CONFIG.showheader == "on" || CONFIG.showheader == "off") {
                             $scope.showheader = CONFIG.showheader;
                             $scope.pagesSetting[0].groups[0].items[1].id = {"state": CONFIG.showheader};
@@ -841,7 +1098,7 @@ App.controller('Main', function MainController($scope, $location, $sce) {
                             $scope.showheader = "on";
                             $scope.pagesSetting[0].groups[0].items[1].id = {"state": "on"};
                         }
-                        if ($scope.showheader == "on" && typeof CONFIG.header=="object")
+                        if ($scope.showheader == "on" && typeof CONFIG.header == "object")
                             CONFIG.header.left = [{
                                 type: HEADER_ITEMS.DATETIME,
                                 dateFormat: 'EEEE, LLLL dd', //https://docs.angularjs.org/api/ng/filter/date
@@ -849,9 +1106,15 @@ App.controller('Main', function MainController($scope, $location, $sce) {
                         else {
                             CONFIG.header = {};
                             CONFIG.header.left = {};
-                            CONFIG.header.right ={};
+                            CONFIG.header.right = {};
                         }
-
+                        if (typeof CONFIG.maps === "undefined") {
+                            CONFIG.maps = "Google";
+                        }
+                        $scope.pagesSetting[0].groups[1].items[3].value= CONFIG.maps;
+                        if (typeof CONFIG.YandexReverse === "undefined")
+                            CONFIG.YandexReverse = "off";
+                        $scope.pagesSetting[0].groups[1].items[4].id = {"state": CONFIG.YandexReverse};
                         bodyClass = null;
                         $scope.getBodyClass();
                         $scope.pages = CONFIG.pages;
@@ -900,6 +1163,12 @@ App.controller('Main', function MainController($scope, $location, $sce) {
                                                     temp_properties.push(item_config.id.name + '.' + item_config.property[i]);
                                                 }
                                         }
+
+                                    if (item_config.type=="camera"){
+                                        temp_properties.push(item_config.id.name + '.cameraPassword');
+                                        temp_properties.push(item_config.id.name + '.cameraUsername');
+                                        temp_properties.push(item_config.id.name + '.streamTransport');
+                                    }
                                 }
                             }
                         }
@@ -945,9 +1214,12 @@ App.controller('Main', function MainController($scope, $location, $sce) {
 
     $scope.propertyShow = function (type) {
         if (type == "termostat") return false;
+        if (type == "weather") return false;
         else return true;
     }
-
+    $scope.colorChanged = function (newColor, oldColor, item){
+      //  item.tile_color = newColor;
+    }
     $scope.changeTileDevices = function (selectedDevices, group) {
         $scope.tileDevicePropertyArray.selected = undefined;
         selectedDevices = $scope.tileDeviceArray[$scope.tileDeviceArray.selected];
@@ -1027,9 +1299,9 @@ App.controller('Main', function MainController($scope, $location, $sce) {
         $scope.tileObjectArray.selected = undefined;
         $scope.tileDeviceArray.selected = undefined;
         if ($scope.tileDevicePropertyArray == null)
-            $scope.tileDevicePropertyArray={};
+            $scope.tileDevicePropertyArray = {};
         if (typeof $scope.tileDevicePropertyArray.selected == "undefined")
-            $scope.tileDevicePropertyArray.selected= null;
+            $scope.tileDevicePropertyArray.selected = null;
         $scope.tileDevicePropertyArray.selected = undefined;
         if (selectedType == null)
             selectedType = $scope.tileTypeList[0];
@@ -1044,6 +1316,26 @@ App.controller('Main', function MainController($scope, $location, $sce) {
         $scope.jsonStringData = convertToString($scope.jsonData);
         $scope.objJson.data = $scope.jsonData;
 
+
+    }
+
+    $scope.editTileClick = function (item, parent) {
+        $scope.objJson.data = $scope.jsonData;
+        $scope.openEditTilePopup(item);
+        $scope.editedItemIdx = parent.$index;
+        $scope.editedGroupIdx = parent.$parent.$parent.$index;
+        $scope.selectedItem = $scope.activePage.groups[$scope.editedGroupIdx];
+        if (item.id != null) {
+            $scope.tileObjectArray.selected = item.id;
+            $scope.selectedObject = item.id;
+        }
+
+        $scope.exampleHTML = null;
+        $scope.selectedWidth = item.width;
+        $scope.selectedHeight = item.height;
+        selectedHeight = item.height;
+        if ($scope.tileConfig[item.type] != null)
+            $scope.exampleHTML = $scope.tileConfig[item.type].html;
 
     }
 
@@ -1134,21 +1426,11 @@ App.controller('Main', function MainController($scope, $location, $sce) {
     };
 
 
-    $scope.editTileClick = function (item, parent) {
-        $scope.objJson.data = $scope.jsonData;
-        $scope.openEditTilePopup(item);
-        $scope.editedItemIdx = parent.$index;
-        $scope.editedGroupIdx = parent.$parent.$parent.$index;
-        $scope.selectedItem = $scope.activePage.groups[$scope.editedGroupIdx];
-        if (item.id != null)
-            $scope.selectedObject = item.id;
-        $scope.exampleHTML = null;
-        $scope.selectedWidth = item.width;
-        $scope.selectedHeight = item.height;
-        selectedHeight = item.height;
-        if ($scope.tileConfig[item.type] != null)
-            $scope.exampleHTML = $scope.tileConfig[item.type].html;
 
+
+    $scope.searchModel = function (item){
+        if (typeof item.property_config !== "undefined")
+        return CONFIG[item.property_config]
     }
     $scope.entityClick = function (page, item, entity, parent, event) {
 
@@ -1277,6 +1559,7 @@ App.controller('Main', function MainController($scope, $location, $sce) {
 
 
         if (item.type == "iframe") return {};
+        if (item.type == "img") return {};
         if (!(item.id in $scope.states)) {
             warnUnknownItem(item);
             item.id = {};
@@ -1324,11 +1607,16 @@ App.controller('Main', function MainController($scope, $location, $sce) {
 
             var url;
 
-            if (item.map === YANDEX_MAP) {
+            if (item.map === YANDEX_MAP || (CONFIG.maps=="Yandex" && typeof item.map=== "undefined")) {
                 var icon = 'round';
 
                 if (state.toLowerCase() === 'home') icon = 'home';
                 else if (state.toLowerCase() === 'office') icon = 'work';
+                if (CONFIG.YandexReverse=="on" && typeof coords === "string"){
+                    var coord=coords.split(',');
+                    if (coord.length==2)
+                    coords=coord[1]+','+coord[0];
+                }
 
                 var pt = coords + ',' + icon;
 
@@ -1741,6 +2029,8 @@ App.controller('Main', function MainController($scope, $location, $sce) {
 
         var res;
 
+
+
         if (item.state) {
             if (typeof item.state === "string") {
                 return parseString(item.state, entity);
@@ -1768,7 +2058,10 @@ App.controller('Main', function MainController($scope, $location, $sce) {
     $scope.entityIcon = function (item, entity) {
         var state = entity.state;
 
-
+        if (item.type == "light"){
+            state = "on";
+            entity.state = state;
+        }
         if (typeof item.property !== "undefined") {
 
 
@@ -1782,6 +2075,7 @@ App.controller('Main', function MainController($scope, $location, $sce) {
                     entity.state = state;
                 }
             }
+
 
             if (typeof objs[item.id.name] != "undefined")
                 delete  objs[item.id.name][item.property];
@@ -1833,16 +2127,16 @@ App.controller('Main', function MainController($scope, $location, $sce) {
 
 
     $scope.entityValueTermostat = function (item, entity, property) {
-        $scope.ecoTemp=entity[property];
-        if (typeof entity[property]!=="undefined") {
+        $scope.ecoTemp = entity[property];
+        if (typeof entity[property] !== "undefined") {
             return entity[property];
         }
         return "";
     }
 
     $scope.entityValue = function (item, entity) {
-
-        var value = entity.state;
+        if (typeof entity === "undefined") return;
+        if (typeof entity.state !== "undefined") var value = entity.state;
         if (entity.value) {
             value = entity.value;
             entity.state = entity.value;
@@ -1850,6 +2144,10 @@ App.controller('Main', function MainController($scope, $location, $sce) {
         if (item.value) {
             value = getItemFieldValue('value', item, entity);
         }
+
+        if (item.property_config)
+            if (typeof CONFIG[item.property_config] !== "undefined")
+            value = CONFIG[item.property_config];
 
         if (typeof item.property !== "undefined") {
 
@@ -1861,6 +2159,7 @@ App.controller('Main', function MainController($scope, $location, $sce) {
 
                     entity.state = objs[item.id.name][item.property];
                     if (typeof entity.attributes !== "undefined")
+                        if (typeof entity.attributes._c !== "undefined") 
                         entity.attributes._c.value = Number(objs[item.id.name][item.property]);
                     delete  objs[item.id.name][item.property];
                 }
@@ -1914,7 +2213,8 @@ App.controller('Main', function MainController($scope, $location, $sce) {
 
         if (!fields || !fields[field]) return null;
 
-        return parseFieldValue(fields[field], item, entity);
+        return parseString(fields[field], entity);
+
     };
 
     $scope.getWeatherLine = function (line, item, entity) {
@@ -1927,6 +2227,7 @@ App.controller('Main', function MainController($scope, $location, $sce) {
         var icon;
 
         if (item.icon || item.icons) {
+
             icon = $scope.entityIcon(item, entity);
         }
 
@@ -2184,10 +2485,10 @@ App.controller('Main', function MainController($scope, $location, $sce) {
     };
 
     $scope.openLightSliders = function (item, entity) {
-        if (entity.state !== "on") {
+        if (entity.status !== "1") {
             return $scope.toggleSwitch(item, entity, function () {
                 setTimeout(function () {
-                    if (entity.state === "on") {
+                    if (entity.status === "1") {
                         $scope.openLightSliders(item, entity);
                         updateView();
                     }
@@ -2366,6 +2667,22 @@ App.controller('Main', function MainController($scope, $location, $sce) {
         $scope.objJson.data = $scope.jsonData;
 
     };
+    $scope.openCopyTilePopup = function (item, group) {
+        $scope.selectedItem = group;
+        $scope.changeTileType($scope.selectedType, group);
+        $scope.addTile = true;
+        $scope.changeInputStyle('json');
+        $scope.jsonData = Object.assign({}, item);
+        $scope.jsonData.styles = null;
+        $scope.jsonData.position = getFirstFreePosition(group);
+        $scope.objJson.data = $scope.jsonData;
+        $scope.jsonStringData = convertToString($scope.jsonData);
+        $scope.addTile = true;
+        $scope.changeInputStyle('json');
+
+
+    };
+
 
     $scope.openAddGroupPopup = function () {
         $scope.groupName = "";
@@ -2453,6 +2770,10 @@ App.controller('Main', function MainController($scope, $location, $sce) {
         } else {
             delete $scope.tileDevicePropertyArray;
         }
+        if (typeof item.property == "string" ) {
+            $scope.tileDevicePropertyArray.selected = "status";
+        }
+       // $scope.tileDevicePropertyArray.selected = "status";
         $scope.jsonStringData = convertToString($scope.jsonData);
         $scope.editTile = true;
         $scope.changeInputStyle('json');
@@ -2566,11 +2887,11 @@ App.controller('Main', function MainController($scope, $location, $sce) {
 
         if (entity.state === "off") return false;
 
-        if (!('brightness' in entity.attributes)) {
+        if (!('brightness' in entity)) {
             return addError("No brightness field in object");
         }
 
-        var brightness = +entity.attributes.brightness + 25.5;
+        var brightness = +entity.brightness + 25.5;
 
         brightness = Math.min(brightness, 255);
 
@@ -2585,11 +2906,11 @@ App.controller('Main', function MainController($scope, $location, $sce) {
 
         if (entity.state === "off") return false;
 
-        if (!('brightness' in entity.attributes)) {
+        if (!('brightness' in entity)) {
             return addError("No brightness field in object");
         }
 
-        var brightness = +entity.attributes.brightness - 25.5;
+        var brightness = +entity.brightness - 25.5;
 
         brightness = Math.max(brightness, 1);
 
@@ -2961,6 +3282,7 @@ App.controller('Main', function MainController($scope, $location, $sce) {
 
     $scope.closeAddTile = function () {
         $scope.addTile = false;
+        $scope.editTile = false;
     };
 
     $scope.closeAddGroup = function () {
@@ -2984,6 +3306,7 @@ App.controller('Main', function MainController($scope, $location, $sce) {
 
     $scope.closeEditTile = function () {
         $scope.editTile = false;
+        $scope.addTile = false;
     };
     $scope.closeEditConfig = function () {
         $scope.editConfig = false;
@@ -3640,14 +3963,14 @@ App.controller('Main', function MainController($scope, $location, $sce) {
 
     function parseVariable(value, entity) {
         if (value[0] === "@") return getObjectAttr(entity, value.slice(1));
-        if (value[0] === "&") return getEntityAttr(value.slice(1));
+        if (value[0] === "&") return entity[value.slice(1)];
 
         return value;
     }
 
     function parseString(value, entity) {
         return value.replace(/([&@][\w\d._]+)/gi, function (match, contents, offset) {
-            if (match[0] === "&" && match.split('.').length < 3) return match;
+           // if (match[0] === "&" && match.split('.').length < 3) return match;
 
             var res = parseVariable(match, entity);
 
@@ -3669,9 +3992,9 @@ App.controller('Main', function MainController($scope, $location, $sce) {
     }
 
     function getEntityAttr(str) {
-        var path = str.split('.');
+     //   var path = str.split('.');
 
-        if (path.length < 3) return;
+      //  if (path.length < 3) return;
 
         var entity = $scope.states[path.slice(0, 2).join('.')] || null;
 

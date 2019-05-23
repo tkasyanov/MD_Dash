@@ -29,8 +29,8 @@ if ($method == "GET"):
     $info = false;
     $setting["config"] = json_decode($Record["CONFIG"], true);
     if ($setting["config"] == null) $setting["config"]["pages"] = array();
-    if ($setting["config"]["customTheme"] ==null) $setting["config"]["customTheme"]= "homekit";
-    if ($setting["config"]["tileSize"]<75) $setting["config"]["tileSize"] = 75;
+    if ($setting["config"]["customTheme"] ==null) $setting["config"]["customTheme"]= "win10";
+    if ($setting["config"]["tileSize"]<75 && (int)$setting["config"]["tileSize"]>0) $setting["config"]["tileSize"] = 75;
     $setting["config"]["tileMargin"] = 6;
     print_r(json_encode($setting));
 endif;
