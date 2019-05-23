@@ -20,7 +20,7 @@
     <meta name="theme-color" content="#ffffff">
 
     <link rel="stylesheet" href="styles/main.css?v1_2"/>
-    <link rel="stylesheet" href="styles/themes.css"/>
+    <link rel="stylesheet" href="styles/themes.css?v056"/>
     <link rel="stylesheet" href="styles/weather-icons.css"/>
     <link rel="stylesheet" href="styles/font-awesome.min.css"/>
 
@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="styles/angular-tooltips.css"/>
     <link rel="stylesheet" href="styles/colorPickerStyle.css"/>
 
-    <link rel="stylesheet" href="styles/add.css?v1_2"/>
+    <link rel="stylesheet" href="styles/add.css?v056"/>
 
     <style>
         [ng-cloak] {
@@ -68,9 +68,9 @@
 
 
     <script src="scripts/init.js"></script>
-    <script src="scripts/directives.js?v1_2"></script>
+    <script src="scripts/directives.js?v056"></script>
 
-    <script src="scripts/controllers/main.js?v1_202"></script>
+    <script src="scripts/controllers/main.js?v056"></script>
     <script src="scripts/controllers/noty.js"></script>
     <script src="scripts/controllers/screensaver.js"></script>
 </head>
