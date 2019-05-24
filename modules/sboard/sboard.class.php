@@ -134,6 +134,10 @@ function admin(&$out) {
 * @access public
 */
 function usual(&$out) {
+    if ($this->owner->action=='apps') {
+        $this->redirect(ROOTHTML.$this->name);
+    } else
+        $this->admin($out);
  $this->admin($out);
 }
 /**
