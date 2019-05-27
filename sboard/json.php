@@ -30,7 +30,7 @@ if ($method == "GET"):
     $setting["config"] = json_decode($Record["CONFIG"], true);
     if ($setting["config"] == null) $setting["config"]["pages"] = array();
     if ($setting["config"]["customTheme"] ==null) $setting["config"]["customTheme"]= "win10";
-    if ((int)$setting["config"]["tileSize"]>0) $setting["config"]["tileSize"] = 150;
+    if ((int)$setting["config"]["tileSize"]==0) $setting["config"]["tileSize"] = 150;
     if ($setting["config"]["tileSize"]<75 && (int)$setting["config"]["tileSize"]>0) $setting["config"]["tileSize"] = 75;
 
     $setting["config"]["tileMargin"] = 6;
