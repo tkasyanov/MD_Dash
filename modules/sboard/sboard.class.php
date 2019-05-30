@@ -185,6 +185,7 @@ function usual(&$out) {
 */
  function uninstall() {
   SQLExec('DROP TABLE IF EXISTS sboard');
+  removeTree(DOC_ROOT."/sboard");
   parent::uninstall();
  }
 /**
