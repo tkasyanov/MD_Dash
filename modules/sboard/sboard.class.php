@@ -184,6 +184,11 @@ function usual(&$out) {
 * @access public
 */
  function uninstall() {
+  $files = array_diff(scandir(ROOT.'sboard/'), array('.', '..')); 
+  foreach ($files as $file) { 
+    (is_dir("$dir/$file")) ? delTree("$dir/$file") : unlink("$dir/$file"); 
+  }
+   rmdir(ROOT.'sboard/');
   SQLExec('DROP TABLE IF EXISTS sboard');
   parent::uninstall();
  }
